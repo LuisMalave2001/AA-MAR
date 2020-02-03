@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//adm_uni/__manifest__.py=utf-8
+encoding//adm_uni/controllers/admission_application_controller.py=utf-8
+encoding//adm_uni/controllers/admission_inquiry_controller.py=utf-8
+encoding//adm_uni/models/__init__.py=utf-8
+encoding//adm_uni/models/admission_application.py=utf-8
+encoding//adm_uni/models/admission_inquiry.py=utf-8
+encoding//adm_uni/models/attachment.py=utf-8
+encoding//adm_uni/models/contact_time.py=utf-8
+encoding//adm_uni/models/degree_program.py=utf-8
+encoding//adm_uni/models/languages.py=utf-8
