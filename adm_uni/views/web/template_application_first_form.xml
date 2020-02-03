@@ -140,16 +140,16 @@
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtGPA">GPA</label>
                                     <input type="text" class="form-control" id="txtGPA" name="txtGPA"
-                                        placeholder="GPA" />
+                                        placeholder="GPA" required="required" />
                                 </div>
 
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtCumulativeGrade">Cumulative Grade</label>
                                     <input type="text" class="form-control" id="txtCumulativeGrade"
-                                        name="txtCumulativeGrade" placeholder="Cumulative Grade" />
+                                        name="txtCumulativeGrade" placeholder="Cumulative Grade" required="required" />
                                 </div>
 
-
+                                <small>for Moroccan students only</small>
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtRegionalExam">Regional Exam</label>
                                     <input type="text" class="form-control" id="txtRegionalExam"

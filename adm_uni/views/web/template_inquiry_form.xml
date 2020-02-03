@@ -92,13 +92,13 @@
                                     <div class="form-group col-12 col-md-6">
                                         <label for="txtCurrentSchool">Current School</label>
                                         <input type="text" class="form-control" id="txtCurrentSchool"
-                                            name="txtCurrentSchool" placeholder="Current School" />
+                                            name="txtCurrentSchool" placeholder="Current School" required="required" />
                                     </div>
 
                                     <div class="form-group col-12 col-md-6">
                                         <label for="txtCurrentSchoolAddress">Current School Address</label>
                                         <input type="text" class="form-control" id="txtCurrentSchoolAddress"
-                                            name="txtCurrentSchoolAddress" placeholder="Current School Address" />
+                                            name="txtCurrentSchoolAddress" placeholder="Current School Address" required="required" />
                                     </div>
                                 </div>
                             </section>
