@@ -38,9 +38,9 @@
                         <section class="card-body">
                             <div class="row">
                                 <div class="form-group col-12">
-                                    <label for="txtGender">Gender</label>
-                                    <select type="text" class="form-control" id="txtGender"
-                                        name="txtGender" placeholder="Gender">
+                                    <label for="selGender">Gender</label>
+                                    <select type="text" class="form-control" id="selGender"
+                                        name="selGender" placeholder="Gender">
                                         <option value="m">Male</option>
                                         <option value="f">Female</option>
                                     </select>
