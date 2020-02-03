@@ -19,7 +19,7 @@
 	<record model="ir.actions.act_window" id="action_inquiry">
 		<field name="name">Inquiries</field>
 		<field name="res_model">adm_uni.inquiry</field>
-		<field name="view_mode">tree</field>
+		<field name="view_mode">kanban,tree,form</field>
 	</record>
 
 	<record model="ir.actions.act_window" id="action_status">
