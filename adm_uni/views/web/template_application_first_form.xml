@@ -237,8 +237,8 @@
                                         Preferred Degree Program
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select type="text" class="form-control" id="txtPreferredContactTime"
-                                        name="txtPreferredContactTime" required="required">
+                                    <select type="text" class="form-control" id="selPreferredDegreeProgram"
+                                        name="selPreferredDegreeProgram" required="required">
                                         <option value="-1">- Select an option -</option>
                                         <t t-foreach="degree_program_ids" t-as="degree_program">
                                             <option t-att-value="degree_program.id">

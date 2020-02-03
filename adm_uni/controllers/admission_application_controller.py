@@ -101,7 +101,11 @@ class Admission(http.Controller):
         letter_of_motivation_file = params["fileLetterOfMotivation"]
         cv_file = params["fileCV"]
         grade_transcript_file = params["fileGradeTranscript"]
+
         letters_of_recommendation_file = params["fileLettersOfRecommendation"]
+        
+        contact_time_id = params["selPreferredContactTime"]
+        preferred_degree_program = params["selPreferredDegreeProgram"]
         
         new_application_dict = {
             'gender': gender,
@@ -113,6 +117,9 @@ class Admission(http.Controller):
             'cumulative_grades': cumulative_grades,
             'regional_exam_grade': regional_exam_grade,
             'bac_grade': bac_grade,
+            
+            'contact_time_id': contact_time_id,
+            'preferred_degree_program': preferred_degree_program,
         }
         
         contact_id = self.get_partner()
