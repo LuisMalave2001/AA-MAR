@@ -339,12 +339,6 @@ class InquiryTasks(models.Model):
     description = fields.Char("Description")
     status_id = fields.Many2one("adm_uni.inquiry.status", string="Status")
 
-class AdmissionPreferredContactTime(models.Model):
-    _name = "adm_uni.contact_time"
-    
-    name = fields.Char("Name")
-    from_time = fields.Float("From Time", compute="_compute_time")
-    to_time = fields.Float("To Time", compute="_compute_time")
     
 class AdmissionInquiryLanguages(models.Model):
     _name = "adm_uni.inquiry.languages"
@@ -352,9 +346,4 @@ class AdmissionInquiryLanguages(models.Model):
     language_id = fields.Many2one("adm_uni.languages", string="Language")
     language_level_id = fields.Many2one("adm_uni.languages.level", string="Language Level")
     inquiry_id = fields.Many2one("adm_uni.inquiry", string="Inquiry")
-    
-class AdmissionDegreeProgram(models.Model):
-    _name = "adm_uni.degree_program"
-    
-    name = fields.Char("Name")
     

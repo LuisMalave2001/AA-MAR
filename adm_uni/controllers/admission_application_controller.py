@@ -82,7 +82,7 @@ class Admission(http.Controller):
             params["txtMiddleName"] = ""
             
         # Personal Info
-        # gender = params["selGender"]
+        gender = params["selGender"]
         father_name = params["txtFatherName"]
         mother_name = params["txtMotherName"]
         
@@ -100,6 +100,7 @@ class Admission(http.Controller):
         letters_of_recommendation_file = params["fileLettersOfRecommendation"]
         
         new_application_dict = {
+            'gender': gender,
             'father_name': father_name,
             'mother_name': mother_name,
             

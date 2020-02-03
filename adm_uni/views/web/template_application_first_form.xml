@@ -37,6 +37,14 @@
                         </section>
                         <section class="card-body">
                             <div class="row">
+                                <div class="form-group col-12">
+                                    <label for="txtGender">Gender</label>
+                                    <select type="text" class="form-control" id="txtGender"
+                                        name="txtGender" placeholder="Gender">
+                                        <option value="m">Male</option>
+                                        <option value="f">Female</option>
+                                    </select>
+                                </div>
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtFatherName">Father Name</label>
                                     <input type="text" class="form-control" id="txtFatherName"

@@ -15,6 +15,18 @@
         <field name="view_mode">tree,form</field>
     </record>
     
+    <record model="ir.actions.act_window" id="action_degree_program">
+        <field name="name">Degree Program</field>
+        <field name="res_model">adm_uni.degree_program</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_contact_time">
+        <field name="name">Contact time</field>
+        <field name="res_model">adm_uni.contact_time</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
     <!-- Inquiries -->
 	<record model="ir.actions.act_window" id="action_inquiry">
 		<field name="name">Inquiries</field>
@@ -72,6 +84,13 @@
     <menuitem id="adm_uni_menu_language_level"
         parent="adm_uni_menu_configurations" name="Language levels"
         action="action_language_level" />
+        
+    <menuitem id="adm_uni_menu_contact_time"
+        parent="adm_uni_menu_configurations" name="Contact times"
+        action="action_contact_time" />
+    <menuitem id="adm_uni_menu_degree_program"
+        parent="adm_uni_menu_configurations" name="Degree programs"
+        action="action_degree_program" />
     
     <!-- Website Tab -->
     <record id="website_menu_adm_uni_inquiry" model="website.menu">
