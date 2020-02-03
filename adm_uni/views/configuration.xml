@@ -37,8 +37,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
-                <field name="from_time" />
-                <field name="to_time" />
+                <field name="from_time" widget="float_time"/>
+                <field name="to_time" widget="float_time"/>
             </tree>
         </field>
     </record>
