@@ -21,7 +21,6 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
         'views/inherited_views.xml',
         'views/views_inquiry.xml',
         'views/views_application.xml',
