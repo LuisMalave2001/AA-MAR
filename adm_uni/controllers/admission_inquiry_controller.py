@@ -20,7 +20,7 @@ class Admission(http.Controller):
     #===================================================================================================================
 
     @http.route("/admission-university/inquiry", auth="public", methods=["GET"], website=True)
-    def admission_web(self, **kargs):
+    def admission_web(self, **params):
         countries = http.request.env['res.country']
         contact_times = http.request.env['adm_uni.contact_time']
         degree_programs = http.request.env['adm_uni.degree_program']

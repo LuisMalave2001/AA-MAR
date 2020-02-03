@@ -18,7 +18,7 @@ class Admission(http.Controller):
         return http.request.env["res.users"].browse([http.request.session.uid]).partner_id
     
     @http.route("/admission-university/application", auth="public", methods=["GET"], website=True)
-    def admission_web(self):
+    def admission_web(self, **params):
         contact_id = self.get_partner()
         application_status_ids = http.request.env["adm_uni.application.status"].browse(http.request.env["adm_uni.application.status"].search([])).ids
         
