@@ -2,7 +2,6 @@
 
 from odoo import models, fields, api, exceptions, _
 from ..utils import formatting
-from odoo.service.wsgi_server import application
 
 
 class ApplicationStatus(models.Model):

@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//adm_uni/__manifest__.py=utf-8
+encoding//adm_uni/models/admission_application.py=utf-8
 encoding//adm_uni/models/admission_inquiry.py=utf-8
+encoding//adm_uni/models/attachment.py=utf-8
