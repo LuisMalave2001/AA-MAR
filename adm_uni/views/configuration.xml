@@ -35,7 +35,7 @@
         <field name="name">Contact time tree</field>
         <field name="model">adm_uni.contact_time</field>
         <field name="arch" type="xml">
-            <tree editable="bottom">
+            <tree>
                 <field name="name" />
                 <field name="from_time" />
                 <field name="to_time" />
