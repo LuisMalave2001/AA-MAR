@@ -149,7 +149,7 @@
                                         name="txtCumulativeGrade" placeholder="Cumulative Grade" required="required" />
                                 </div>
 
-                                <small>for Moroccan students only</small>
+                                <small class="col-12 text-danger mb-3">for Moroccan students only</small>
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtRegionalExam">Regional Exam</label>
                                     <input type="text" class="form-control" id="txtRegionalExam"
