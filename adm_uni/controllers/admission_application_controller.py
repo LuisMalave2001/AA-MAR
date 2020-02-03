@@ -185,6 +185,8 @@ class Admission(http.Controller):
         application_id.grade_transcript_id = grade_transcript_id
         application_id.letters_of_recommendation_id = letters_of_recommendation_id
         
-        contact_id.is_in_application = True
+#         PartnerEnv = http.request.env["res.partner"]
+        
+        contact_id.sudo().write({"is_in_application": True})
         
         return "Exito, se ha enviado el estudiante: '{}'".format(application_id.name)
