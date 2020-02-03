@@ -4,6 +4,6 @@ from odoo import models, fields
 class AdmissionPreferredContactTime(models.Model):
     _name = "adm_uni.contact_time"
     
-    name = fields.Char("Name")
-    from_time = fields.Float("From Time")
-    to_time = fields.Float("To Time")
+    name = fields.Char("Name", required=True)
+    from_time = fields.Float("From Time", required=True)
+    to_time = fields.Float("To Time", required=True)
