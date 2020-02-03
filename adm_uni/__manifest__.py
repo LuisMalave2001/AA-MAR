@@ -25,7 +25,7 @@
         'views/inherited_views.xml',
         'views/views_inquiry.xml',
         'views/views_application.xml',
-        'view/configuration.xml',
+        'views/configuration.xml',
         'data/menudata.xml',
         'data/sequences_data.xml',
         'data/statics_data.xml',
