@@ -165,71 +165,6 @@
                         </section>
                     </section>
 
-                    <!-- Home information -->
-                    <!-- <section class="card mt-2"> -->
-                    <!-- <section class="card-header"> -->
-                    <!-- <h1 class="text-info">Address Information</h1> -->
-                    <!-- </section> -->
-                    <!-- <section class="card-body"> -->
-                    <!-- <div class="row"> -->
-                    <!-- <div class="form-group col-12 col-md-6"> -->
-                    <!-- <label for="selCountry"> -->
-                    <!-- Country -->
-                    <!-- <span class="text-danger">*</span> -->
-                    <!-- </label> -->
-                    <!-- <select type="text" class="custom-select" id="selCountry" name="selCountry" -->
-                    <!-- placeholder="Country" required="required"> -->
-                    <!-- <option value="-1">-Select a country-</option> -->
-                    <!-- <t t-foreach="countries" t-as="country"> -->
-                    <!-- <option t-att-value="country.id"> -->
-                    <!-- <t t-esc="country.name" /> -->
-                    <!-- </option> -->
-                    <!-- </t> -->
-                    <!-- </select> -->
-                    <!-- </div> -->
-                    <!-- <div class="form-group col-12 col-md-6"> -->
-                    <!-- <label for="selState"> -->
-                    <!-- State -->
-                    <!-- <span class="text-danger">*</span> -->
-                    <!-- </label> -->
-                    <!-- <select type="text" class="custom-select" id="selState" name="selState" -->
-                    <!-- placeholder="State" required="required"> -->
-                    <!-- <option value='-1'>-Select a state-</option> -->
-                    <!-- </select> -->
-                    <!-- </div> -->
-                    <!-- </div> -->
-
-                    <!-- <div class="row"> -->
-                    <!-- <div class="form-group col-12 col-md"> -->
-                    <!-- <label for="txtCity"> -->
-                    <!-- City -->
-                    <!-- <span class="text-danger">*</span> -->
-                    <!-- </label> -->
-                    <!-- <input type="text" class="form-control" id="txtCity" name="txtCity" -->
-                    <!-- placeholder="City" required="required" /> -->
-                    <!-- </div> -->
-                    <!-- <div class="form-group col-12 col-md"> -->
-                    <!-- <label for="txtStreetAddress"> -->
-                    <!-- Street Address -->
-                    <!-- <span class="text-danger"> -->
-                    <!-- * -->
-                    <!-- </span> -->
-                    <!-- </label> -->
-                    <!-- <input type="text" class="form-control" id="txtStreetAddress" -->
-                    <!-- name="txtStreetAddress" placeholder="Street Address" required="required" /> -->
-                    <!-- </div> -->
-                    <!-- <div class="form-group col-12 col-md"> -->
-                    <!-- <label for="txtZip"> -->
-                    <!-- Zip -->
-                    <!-- <span class="text-danger">*</span> -->
-                    <!-- </label> -->
-                    <!-- <input type="text" class="form-control" id="txtZip" name="txtZip" -->
-                    <!-- maxlength="10" placeholder="Zip" required="required" /> -->
-                    <!-- </div> -->
-                    <!-- </div> -->
-                    <!-- </section> -->
-                    <!-- </section> -->
-
                     <section class="card mt-2">
                         <section class="card-header">
                             <h1 class="text-info">Documentation</h1>
@@ -285,7 +220,7 @@
                                     <select type="text" class="form-control" id="selPreferredContactTime"
                                         name="selPreferredContactTime" required="required">
                                         <option value="-1">- Select an option -</option>
-                                        <t t-foreach="contact_times" t-as="contact_time">
+                                        <t t-foreach="contact_time_ids" t-as="contact_time">
                                             <option t-att-value="contact_time.id">
                                                 <t t-esc="contact_time.name" />
                                                 - (
@@ -305,7 +240,7 @@
                                     <select type="text" class="form-control" id="txtPreferredContactTime"
                                         name="txtPreferredContactTime" required="required">
                                         <option value="-1">- Select an option -</option>
-                                        <t t-foreach="degree_programs" t-as="degree_program">
+                                        <t t-foreach="degree_program_ids" t-as="degree_program">
                                             <option t-att-value="degree_program.id">
                                                 <t t-esc="degree_program.name" />
                                             </option>
