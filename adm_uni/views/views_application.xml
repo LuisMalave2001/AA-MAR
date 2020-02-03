@@ -192,7 +192,7 @@
                         <notebook>
                             <page string="Tasks">
                                 <field name="task_ids">
-                                    <tree editable="top">
+                                    <tree editable="bottom">
                                         <field name="name" />
                                         <field name="description" />
                                     </tree>
