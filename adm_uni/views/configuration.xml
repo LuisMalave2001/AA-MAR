@@ -3,7 +3,7 @@
 
     <record model="ir.ui.view" id="view_languages_tree">
         <field name="name">Languages tree</field>
-        <field name="model">adm_uni.language</field>
+        <field name="model">adm_uni.languages</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
@@ -13,7 +13,7 @@
     
     <record model="ir.ui.view" id="view_language_levels_tree">
         <field name="name">Language levels tree</field>
-        <field name="model">adm_uni.language.level</field>
+        <field name="model">adm_uni.languages.level</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />

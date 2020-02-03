@@ -329,7 +329,7 @@ class Inquiry(models.Model):
         # assign right company
         if 'company_id' not in defaults and 'team_id' in defaults:
             defaults['company_id'] = self.env['crm.team'].browse(defaults['team_id']).company_id.id
-        return super(Lead, self).message_new(msg_dict, custom_values=defaults)
+        return super().message_new(msg_dict, custom_values=defaults)
 
         
 class InquiryTasks(models.Model):
@@ -345,18 +345,6 @@ class AdmissionPreferredContactTime(models.Model):
     name = fields.Char("Name")
     from_time = fields.Float("From Time", compute="_compute_time")
     to_time = fields.Float("To Time", compute="_compute_time")
-    
-
-class AdmissionLanguages(models.Model):
-    _name = "adm_uni.languages"
-    
-    name = fields.Char("Name")
-    
-class AdmissionLanguageLevels(models.Model):
-    _name = "adm_uni.languages.level"
-    
-    name = fields.Char("Name")
-    
     
 class AdmissionInquiryLanguages(models.Model):
     _name = "adm_uni.inquiry.languages"
