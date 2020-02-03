@@ -26,9 +26,11 @@
         'views/views_inquiry.xml',
         'views/views_application.xml',
         'views/configuration.xml',
+        
         'data/menudata.xml',
         'data/sequences_data.xml',
         'data/statics_data.xml',
+        
         'views/web/template_application_form.xml',
         'views/web/template_inquiry_form.xml',
         'views/web/template_application_first_form.xml',
