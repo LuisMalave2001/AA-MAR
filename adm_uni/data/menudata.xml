@@ -6,13 +6,13 @@
     <record model="ir.actions.act_window" id="action_language">
         <field name="name">Languages</field>
         <field name="res_model">adm_uni.languages</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
     </record>
     
     <record model="ir.actions.act_window" id="action_language_level">
         <field name="name">Language Levels</field>
         <field name="res_model">adm_uni.languages.level</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
     </record>
     
     <!-- Inquiries -->
