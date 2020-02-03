@@ -10,7 +10,7 @@
             </tree>
         </field>
     </record>
-    
+
     <record model="ir.ui.view" id="view_language_levels_tree">
         <field name="name">Language levels tree</field>
         <field name="model">adm_uni.languages.level</field>
@@ -20,8 +20,8 @@
             </tree>
         </field>
     </record>
-    
-    <record model="ir.ui.view" id="view_language_levels_tree">
+
+    <record model="ir.ui.view" id="view_degree_program_tree">
         <field name="name">Degree Program tree</field>
         <field name="model">adm_uni.degree_program</field>
         <field name="arch" type="xml">
@@ -30,16 +30,32 @@
             </tree>
         </field>
     </record>
-    
-    <record model="ir.ui.view" id="view_language_levels_tree">
+
+    <record model="ir.ui.view" id="view_contact_time_tree">
         <field name="name">Contact time tree</field>
         <field name="model">adm_uni.contact_time</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
-                <field name="from_time" widget="float_time"/>
-                <field name="to_time" widget="float_time"/>
+                <field name="from_time" widget="float_time" />
+                <field name="to_time" widget="float_time" />
             </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_contact_time_tree">
+        <field name="name">Contact time tree</field>
+        <field name="model">adm_uni.contact_time</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="from_time" widget="float_time" />
+                        <field name="to_time" widget="float_time" />
+                    </group>
+                </sheet>
+            </form>
         </field>
     </record>
 
