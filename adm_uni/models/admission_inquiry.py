@@ -2,7 +2,6 @@
 
 from odoo import models, fields, api, exceptions, _
 from ..utils import formatting
-from addons.adm_uni.models.admission_application import AdmissionApplicationLanguages
 
 
 class Status(models.Model):
