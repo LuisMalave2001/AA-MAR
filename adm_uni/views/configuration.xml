@@ -43,7 +43,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_contact_time_tree">
+    <record model="ir.ui.view" id="view_contact_time_form">
         <field name="name">Contact time tree</field>
         <field name="model">adm_uni.contact_time</field>
         <field name="arch" type="xml">
