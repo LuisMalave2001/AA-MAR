@@ -201,4 +201,4 @@ class Admission(http.Controller):
         
         contact_id.sudo().write({"is_in_application": True})
         
-        return "Exito, se ha enviado el estudiante: '{}'".format(application_id.name)
+        return http.request.redirect('/admission/application')

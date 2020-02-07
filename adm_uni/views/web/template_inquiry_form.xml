@@ -176,4 +176,41 @@
             <script type="text/javascript" src="/adm_uni/static/js/admission_university.js"></script>
         </t>
     </template>
+    
+    <template id="adm_uni.template_inquiry_sent">
+        <t t-call="website.layout">
+            <t t-set="title">Inquiry Sent</t>
+            <div class="oe_structure" />
+            <div class="oe_struture">
+                <main class="container p-4 text-center">
+                    <section class="card card-body">
+                        <p>
+                            <h2>
+                                <em>
+                                    Thank you for sending your information to American College Casablanca. A member of
+                                    our
+                                    admissions team will be in
+                                    touch with you shortly.
+                                </em>
+                            </h2>
+                        </p>
+                        <hr class="w-100"
+                            style="
+                                border-top-style: dashed;
+                                border-top-width: medium;
+                            " />
+                        <p>
+                            <h2>
+                                <em>
+                                    You can close this window now or visit our website at
+                                    <a href="http://www.american.ma/" target="_blank">www.american.ma</a>
+                                </em>
+                            </h2>
+                        </p>
+
+                    </section>
+                </main>
+            </div>
+        </t>
+    </template>
 </odoo>
