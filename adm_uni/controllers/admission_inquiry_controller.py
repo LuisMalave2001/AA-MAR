@@ -80,5 +80,5 @@ class Admission(http.Controller):
         InquiryEnv = http.request.env["adm_uni.inquiry"]
         student = InquiryEnv.sudo().create(new_student_dict)
         
-        response = http.request.render('adm.template_inquiry_sent')
+        response = http.request.render('adm_uni.template_inquiry_sent')
         return response
