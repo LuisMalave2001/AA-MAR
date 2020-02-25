@@ -42,6 +42,9 @@ class Inquiry(models.Model):
     preferred_degree_program = fields.Many2one("adm_uni.degree_program",
                                                string="Preferred Degree Program")
     
+    contact_time_id = fields.Many2one("adm_uni.contact_time",
+                                   string="Preferred contact time")
+    
     # Demographic
     name = fields.Char(string="Name", default="Undefined", readonly=True)
     first_name = fields.Char(string="First Name", default="")
@@ -223,6 +226,9 @@ class Inquiry(models.Model):
             "last_name": self.last_name,
             "birthdate": self.birthdate,
             "gender": self.gender,
+            
+            'preferred_degree_program': self.preferred_degree_program,
+            'contact_time_id': self.contact_time_id,
             
             "current_school": self.current_school,
             "current_school_address": self.current_school_address,

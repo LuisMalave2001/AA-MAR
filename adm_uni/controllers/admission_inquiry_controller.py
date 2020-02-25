@@ -27,8 +27,8 @@ class Admission(http.Controller):
 
         response = http.request.render('adm_uni.template_admission_inquiry', {
             'countries': countries.search([]),
-            'contact_times': contact_times.search([]),
-            'degree_programs': degree_programs.search([]),
+            'contact_time_ids': contact_times.browse(contact_times.search([])),
+            'degree_program_ids': degree_programs.browse(degree_programs.search([])),
         })
         return response
 
@@ -58,6 +58,10 @@ class Admission(http.Controller):
         street_address = params["txtStreetAddress"]
         zipCode = params["txtZip"]
         
+        
+        contact_time_id = int(params["selPreferredContactTime"]) if params["selPreferredContactTime"] else False
+        degree_program_id = int(params["selPreferredDegreeProgram"]) if params["selPreferredDegreeProgram"] else False
+        
         new_student_dict = {
             'first_name': first_name,
             'middle_name': middle_name,
@@ -75,6 +79,9 @@ class Admission(http.Controller):
             'city': city,
             'street_address': street_address,
             'zip': zipCode,
+            
+            'preferred_degree_program': degree_program_id,
+            'contact_time_id': contact_time_id,
         }
         
         InquiryEnv = http.request.env["adm_uni.inquiry"]
