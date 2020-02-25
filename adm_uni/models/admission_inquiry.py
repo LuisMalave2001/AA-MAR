@@ -227,8 +227,8 @@ class Inquiry(models.Model):
             "birthdate": self.birthdate,
             "gender": self.gender,
             
-            'preferred_degree_program': self.preferred_degree_program,
-            'contact_time_id': self.contact_time_id,
+            'preferred_degree_program': self.preferred_degree_program.id,
+            'contact_time_id': self.contact_time_id.id,
             
             "current_school": self.current_school,
             "current_school_address": self.current_school_address,

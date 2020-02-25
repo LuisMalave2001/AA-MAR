@@ -50,7 +50,7 @@
                                     <div class="form-group col">
                                         <label for="txtBirthdate">Birthdate</label>
                                         <input type="date" class="form-control" id="txtBirthdate"
-                                            name="txtBirthdate" />
+                                            name="txtBirthdate" required="required" />
                                     </div>
                                 </div>
                             </section>
