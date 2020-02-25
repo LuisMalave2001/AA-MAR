@@ -54,8 +54,8 @@ class Inquiry(models.Model):
     gender = fields.Selection((('m', 'Male'), ('f', 'Female')), string="Gender")
 
     # Contact
-    email = fields.Char(string="Email", related="partner_id.email", index=True)
-    phone = fields.Char(string="Phone", related="partner_id.phone")
+    email = fields.Char(string="Email", related="partner_id.email", index=True, required=True, readonly=False)
+    phone = fields.Char(string="Phone", related="partner_id.phone", required=True, readonly=False)
     
     # School
     current_school = fields.Char(string="Current School")
@@ -66,11 +66,11 @@ class Inquiry(models.Model):
                                     string="Languages")
     
     # Location
-    country_id = fields.Many2one("res.country", related="partner_id.country_id", string="Country")
-    state_id = fields.Many2one("res.country.state", related="partner_id.state_id", string="State")
-    city = fields.Char(string="City", related="partner_id.city")
-    street_address = fields.Char(string="Street Address", related="partner_id.street")
-    zip = fields.Char("zip", related="partner_id.zip")
+    country_id = fields.Many2one("res.country", related="partner_id.country_id", string="Country", required=True, readonly=False)
+    state_id = fields.Many2one("res.country.state", related="partner_id.state_id", string="State", required=True, readonly=False)
+    city = fields.Char(string="City", related="partner_id.city", required=True, readonly=False)
+    street_address = fields.Char(string="Street Address", related="partner_id.street", required=True, readonly=False)
+    zip = fields.Char("zip", related="partner_id.zip", required=True, readonly=False)
     
     
     partner_id= fields.Many2one("res.partner", string="Contact")
