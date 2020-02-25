@@ -3,6 +3,13 @@
 from odoo import models, fields, api, exceptions, _
 from ..utils import formatting
 
+from . import selection_options as sel_opt
+
+status_types = [
+    ("stage", "Stage"),
+    ("fact_integration", "Facts Integration"),
+    ("cancelled", "Cancelled"),
+]
 
 class ApplicationStatus(models.Model):
     _name = "adm_uni.application.status"
@@ -12,13 +19,7 @@ class ApplicationStatus(models.Model):
     description = fields.Text(string="Description")
     sequence = fields.Integer(readonly=True, default=-1)
     fold = fields.Boolean(string="Fold")
-    type = fields.Selection((
-            ('stage', "Stage"),
-            ('fact_integration', "Facts Integration"),
-            ('cancelled', "Cancelled"),
-        ),
-        string="Type", default='stage'
-    )
+    type = fields.Selection(status_types, string="Type", default='stage')
     
     partner_id = fields.Many2one("res.partner", string="Customer")
     
@@ -51,7 +52,7 @@ class Application(models.Model):
     middle_name = fields.Char(string="Middle Name", default="")
     last_name = fields.Char(string="Last Name", default="")
     birthdate = fields.Date(string="Birthdate")
-    gender = fields.Selection((('m', 'Male'), ('f', 'Female')), string="Gender")
+    gender = fields.Selection(sel_opt.genders, string="Gender")
     father_name = fields.Char("Father name")
     mother_name = fields.Char("Mother name")
 

@@ -9,3 +9,4 @@ encoding//adm_uni/models/attachment.py=utf-8
 encoding//adm_uni/models/contact_time.py=utf-8
 encoding//adm_uni/models/degree_program.py=utf-8
 encoding//adm_uni/models/languages.py=utf-8
+encoding//adm_uni/models/selection_options.py=utf-8

@@ -43,6 +43,7 @@
                                         name="selGender" placeholder="Gender">
                                         <option value="m">Male</option>
                                         <option value="f">Female</option>
+                                        <option value="no_disclose">Prefer not to disclose</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-12 col-md-6">

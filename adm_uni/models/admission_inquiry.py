@@ -3,21 +3,23 @@
 from odoo import models, fields, api, exceptions, _
 from ..utils import formatting
 
+from . import selection_options as sel_opt
+
+status_types = [
+    ("stage", "Stage"),
+    ("done", "Done"),
+    ("cancelled", "Cancelled")
+]
 
 class Status(models.Model):
     _name = "adm_uni.inquiry.status"
     _order = "sequence"
 
-    
-
     name = fields.Char(string="Status Name")
     description = fields.Text(string="Description")
     sequence = fields.Integer(readonly=True, default=-1)
     fold = fields.Boolean(string="Fold")
-    type = fields.Selection((('stage', "Stage"),
-                             ('done', "Done"),
-                             ('cancelled', 'Cancelled')),
-                            string="Type", default='stage')
+    type = fields.Selection(status_types, string="Type", default='stage')
     task_ids = fields.One2many("adm_uni.inquiry.task", "status_id", "Status Ids")
 
     @api.model
@@ -51,7 +53,7 @@ class Inquiry(models.Model):
     middle_name = fields.Char(string="Middle Name", default="")
     last_name = fields.Char(string="Last Name", default="")
     birthdate = fields.Date(string="Birthdate")
-    gender = fields.Selection((('m', 'Male'), ('f', 'Female')), string="Gender")
+    gender = fields.Selection(sel_opt.genders, string="Gender")
 
     # Contact
     email = fields.Char(string="Email", related="partner_id.email", index=True, required=True, readonly=False)
