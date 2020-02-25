@@ -89,6 +89,12 @@
                         <group colspan="1">
                             <field name="gender" />
                         </group>
+                        <group colspan="1">
+                            <field name="contact_time_id" />
+                        </group>
+                        <group colspan="1">
+                            <field name="preferred_degree_program" />
+                        </group>
                     </group>
                     <notebook>
                         <page string="Tasks">
