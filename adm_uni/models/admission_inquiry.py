@@ -166,12 +166,14 @@ class Inquiry(models.Model):
         values['status_id'] = first_status.id
         values['name'] = formatting.format_name(values['first_name'], values['middle_name'], values['last_name']) 
         
+        if not "partner_id" in values or not values["partner_id"]:
+            partner = self.create_new_partner(values)
+            values["partner_id"] = partner.id
+        else:
+            partner = self.env["res.partner"].browse(values["partner_id"])
         inquiry = super().create(values)
         
-        partner = self.create_new_partner(values)
         partner.uni_inquiry_id = inquiry.id
-        
-        inquiry.partner_id = partner.id
         
         return inquiry
 
