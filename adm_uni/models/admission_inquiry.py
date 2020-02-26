@@ -69,7 +69,7 @@ class Inquiry(models.Model):
     
     # Location
     country_id = fields.Many2one("res.country", related="partner_id.country_id", string="Country", required=True, readonly=False)
-    state_id = fields.Many2one("res.country.state", related="partner_id.state_id", string="State", required=True, readonly=False)
+    state_id = fields.Many2one("res.country.state", related="partner_id.state_id", string="State", readonly=False)
     city = fields.Char(string="City", related="partner_id.city", required=True, readonly=False)
     street_address = fields.Char(string="Street Address", related="partner_id.street", required=True, readonly=False)
     zip = fields.Char("zip", related="partner_id.zip", required=True, readonly=False)
