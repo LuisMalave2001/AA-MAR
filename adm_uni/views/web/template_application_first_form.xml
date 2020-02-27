@@ -141,7 +141,7 @@
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtGPA">GPA</label>
                                     <input type="text" class="form-control" id="txtGPA" name="txtGPA"
-                                        placeholder="GPA" required="required" />
+                                        placeholder="GPA"/>
                                 </div>
 
                                 <div class="form-group col-12 col-md-6">

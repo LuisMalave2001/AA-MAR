@@ -86,26 +86,26 @@ class Admission(http.Controller):
             params["txtMiddleName"] = ""
             
         # Personal Info
-        gender = params["selGender"]
-        father_name = params["txtFatherName"]
-        mother_name = params["txtMotherName"]
+        gender = params["selGender"] if params["selGender"] else False
+        father_name = params["txtFatherName"] if params["txtFatherName"] else False
+        mother_name = params["txtMotherName"] if params["txtMotherName"] else False
         
         # School information
-        previous_school = params["txtPreviousSchool"]
-        gpa = params["txtGPA"]
-        cumulative_grades = params["txtCumulativeGrade"]
-        regional_exam_grade = params["txtRegionalExam"]
-        bac_grade = params["txtBACGrade"]
+        previous_school = params["txtPreviousSchool"] if params["txtPreviousSchool"] else False
+        gpa = params["txtGPA"] if params["txtGPA"] else False
+        cumulative_grades = params["txtCumulativeGrade"] if params["txtCumulativeGrade"] else False
+        regional_exam_grade = params["txtRegionalExam"] if params["txtRegionalExam"] else False
+        bac_grade = params["txtBACGrade"] if params["txtBACGrade"] else False
         
         # Documentation 
-        letter_of_motivation_file = params["fileLetterOfMotivation"]
-        cv_file = params["fileCV"]
-        grade_transcript_file = params["fileGradeTranscript"]
+        letter_of_motivation_file = params["fileLetterOfMotivation"] if params["fileLetterOfMotivation"] else False
+        cv_file = params["fileCV"] if params["fileCV"] else False
+        grade_transcript_file = params["fileGradeTranscript"] if params["fileGradeTranscript"] else False
 
-        letters_of_recommendation_file = params["fileLettersOfRecommendation"]
+        letters_of_recommendation_file = params["fileLettersOfRecommendation"] if params["fileLettersOfRecommendation"] else False
         
-        contact_time_id = params["selPreferredContactTime"]
-        preferred_degree_program = params["selPreferredDegreeProgram"]
+        # contact_time_id = params["selPreferredContactTime"]
+        # preferred_degree_program = params["selPreferredDegreeProgram"]
         
         new_application_dict = {
             'gender': gender,
@@ -118,8 +118,8 @@ class Admission(http.Controller):
             'regional_exam_grade': regional_exam_grade,
             'bac_grade': bac_grade,
             
-            'contact_time_id': contact_time_id,
-            'preferred_degree_program': preferred_degree_program,
+            # 'contact_time_id': contact_time_id,
+            # 'preferred_degree_program': preferred_degree_program,
         }
         
         contact_id = self.get_partner()
