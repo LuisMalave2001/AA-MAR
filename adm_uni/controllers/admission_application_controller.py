@@ -127,42 +127,53 @@ class Admission(http.Controller):
         application_id.write(new_application_dict)
 
         AttachmentEnv = http.request.env["ir.attachment"]
-        motivation_id = AttachmentEnv.sudo().create({
-            'name': letter_of_motivation_file.filename,
-            'datas_fname': letter_of_motivation_file.filename,
-            'res_name': letter_of_motivation_file.filename,
-            'type': 'binary',   
-            'res_model': 'adm_uni.application',
-            'res_id': application_id.id,
-            'datas': base64.b64encode(letter_of_motivation_file.read()),
-        })
-        cv_id = AttachmentEnv.sudo().create({
-            'name': cv_file.filename,
-            'datas_fname': cv_file.filename,
-            'res_name': cv_file.filename,
-            'type': 'binary',   
-            'res_model': 'adm_uni.application',
-            'res_id': application_id.id,
-            'datas': base64.b64encode(cv_file.read()),
-        })
-        grade_transcript_id = AttachmentEnv.sudo().create({
-            'name': grade_transcript_file.filename,
-            'datas_fname': grade_transcript_file.filename,
-            'res_name': grade_transcript_file.filename,
-            'type': 'binary',   
-            'res_model': 'adm_uni.application',
-            'res_id': application_id.id,
-            'datas': base64.b64encode(grade_transcript_file.read()),
-        })
-        letters_of_recommendation_id = AttachmentEnv.sudo().create({
-            'name': letters_of_recommendation_file.filename,
-            'datas_fname': letters_of_recommendation_file.filename,
-            'res_name': letters_of_recommendation_file.filename,
-            'type': 'binary',   
-            'res_model': 'adm_uni.application',
-            'res_id': application_id.id,
-            'datas': base64.b64encode(letters_of_recommendation_file.read()),
-        })
+        motivation_id = False
+        if letter_of_motivation_file:
+            motivation_id = AttachmentEnv.sudo().create({
+                'name': letter_of_motivation_file.filename,
+                'datas_fname': letter_of_motivation_file.filename,
+                'res_name': letter_of_motivation_file.filename,
+                'type': 'binary',   
+                'res_model': 'adm_uni.application',
+                'res_id': application_id.id,
+                'datas': base64.b64encode(letter_of_motivation_file.read()),
+            })
+            
+        cv_id = False
+        if cv_file:
+            cv_id = AttachmentEnv.sudo().create({
+                'name': cv_file.filename,
+                'datas_fname': cv_file.filename,
+                'res_name': cv_file.filename,
+                'type': 'binary',   
+                'res_model': 'adm_uni.application',
+                'res_id': application_id.id,
+                'datas': base64.b64encode(cv_file.read()),
+            })
+        
+        grade_transcript_id = False
+        if grade_transcript_file:
+            grade_transcript_id = AttachmentEnv.sudo().create({
+                'name': grade_transcript_file.filename,
+                'datas_fname': grade_transcript_file.filename,
+                'res_name': grade_transcript_file.filename,
+                'type': 'binary',   
+                'res_model': 'adm_uni.application',
+                'res_id': application_id.id,
+                'datas': base64.b64encode(grade_transcript_file.read()),
+            })
+        
+        letters_of_recommendation_id = False
+        if letters_of_recommendation_file:
+            letters_of_recommendation_id = AttachmentEnv.sudo().create({
+                'name': letters_of_recommendation_file.filename,
+                'datas_fname': letters_of_recommendation_file.filename,
+                'res_name': letters_of_recommendation_file.filename,
+                'type': 'binary',   
+                'res_model': 'adm_uni.application',
+                'res_id': application_id.id,
+                'datas': base64.b64encode(letters_of_recommendation_file.read()),
+            })
         
         contact_names = post_parameters().getlist("txtContactName")
         contact_ids    = post_parameters().getlist("txtContactId")
