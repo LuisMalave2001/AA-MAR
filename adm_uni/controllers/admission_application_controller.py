@@ -212,4 +212,4 @@ class Admission(http.Controller):
         
         contact_id.sudo().write({"is_in_application": True})
         
-        return http.request.redirect('/admission/application')
+        return http.request.redirect('/admission-university/application')
