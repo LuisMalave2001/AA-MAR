@@ -140,13 +140,13 @@
 
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtGPA">GPA</label>
-                                    <input type="text" class="form-control" id="txtGPA" name="txtGPA"
+                                    <input type="number" class="form-control" id="txtGPA" name="txtGPA"
                                         placeholder="GPA"/>
                                 </div>
 
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtCumulativeGrade">Cumulative Grade</label>
-                                    <input type="text" class="form-control" id="txtCumulativeGrade"
+                                    <input type="number" class="form-control" id="txtCumulativeGrade"
                                         name="txtCumulativeGrade" placeholder="Cumulative Grade" required="required" />
                                 </div>
 
