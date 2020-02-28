@@ -175,7 +175,7 @@ class Admission(http.Controller):
                 'res_model': 'adm_uni.application',
                 'res_id': application_id.id,
                 'datas': base64.b64encode(grade_transcript_file.read()),
-            })
+            }).id
         
         letters_of_recommendation_id = False
         if letters_of_recommendation_file:
@@ -187,7 +187,7 @@ class Admission(http.Controller):
                 'res_model': 'adm_uni.application',
                 'res_id': application_id.id,
                 'datas': base64.b64encode(letters_of_recommendation_file.read()),
-            })
+            }).id
         
         contact_names = post_parameters().getlist("txtContactName")
         contact_ids    = post_parameters().getlist("txtContactId")
@@ -203,7 +203,7 @@ class Admission(http.Controller):
                     "language_id": language,
                     "language_level_id": language_levels[i],
                     "application_id":   application_id.id,
-                })
+                }).id
         
         # Adding contact
         OtherContactsEnv = http.request.env["adm_uni.application.other_contacts"]
@@ -215,13 +215,13 @@ class Admission(http.Controller):
                     "contact_name": contact_name,
                     "contact_identification": contact_ids[i],
                     "application_id":   application_id.id,
-                })
+                }).id
         
         application_id.sudo().write({
-            'letter_of_motivation_id': motivation_id.id,
-            'cv_id': cv_id.id,
-            'grade_transcript_id': grade_transcript_id.id,
-            'letters_of_recommendation_id': letters_of_recommendation_id.id,
+            'letter_of_motivation_id': motivation_id,
+            'cv_id': cv_id,
+            'grade_transcript_id': grade_transcript_id,
+            'letters_of_recommendation_id': letters_of_recommendation_id,
         })
         
         application_id.move_completed_form()
