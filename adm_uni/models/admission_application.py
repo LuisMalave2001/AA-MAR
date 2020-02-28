@@ -71,8 +71,8 @@ class Application(models.Model):
     
     gpa = fields.Float("GPA")
     cumulative_grades = fields.Float("Cumulative Grade")
-    regional_exam_grade = fields.Float("Regional Grade")
-    bac_grade = fields.Float("BAC Grade")
+    regional_exam_grade = fields.Char("Regional Grade")
+    bac_grade = fields.Char("BAC Grade")
     
     # Skills
     language_ids = fields.One2many("adm_uni.application.languages", "application_id",
