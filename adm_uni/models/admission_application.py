@@ -7,6 +7,7 @@ from . import selection_options as sel_opt
 
 status_types = [
     ("stage", "Stage"),
+    ("completed_form", "completed_form"),
     ("fact_integration", "Facts Integration"),
     ("cancelled", "Cancelled"),
 ]
@@ -106,6 +107,16 @@ class Application(models.Model):
     status_type = fields.Selection(string="Status Type", related="status_id.type")
     forcing = False
 
+    def _move_to_status(self, status_name):
+        status_ids_ordered = self.env['adm_uni.application.status'].search([], order="sequence")
+        for status in status_ids_ordered:
+            if status.type == status_name:
+                self.status_id = status
+                break
+
+    def move_completed_form(self):
+        self._move_to_status("completed_form")
+
     @api.multi
     def message_get_suggested_recipients(self):
         recipients = super().message_get_suggested_recipients() 
@@ -167,11 +178,14 @@ class Application(models.Model):
                 self.status_id = next_status
 
     def cancel(self):
-        status_ids_ordered = self.env['adm_uni.application.status'].search([], order="sequence")
-        for status in status_ids_ordered:
-            if status.type == 'cancelled':
-                self.status_id = status
-                break
+        self._move_to_status("cancelled")
+        #===============================================================================================================
+        # status_ids_ordered = self.env['adm_uni.application.status'].search([], order="sequence")
+        # for status in status_ids_ordered:
+        #     if status.type == 'cancelled':
+        #         self.status_id = status
+        #         break
+        #===============================================================================================================
 
     @api.onchange("first_name", "middle_name", "last_name")
     def _set_full_name(self):

@@ -216,11 +216,15 @@ class Admission(http.Controller):
                     "contact_identification": contact_ids[i],
                     "application_id":   application_id.id,
                 })
-            
-        application_id.letter_of_motivation_id = motivation_id
-        application_id.cv_id = cv_id
-        application_id.grade_transcript_id = grade_transcript_id
-        application_id.letters_of_recommendation_id = letters_of_recommendation_id
+        
+        application_id.sudo().write({
+            'letter_of_motivation_id': motivation_id.id,
+            'cv_id': cv_id.id,
+            'grade_transcript_id': grade_transcript_id.id,
+            'letters_of_recommendation_id': letters_of_recommendation_id.id,
+        })
+        
+        application_id.move_completed_form()
         
 #         PartnerEnv = http.request.env["res.partner"]
         
