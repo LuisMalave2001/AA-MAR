@@ -19,7 +19,12 @@ class Admission(http.Controller):
     
     @http.route("/admission-university/application", auth="public", methods=["GET"], website=True)
     def admission_web(self, **params):
-        contact_id = self.get_partner()
+        contact_id = self.get_partner()       
+        application_id = contact_id.uni_application_id
+        
+        if not application_id:
+            return http.request.render('adm_uni.template_no_application_error')
+        
         application_status_ids = http.request.env["adm_uni.application.status"].browse(http.request.env["adm_uni.application.status"].search([])).ids
         contact_time_ids = http.request.env["adm_uni.contact_time"].browse(http.request.env["adm_uni.contact_time"].search([])).ids
         degree_program_ids = http.request.env["adm_uni.degree_program"].browse(http.request.env["adm_uni.degree_program"].search([])).ids
@@ -39,9 +44,13 @@ class Admission(http.Controller):
     
     @http.route("/admission-university/message", auth="public", methods=["POST"], website=True, csrf=False)
     def send_message(self, **params):
+        contact_id = self.get_partner()
+        application_id = contact_id.uni_application_id
+        
+        if not application_id:
+            return http.request.render('adm_uni.template_no_application_error')
         
         print("Params: {}".format(params))
-        contact_id = self.get_partner()
         
         upload_file = params["file_upload"]
         message_body = params["message_body"]
@@ -82,6 +91,13 @@ class Admission(http.Controller):
 
     @http.route("/admission-university/application", auth="public", methods=["POST"], website=True, csrf=False)
     def add_admission(self, **params):
+        
+        contact_id = self.get_partner()
+        application_id = contact_id.uni_application_id
+        
+        if not application_id:
+            return http.request.render('adm_uni.template_no_application_error')
+            
         if "txtMiddleName" not in params:
             params["txtMiddleName"] = ""
             
@@ -122,8 +138,6 @@ class Admission(http.Controller):
             # 'preferred_degree_program': preferred_degree_program,
         }
         
-        contact_id = self.get_partner()
-        application_id = contact_id.uni_application_id
         application_id.write(new_application_dict)
 
         AttachmentEnv = http.request.env["ir.attachment"]

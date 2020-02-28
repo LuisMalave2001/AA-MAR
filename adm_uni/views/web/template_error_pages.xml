@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="adm_uni.template_no_application_error">
+        <t t-call="website.layout">
+            <t t-set="title">Inquiry Sent</t>
+            <div class="oe_structure" />
+            <div class="oe_struture">
+                <main class="container p-4 text-center">
+                    <section class="card card-body">
+                        <p>
+                            <h2>
+                                <em>
+                                    Sorry, but you are not applying for the school.
+                                </em>
+                            </h2>
+                        </p>
+                    </section>
+                </main>
+            </div>
+        </t>
+    </template>
+</odoo>

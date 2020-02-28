@@ -14,7 +14,7 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Admission',
-    'version': '0.1.1-alpha',
+    'version': '0.1.1-alpha+2',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'mail', 'website'],
@@ -34,6 +34,7 @@
         'views/web/template_application_form.xml',
         'views/web/template_inquiry_form.xml',
         'views/web/template_application_first_form.xml',
+        'views/web/template_error_pages.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
