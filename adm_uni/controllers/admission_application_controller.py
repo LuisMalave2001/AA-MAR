@@ -151,7 +151,7 @@ class Admission(http.Controller):
                 'res_model': 'adm_uni.application',
                 'res_id': application_id.id,
                 'datas': base64.b64encode(letter_of_motivation_file.read()),
-            })
+            }).id
             
         cv_id = False
         if cv_file:
@@ -163,7 +163,7 @@ class Admission(http.Controller):
                 'res_model': 'adm_uni.application',
                 'res_id': application_id.id,
                 'datas': base64.b64encode(cv_file.read()),
-            })
+            }).id
         
         grade_transcript_id = False
         if grade_transcript_file:
@@ -203,7 +203,7 @@ class Admission(http.Controller):
                     "language_id": language,
                     "language_level_id": language_levels[i],
                     "application_id":   application_id.id,
-                }).id
+                })
         
         # Adding contact
         OtherContactsEnv = http.request.env["adm_uni.application.other_contacts"]
@@ -215,7 +215,7 @@ class Admission(http.Controller):
                     "contact_name": contact_name,
                     "contact_identification": contact_ids[i],
                     "application_id":   application_id.id,
-                }).id
+                })
         
         application_id.sudo().write({
             'letter_of_motivation_id': motivation_id,
