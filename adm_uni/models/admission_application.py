@@ -7,7 +7,7 @@ from . import selection_options as sel_opt
 
 status_types = [
     ("stage", "Stage"),
-    ("completed_form", "completed_form"),
+    ("completed_form", "Completed Form"),
     ("fact_integration", "Facts Integration"),
     ("cancelled", "Cancelled"),
 ]
