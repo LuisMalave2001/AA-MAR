@@ -132,7 +132,7 @@ function getStates(){
     });
 }
 
-function toggleForm(){
+function toggleTypes(){
 	
 	var is_yes = this.id === "scholarship_yes"
 	
@@ -140,6 +140,21 @@ function toggleForm(){
 	$scholarship_type.prop("disabled", !is_yes);
 //	$scholarship_type.parents("fieldset").toggle(is_yes);
 }
+
+function toggleNeedBased(){
+	$('input[name=scholarship_considered]').prop("disabled", true);
+}
+
+function toggleSSFilesForm(){
+	var is_yes = this.id === "scholarship_considered_yes";
+	$('input[name=scholarship_considered]').prop("disabled", !is_yes);
+	
+    var $files_for_ss = ('#files_for_ss');
+    $files_for_ss.find("input").prop("disabled", !is_yes);
+    $files_for_ss.toggle(is_yes);
+}
+
+
 
 $(function(){
     $('#add-tab').on('click', addStudent);
@@ -153,6 +168,10 @@ $(function(){
     $(".add_contact").on("click", addContact);
     $(".add_language").on("click", addLanguage);
     
-    $("input[name=want_scholarship]").on("click", toggleForm)
-    
+    $("input[name=want_scholarship]").on("click", toggleTypes);
+    $('input[name=scholarship_type');.on("click", toggleNeedBased);
+    $('input[name=scholarship_considered');.on("click", toggleSSFilesForm);
+   
+    var $files_for_ss = ('#files_for_ss');
+    $files_for_ss.find("input").prop("disabled", true);
 });
