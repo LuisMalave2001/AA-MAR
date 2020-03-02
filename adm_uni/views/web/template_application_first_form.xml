@@ -219,65 +219,104 @@
                         <section class="card-body">
                             <div class="row w-100 m-0">
                                 <div class="form-group col-12">
-                                    <p>Do you want to be considered for a merit or degree program scholarship?</p>
-                                    <label for="scholarship_yes">Yes</label>
-                                    <input name="want_scholarship" id="scholarship_yes" type="radio" value="true" />
-
-                                    <label for="scholarship_no">No</label>
-                                    <input name="want_scholarship" id="scholarship_no" type="radio" value="" />
+                                    <div class="row justify-content-center">
+                                        <p>Do you want to be considered for a merit or degree program scholarship?</p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <section>
+                                            <label for="scholarship_yes">Yes</label>
+                                            <input name="want_scholarship" id="scholarship_yes" type="radio" value="true" />
+                                        </section>
+                                        <section>
+                                            <label for="scholarship_no">No</label>
+                                            <input name="want_scholarship" id="scholarship_no" type="radio" value="" />
+                                        </section>
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-12">
-                                    <p>Which one?</p>
-                                    <label for="scholarship_type_merit">Merit</label>
-                                    <input name="scholarship_type" id="scholarship_type_merit" type="radio"
-                                        value="merit" />
-
-                                    <label for="scholarship_type_degree_program">Degree program</label>
-                                    <input name="scholarship_type" id="scholarship_type_degree_program"
-                                        type="radio" value="degree_program" />
-
-                                    <label for="scholarship_type_both">Both</label>
-                                    <input name="scholarship_type" id="scholarship_type_both" type="radio"
-                                        value="both" />
+                                    <div class="row justify-content-center">
+                                        <p>Which one?</p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <section>
+                                            <label for="scholarship_type_merit">Merit</label>
+                                            <input name="scholarship_type" id="scholarship_type_merit" type="radio"
+                                                value="merit" />
+                                        </section>
+                                        <section>
+                                            <label for="scholarship_type_degree_program">Degree program</label>
+                                            <input name="scholarship_type" id="scholarship_type_degree_program"
+                                                type="radio" value="degree_program" />
+                                        </section>
+                                        <section>
+                                            <label for="scholarship_type_both">Both</label>
+                                            <input name="scholarship_type" id="scholarship_type_both" type="radio"
+                                                value="both" />
+                                        </section>
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-12">
-                                    <p>Do you want to be considered for a need-based scholarship?</p>
-                                    <label for="scholarship_considered_yes">Yes</label>
-                                    <input name="scholarship_considered" id="scholarship_considered_yes"
-                                        type="radio" value="true" />
-
-                                    <label for="scholarship_considered_yes">No</label>
-                                    <input name="scholarship_considered" id="scholarship_considered_yes"
-                                        type="radio" value="" />
+                                    <div class="row justify-content-center">
+                                        <p>Do you want to be considered for a need-based scholarship?</p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <section>
+                                            <label for="scholarship_considered_yes">Yes</label>
+                                            <input name="scholarship_considered" id="scholarship_considered_yes"
+                                                type="radio" value="true" />
+                                        </section>
+                                        <section>
+                                            <label for="scholarship_considered_yes">No</label>
+                                            <input name="scholarship_considered" id="scholarship_considered_yes"
+                                                type="radio" value="" />
+                                        </section>
+                                    </div>
                                 </div>
                                 
                                 <h2>Required documents for need-based scholarship seekers (single or multiple file upload)</h2>
                                 <div class="form-group col-12">
-                                    <p>For Moroccan Students</p>
-                                    <label for="ss_attestation_salaire">Attestation Salaire for working parents or student applicants</label>
-                                    <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file"/>
-
-                                    <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or student applicants</label>
-                                    <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" />
+                                    <div class="row justify-content-center">
+                                        <p>For Moroccan Students</p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <section>
+                                            <label for="ss_attestation_salaire">Attestation Salaire for working parents or student applicants</label>
+                                            <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file"/>
+                                        </section>
+                                        <section>
+                                            <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or student applicants</label>
+                                            <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" />
+                                        </section>
+                                    </div>
                                 </div>
-                                
                                 <div class="form-group col-12">
-                                    <p>For international applicants (document upload)</p>
-                                    <label for="ss_most_recent_tax">Most recent tax returns of parents or student applicant</label>
-                                    <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" />
+                                    <div class="row justify-content-center">
+                                        <p>For international applicants (document upload)</p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <section>
+                                            <label for="ss_most_recent_tax">Most recent tax returns of parents or student applicant</label>
+                                            <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" />
+                                        </section>
+                                    </div>
                                 </div>
-                                
                                 <div class="form-group col-12">
-                                    <p>Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</p>
-                                    <label for="ss_other_revelants">
-                                        Any other relevant document(s) showing 
-                                        financial need such as Extrait de Compte for 
-                                        all bank accounts, loan payment agreements for 
-                                        property, rental agreements for home, etc.
-                                    </label>
-                                    <input name="ss_other_revelants" id="ss_other_revelants" type="file" />
+                                    <div class="row justify-content-center">
+                                        <p>Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</p>
+                                    </div>
+                                    <div class="row justify-content-around">
+                                        <section>
+                                            <label for="ss_other_revelants">
+                                                Any other relevant document(s) showing 
+                                                financial need such as Extrait de Compte for 
+                                                all bank accounts, loan payment agreements for 
+                                                property, rental agreements for home, etc.
+                                            </label>
+                                            <input name="ss_other_revelants" id="ss_other_revelants" type="file" />
+                                        </section>
+                                    </div>
                                 </div>
                             </div>
                         </section>
