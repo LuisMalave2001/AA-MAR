@@ -172,6 +172,6 @@ $(function(){
     $('input[name=scholarship_type').on("click", toggleNeedBased);
     $('input[name=scholarship_considered').on("click", toggleSSFilesForm);
    
-    var $files_for_ss = ('#files_for_ss');
+    var $files_for_ss = $('#files_for_ss');
     $files_for_ss.find("input").prop("disabled", true);
 });
