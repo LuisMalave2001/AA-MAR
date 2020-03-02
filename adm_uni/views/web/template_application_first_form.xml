@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
 <odoo>
     <template id="adm_uni.template_admission_application_form">
         <style>
@@ -39,8 +39,8 @@
                             <div class="row">
                                 <div class="form-group col-12">
                                     <label for="selGender">Gender</label>
-                                    <select type="text" class="form-control" id="selGender"
-                                        name="selGender" placeholder="Gender">
+                                    <select type="text" class="form-control" id="selGender" name="selGender"
+                                        placeholder="Gender">
                                         <option value="m">Male</option>
                                         <option value="f">Female</option>
                                         <option value="no_disclose">Prefer not to disclose</option>
@@ -141,7 +141,7 @@
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtGPA">GPA</label>
                                     <input type="number" class="form-control" id="txtGPA" name="txtGPA"
-                                        placeholder="GPA"/>
+                                        placeholder="GPA" />
                                 </div>
 
                                 <div class="form-group col-12 col-md-6">
@@ -210,47 +210,120 @@
                             </div>
                         </section>
                     </section>
-<!--                     <section class="card mt-2"> -->
-<!--                         <section class="card-body"> -->
-<!--                             <div class="row w-100 m-0"> -->
-<!--                                 <div class="form-group col-12"> -->
-<!--                                     <label for="selPreferredContactTime"> -->
-<!--                                         Preferred Contact Time -->
-<!--                                         <span class="text-danger">*</span> -->
-<!--                                     </label> -->
-<!--                                     <select type="text" class="form-control" id="selPreferredContactTime" -->
-<!--                                         name="selPreferredContactTime" required="required"> -->
-<!--                                         <option value="-1">- Select an option -</option> -->
-<!--                                         <t t-foreach="contact_time_ids" t-as="contact_time"> -->
-<!--                                             <option t-att-value="contact_time.id"> -->
-<!--                                                 <t t-esc="contact_time.name" /> -->
-<!--                                                 - ( -->
-<!--                                                 <t t-esc="contact_time.from_time" /> -->
-<!--                                                 - -->
-<!--                                                 <t t-esc="contact_time.to_time" /> -->
-<!--                                                 ) -->
-<!--                                             </option> -->
-<!--                                         </t> -->
-<!--                                     </select> -->
-<!--                                 </div> -->
-<!--                                 <div class="form-group col-12"> -->
-<!--                                     <label for="selPreferredDegreeProgram"> -->
-<!--                                         Preferred Degree Program -->
-<!--                                         <span class="text-danger">*</span> -->
-<!--                                     </label> -->
-<!--                                     <select type="text" class="form-control" id="selPreferredDegreeProgram" -->
-<!--                                         name="selPreferredDegreeProgram" required="required"> -->
-<!--                                         <option value="-1">- Select an option -</option> -->
-<!--                                         <t t-foreach="degree_program_ids" t-as="degree_program"> -->
-<!--                                             <option t-att-value="degree_program.id"> -->
-<!--                                                 <t t-esc="degree_program.name" /> -->
-<!--                                             </option> -->
-<!--                                         </t> -->
-<!--                                     </select> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </section> -->
-<!--                     </section> -->
+
+                    <section class="card mt-2" data-oe-model="ir.ui.view" data-oe-id="895" data-oe-field="arch"
+                        data-oe-xpath="/t[1]/div[2]/main[1]/form[1]/section[5]">
+                        <section class="card-header">
+                            <h1 class="text-info">Scholarship</h1>
+                        </section>
+                        <section class="card-body">
+                            <div class="row w-100 m-0">
+                                <div class="form-group col-12">
+                                    <p>Do you want to be considered for a merit or degree program scholarship?</p>
+                                    <label for="scholarship_yes">Yes</label>
+                                    <input name="want_scholarship" id="scholarship_yes" type="radio" value="true" />
+
+                                    <label for="scholarship_no">No</label>
+                                    <input name="want_scholarship" id="scholarship_no" type="radio" value="" />
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <p>Which one?</p>
+                                    <label for="scholarship_type_merit">Merit</label>
+                                    <input name="scholarship_type" id="scholarship_type_merit" type="radio"
+                                        value="merit" />
+
+                                    <label for="scholarship_type_degree_program">Degree program</label>
+                                    <input name="scholarship_type" id="scholarship_type_degree_program"
+                                        type="radio" value="degree_program" />
+
+                                    <label for="scholarship_type_both">Both</label>
+                                    <input name="scholarship_type" id="scholarship_type_both" type="radio"
+                                        value="both" />
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <p>Do you want to be considered for a need-based scholarship?</p>
+                                    <label for="scholarship_considered_yes">Yes</label>
+                                    <input name="scholarship_considered" id="scholarship_considered_yes"
+                                        type="radio" value="true" />
+
+                                    <label for="scholarship_considered_yes">No</label>
+                                    <input name="scholarship_considered" id="scholarship_considered_yes"
+                                        type="radio" value="" />
+                                </div>
+                                
+                                <h2>Required documents for need-based scholarship seekers (single or multiple file upload)</h2>
+                                <div class="form-group col-12">
+                                    <p>For Moroccan Students</p>
+                                    <label for="ss_attestation_salaire">Attestation Salaire for working parents or student applicants</label>
+                                    <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file"/>
+
+                                    <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or student applicants</label>
+                                    <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" />
+                                </div>
+                                
+                                <div class="form-group col-12">
+                                    <p>For international applicants (document upload)</p>
+                                    <label for="ss_most_recent_tax">Most recent tax returns of parents or student applicant</label>
+                                    <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" />
+                                </div>
+                                
+                                <div class="form-group col-12">
+                                    <p>Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</p>
+                                    <label for="ss_other_revelants">
+                                        Any other relevant document(s) showing 
+                                        financial need such as Extrait de Compte for 
+                                        all bank accounts, loan payment agreements for 
+                                        property, rental agreements for home, etc.
+                                    </label>
+                                    <input name="ss_other_revelants" id="ss_other_revelants" type="file" />
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <!-- <section class="card mt-2"> -->
+                    <!-- <section class="card-body"> -->
+                    <!-- <div class="row w-100 m-0"> -->
+                    <!-- <div class="form-group col-12"> -->
+                    <!-- <label for="selPreferredContactTime"> -->
+                    <!-- Preferred Contact Time -->
+                    <!-- <span class="text-danger">*</span> -->
+                    <!-- </label> -->
+                    <!-- <select type="text" class="form-control" id="selPreferredContactTime" -->
+                    <!-- name="selPreferredContactTime" required="required"> -->
+                    <!-- <option value="-1">- Select an option -</option> -->
+                    <!-- <t t-foreach="contact_time_ids" t-as="contact_time"> -->
+                    <!-- <option t-att-value="contact_time.id"> -->
+                    <!-- <t t-esc="contact_time.name" /> -->
+                    <!-- - ( -->
+                    <!-- <t t-esc="contact_time.from_time" /> -->
+                    <!-- - -->
+                    <!-- <t t-esc="contact_time.to_time" /> -->
+                    <!-- ) -->
+                    <!-- </option> -->
+                    <!-- </t> -->
+                    <!-- </select> -->
+                    <!-- </div> -->
+                    <!-- <div class="form-group col-12"> -->
+                    <!-- <label for="selPreferredDegreeProgram"> -->
+                    <!-- Preferred Degree Program -->
+                    <!-- <span class="text-danger">*</span> -->
+                    <!-- </label> -->
+                    <!-- <select type="text" class="form-control" id="selPreferredDegreeProgram" -->
+                    <!-- name="selPreferredDegreeProgram" required="required"> -->
+                    <!-- <option value="-1">- Select an option -</option> -->
+                    <!-- <t t-foreach="degree_program_ids" t-as="degree_program"> -->
+                    <!-- <option t-att-value="degree_program.id"> -->
+                    <!-- <t t-esc="degree_program.name" /> -->
+                    <!-- </option> -->
+                    <!-- </t> -->
+                    <!-- </select> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- </section> -->
+                    <!-- </section> -->
 
                     <div class="row justify-content-center m-3">
                         <button type="submit" class="btn btn-primary">Request</button>
