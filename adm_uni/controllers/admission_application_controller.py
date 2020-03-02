@@ -112,7 +112,8 @@ class Admission(http.Controller):
         cumulative_grades = params["txtCumulativeGrade"] if params["txtCumulativeGrade"] else False
         regional_exam_grade = params["txtRegionalExam"] if params["txtRegionalExam"] else False
         bac_grade = params["txtBACGrade"] if params["txtBACGrade"] else False
-        
+         
+         
         # Documentation 
         letter_of_motivation_file = params["fileLetterOfMotivation"] if params["fileLetterOfMotivation"] else False
         cv_file = params["fileCV"] if params["fileCV"] else False
