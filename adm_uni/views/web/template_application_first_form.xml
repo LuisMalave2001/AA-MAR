@@ -280,11 +280,13 @@
                                         <div class="col-8">
                                             <section>
                                                 <input name="scholarship_considered" id="scholarship_considered_yes"
+                                                    class="form-check-input"
                                                     type="radio" value="true" disabled="disabled"/>
                                                 <label for="scholarship_considered_yes" class="form-check-label">Yes</label>
                                             </section>
                                             <section>
                                                 <input name="scholarship_considered" id="scholarship_considered_no"
+                                                    class="form-check-input"
                                                     type="radio" value="" disabled="disabled"/>
                                                 <label for="scholarship_considered_no" class="form-check-label">No</label>
                                             </section>
