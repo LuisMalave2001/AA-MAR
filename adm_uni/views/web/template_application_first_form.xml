@@ -281,13 +281,13 @@
                                             <section class="form-check">
                                                 <input name="scholarship_considered" id="scholarship_considered_yes"
                                                     class="form-check-input"
-                                                    type="radio" value="true" disabled="disabled"/>
+                                                    type="radio" value="true"/>
                                                 <label for="scholarship_considered_yes" class="form-check-label">Yes</label>
                                             </section>
                                             <section class="form-check">
                                                 <input name="scholarship_considered" id="scholarship_considered_no"
                                                     class="form-check-input"
-                                                    type="radio" value="" disabled="disabled"/>
+                                                    type="radio" value=""/>
                                                 <label for="scholarship_considered_no" class="form-check-label">No</label>
                                             </section>
                                         </div>
@@ -302,11 +302,11 @@
                                             <div class="col-8">
                                                 <section>
                                                     <label for="ss_attestation_salaire">Attestation Salaire for working parents or student applicants</label>
-                                                    <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file"/>
+                                                    <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file" multiple="true"/>
                                                 </section>
                                                 <section>
                                                     <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or student applicants</label>
-                                                    <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" />
+                                                    <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" multiple="true"/>
                                                 </section>
                                             </div>
                                         </div>
@@ -320,7 +320,7 @@
                                             <div class="col-8">
                                                 <section>
                                                     <label for="ss_most_recent_tax">Most recent tax returns of parents or student applicant</label>
-                                                    <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" />
+                                                    <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" multiple="true"/>
                                                 </section>
                                             </div>
                                         </div>
@@ -339,7 +339,7 @@
                                                         all bank accounts, loan payment agreements for 
                                                         property, rental agreements for home, etc.
                                                     </label>
-                                                    <input name="ss_other_revelants" id="ss_other_revelants" type="file" />
+                                                    <input name="ss_other_revelants" id="ss_other_revelants" type="file" multiple="true"/>
                                                 </section>
                                             </div>
                                         </div>

@@ -74,6 +74,19 @@ class Application(models.Model):
     regional_exam_grade = fields.Char("Regional Grade")
     bac_grade = fields.Char("BAC Grade")
     
+    # Scholarship information´
+    merit_or_degree_ss = fields.Boolean("Merit or Degree scholarship")
+    merit_or_degree_type = fields.Selection(
+        [
+            ("merit", "Merit"),
+            ("degree", "Degree"),
+            ("both", "Both"),
+        ],
+        string="Type of scholarship"
+    )
+    
+    need_based_scholarship = fields.Boolean("Need-Based scholarship")
+    
     # Skills
     language_ids = fields.One2many("adm_uni.application.languages", "application_id",
                                     string="Languages")
