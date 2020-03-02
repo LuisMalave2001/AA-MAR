@@ -281,12 +281,12 @@
                                             <section>
                                                 <label for="scholarship_considered_yes">Yes</label>
                                                 <input name="scholarship_considered" id="scholarship_considered_yes"
-                                                    type="radio" value="true" />
+                                                    type="radio" value="true" disabled="disabled"/>
                                             </section>
                                             <section>
                                                 <label for="scholarship_considered_yes">No</label>
                                                 <input name="scholarship_considered" id="scholarship_considered_yes"
-                                                    type="radio" value="" />
+                                                    type="radio" value="" disabled="disabled"/>
                                             </section>
                                         </div>
                                     </div>
