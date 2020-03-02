@@ -130,7 +130,10 @@ function getStates(){
             console.error("Un error ha ocurrido al cargar los states");
         }
     });
+}
 
+function toggleForm(){
+	console.log(this.id);
 }
 
 $(function(){
@@ -143,5 +146,8 @@ $(function(){
     });
     
     $(".add_contact").on("click", addContact);
-    $(".add_language").on("click", addLanguage)
+    $(".add_language").on("click", addLanguage);
+    
+    $("input[name=want_scholarship]").on("click", toggleForm)
+    
 });
