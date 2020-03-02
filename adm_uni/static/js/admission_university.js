@@ -169,8 +169,8 @@ $(function(){
     $(".add_language").on("click", addLanguage);
     
     $("input[name=want_scholarship]").on("click", toggleTypes);
-    $('input[name=scholarship_type');.on("click", toggleNeedBased);
-    $('input[name=scholarship_considered');.on("click", toggleSSFilesForm);
+    $('input[name=scholarship_type').on("click", toggleNeedBased);
+    $('input[name=scholarship_considered').on("click", toggleSSFilesForm);
    
     var $files_for_ss = ('#files_for_ss');
     $files_for_ss.find("input").prop("disabled", true);
