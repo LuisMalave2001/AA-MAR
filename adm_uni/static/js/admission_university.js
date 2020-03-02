@@ -142,7 +142,7 @@ function toggleTypes(){
 }
 
 function toggleNeedBased(){
-	$('input[name=scholarship_considered]').prop("disabled", true);
+	$('input[name=scholarship_considered]').prop("disabled", false);
 }
 
 function toggleSSFilesForm(){
