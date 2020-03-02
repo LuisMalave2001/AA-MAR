@@ -236,28 +236,31 @@
                                 
                                 <hr class="w-100"/>
                                 
-                                <div class="form-group col-12">
-                                    <div class="row justify-content-center">
-                                        <h3 class="font-weight-bold">Which one?</h3>
+                                <fieldset class="form-group col-12">
+                                    <div class="row">
+                                        <legend class="col-form-label col-2 pt-0">Which one?</legend>
+                                        <div class="col-8 justify-content-around">
+                                            <section class="form-check">
+                                                <input name="scholarship_type" id="scholarship_type_merit" type="radio"
+                                                       class="form-check-input" 
+                                                       value="merit" />
+                                                <label for="scholarship_type_merit" class="form-check-label">Merit</label>
+                                            </section>
+                                            <section class="form-check">
+                                                <input name="scholarship_type" id="scholarship_type_degree_program"
+                                                    class="form-check-input" 
+                                                    type="radio" value="degree_program" />
+                                                <label for="scholarship_type_degree_program" class="form-check-label">Degree program</label>
+                                            </section>
+                                            <section class="form-check">
+                                                <input name="scholarship_type" id="scholarship_type_both" type="radio"
+                                                    class="form-check-input" 
+                                                    value="both" />
+                                                <label for="scholarship_type_both" class="form-check-label" >Both</label>
+                                            </section>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-around">
-                                        <section>
-                                            <label for="scholarship_type_merit">Merit</label>
-                                            <input name="scholarship_type" id="scholarship_type_merit" type="radio"
-                                                value="merit" />
-                                        </section>
-                                        <section>
-                                            <label for="scholarship_type_degree_program">Degree program</label>
-                                            <input name="scholarship_type" id="scholarship_type_degree_program"
-                                                type="radio" value="degree_program" />
-                                        </section>
-                                        <section>
-                                            <label for="scholarship_type_both">Both</label>
-                                            <input name="scholarship_type" id="scholarship_type_both" type="radio"
-                                                value="both" />
-                                        </section>
-                                    </div>
-                                </div>
+                                </fieldset>
 
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
