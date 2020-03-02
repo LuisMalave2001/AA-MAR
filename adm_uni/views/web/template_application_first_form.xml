@@ -312,6 +312,8 @@
                                         </div>
                                     </fieldset>
                                     
+                                    <hr class="w-100"/>
+                                    
                                     <fieldset class="form-group col-12">
                                         <div class="row">
                                             <legend class="col-form-label col-2 pt-0">For international applicants (document upload)</legend>
@@ -323,6 +325,8 @@
                                             </div>
                                         </div>
                                     </fieldset>
+                                    
+                                    <hr class="w-100"/>
                                     
                                     <fieldset class="form-group col-12">
                                         <div class="row">
