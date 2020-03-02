@@ -133,7 +133,12 @@ function getStates(){
 }
 
 function toggleForm(){
-	console.log(this.id);
+	
+	is_yes = this.id === "scholarship_yes"
+	
+	$scholarship_type = $('input[name=scholarship_type');
+	$scholarship_type.prop("disabled", is_yes);
+	$scholarship_type.parents("fieldset").toggle(is_yes);
 }
 
 $(function(){
