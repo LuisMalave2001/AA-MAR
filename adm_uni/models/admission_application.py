@@ -12,6 +12,12 @@ status_types = [
     ("cancelled", "Cancelled"),
 ]
 
+ss_types = [
+    ("merit", "Merit"),
+    ("degree_program", "Degree Program"),
+    ("both", "Both"),
+]
+
 class ApplicationStatus(models.Model):
     _name = "adm_uni.application.status"
     _order = "sequence"
@@ -76,12 +82,7 @@ class Application(models.Model):
     
     # Scholarship information´
     merit_or_degree_ss = fields.Boolean("Merit or Degree scholarship")
-    merit_or_degree_type = fields.Selection(
-        [
-            ("merit", "Merit"),
-            ("degree", "Degree"),
-            ("both", "Both"),
-        ],
+    merit_or_degree_type = fields.Selection(,
         string="Type of scholarship"
     )
     
