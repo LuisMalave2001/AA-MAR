@@ -220,7 +220,7 @@
                             <div class="row w-100 m-0">
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
-                                        <p>Do you want to be considered for a merit or degree program scholarship?</p>
+                                        <h3><b>Do you want to be considered for a merit or degree program scholarship?</b></h3>
                                     </div>
                                     <div class="row justify-content-around">
                                         <section>
@@ -236,7 +236,7 @@
 
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
-                                        <p>Which one?</p>
+                                        <h3><b>Which one?</b></h3>
                                     </div>
                                     <div class="row justify-content-around">
                                         <section>
@@ -259,7 +259,7 @@
 
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
-                                        <p>Do you want to be considered for a need-based scholarship?</p>
+                                        <h3><b>Do you want to be considered for a need-based scholarship?</b></h3>
                                     </div>
                                     <div class="row justify-content-around">
                                         <section>
@@ -278,7 +278,7 @@
                                 <h2>Required documents for need-based scholarship seekers (single or multiple file upload)</h2>
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
-                                        <p>For Moroccan Students</p>
+                                        <h3><b>For Moroccan Students</b></h3>
                                     </div>
                                     <div class="row justify-content-around">
                                         <section>
@@ -293,7 +293,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
-                                        <p>For international applicants (document upload)</p>
+                                        <h3><b>For international applicants (document upload)</b></h3>
                                     </div>
                                     <div class="row justify-content-around">
                                         <section>
@@ -304,7 +304,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <div class="row justify-content-center">
-                                        <p>Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</p>
+                                        <h3><b>Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</b></h3>
                                     </div>
                                     <div class="row justify-content-around">
                                         <section>
