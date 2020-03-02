@@ -199,7 +199,7 @@ class Admission(http.Controller):
         ss_attestation_salaire = post_parameters().getlist('ss_attestation_salaire')
         for attachment in ss_attestation_salaire:
             attached_file = attachment.read()
-            http.request.env['ir.attachment'].sudo().create({
+            AttachmentEnv.sudo().create({
                         'name': attachment.filename,
                         'res_model': 'adm_uni.application',
                         'res_id': application_id.id,
@@ -211,7 +211,7 @@ class Admission(http.Controller):
         ss_bulletin_de_paie = post_parameters().getlist('ss_bulletin_de_paie')
         for attachment in ss_bulletin_de_paie:
             attached_file = attachment.read()
-            http.request.env['ir.attachment'].sudo().create({
+            AttachmentEnv.sudo().create({
                         'name': attachment.filename,
                         'res_model': 'adm_uni.application',
                         'res_id': application_id.id,
@@ -223,7 +223,7 @@ class Admission(http.Controller):
         ss_most_recent_tax = post_parameters().getlist('ss_most_recent_tax')
         for attachment in ss_most_recent_tax:
             attached_file = attachment.read()
-            http.request.env['ir.attachment'].sudo().create({
+            AttachmentEnv.sudo().create({
                         'name': attachment.filename,
                         'res_model': 'adm_uni.application',
                         'res_id': application_id.id,
@@ -235,7 +235,7 @@ class Admission(http.Controller):
         ss_other_revelants = post_parameters().getlist('ss_other_revelants')
         for attachment in ss_other_revelants:
             attached_file = attachment.read()
-            http.request.env['ir.attachment'].sudo().create({
+            AttachmentEnv.sudo().create({
                         'name': attachment.filename,
                         'res_model': 'adm_uni.application',
                         'res_id': application_id.id,
