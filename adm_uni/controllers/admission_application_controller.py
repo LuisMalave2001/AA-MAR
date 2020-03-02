@@ -114,9 +114,9 @@ class Admission(http.Controller):
         bac_grade = params["txtBACGrade"] if params["txtBACGrade"] else False
          
         
-        merit_or_degree_ss = params["want_scholarship"] if params["want_scholarship"] else False
-        merit_or_degree_type = params["scholarship_type"] if params["scholarship_type"] else False
-        need_based_scholarship = params["scholarship_considered"] if params["scholarship_considered"] else False
+        merit_or_degree_ss = params["want_scholarship"] if "want_scholarship" in params and params["want_scholarship"] else False
+        merit_or_degree_type = params["scholarship_type"] if "scholarship_type" in params and params["scholarship_type"] else False
+        need_based_scholarship = params["scholarship_considered"] if "scholarship_considered" in params and params["scholarship_considered"] else False
          
         # Documentation 
         letter_of_motivation_file = params["fileLetterOfMotivation"] if params["fileLetterOfMotivation"] else False
