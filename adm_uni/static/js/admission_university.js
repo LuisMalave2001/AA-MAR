@@ -155,7 +155,6 @@ function toggleSSFilesForm(){
 }
 
 
-
 $(function(){
     $('#add-tab').on('click', addStudent);
     $('#selCountry').on('change', getStates);
