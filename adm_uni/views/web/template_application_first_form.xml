@@ -279,14 +279,14 @@
                                         <legend class="col-form-label col-2 pt-0">Do you want to be considered for a need-based scholarship?</legend>
                                         <div class="col-8">
                                             <section>
-                                                <label for="scholarship_considered_yes">Yes</label>
                                                 <input name="scholarship_considered" id="scholarship_considered_yes"
                                                     type="radio" value="true" disabled="disabled"/>
+                                                <label for="scholarship_considered_yes">Yes</label>
                                             </section>
                                             <section>
-                                                <label for="scholarship_considered_yes">No</label>
                                                 <input name="scholarship_considered" id="scholarship_considered_yes"
                                                     type="radio" value="" disabled="disabled"/>
+                                                <label for="scholarship_considered_yes">No</label>
                                             </section>
                                         </div>
                                     </div>
