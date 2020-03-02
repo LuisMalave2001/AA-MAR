@@ -82,9 +82,7 @@ class Application(models.Model):
     
     # Scholarship information´
     merit_or_degree_ss = fields.Boolean("Merit or Degree scholarship")
-    merit_or_degree_type = fields.Selection(,
-        string="Type of scholarship"
-    )
+    merit_or_degree_type = fields.Selection(ss_types,string="Type of scholarship")
     
     need_based_scholarship = fields.Boolean("Need-Based scholarship")
     
