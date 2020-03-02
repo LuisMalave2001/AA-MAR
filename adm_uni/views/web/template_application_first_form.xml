@@ -222,13 +222,13 @@
                                     <div class="row">
                                         <legend class="col-form-label col-2 pt-0">Do you want to be considered for a merit or degree program scholarship?</legend>
                                         <div class="col-8">
-                                            <section>
+                                            <section class="form-check">
                                                 <input name="want_scholarship" id="scholarship_yes"
                                                     class="form-check-input"
                                                     type="radio" value="true" />
                                                 <label for="scholarship_yes" class="form-check-label">Yes</label>
                                             </section>
-                                            <section>
+                                            <section class="form-check">
                                                 <input name="want_scholarship" id="scholarship_no" 
                                                     class="form-check-imput"
                                                     type="radio" value="" />
