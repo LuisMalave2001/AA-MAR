@@ -218,6 +218,14 @@
                         </section>
                         <section class="card-body">
                             <div class="row w-100 m-0">
+                                <div class="row">
+                                    <p>ACC offers three types of scholarships for merit, degree program, and need. 
+                                       Merit scholarships are for students with demonstrated excellence in academics. 
+                                       Degree program scholarships are for demonstrated excellence in one of ACC's 
+                                       degree programs.  Need scholarships are for students with demonstrated financial 
+                                       need.</p>
+                                </div>
+                            
                                 <fieldset class="form-group col-12">
                                     <div class="row">
                                         <legend class="col-form-label col-2 pt-0">Do you want to be considered for a merit or degree program scholarship?</legend>
