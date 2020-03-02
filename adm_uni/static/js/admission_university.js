@@ -147,7 +147,6 @@ function toggleNeedBased(){
 
 function toggleSSFilesForm(){
 	var is_yes = this.id === "scholarship_considered_yes";
-	$('input[name=scholarship_considered]').prop("disabled", !is_yes);
 	
     var $files_for_ss = $('#files_for_ss');
     $files_for_ss.find("input").prop("disabled", !is_yes);
