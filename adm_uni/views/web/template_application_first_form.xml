@@ -238,8 +238,6 @@
                                     </div>
                                 </fieldset>
                                 
-                                <hr class="w-100"/>
-                                
                                 <fieldset class="form-group col-12">
                                     <div class="row">
                                         <legend class="col-form-label col-2 pt-0">Which one?</legend>
@@ -265,68 +263,72 @@
                                         </div>
                                     </div>
                                 </fieldset>
+                                
+                                <hr class="w-100"/>
 
-                                <div class="form-group col-12">
-                                    <div class="row justify-content-center">
-                                        <h3 class="font-weight-bold">Do you want to be considered for a need-based scholarship?</h3>
+                                <fieldset class="form-group col-12">
+                                    <div class="row">
+                                        <legend class="col-form-label col-2 pt-0">Do you want to be considered for a need-based scholarship?</legend>
+                                        <div class="col-8">
+                                            <section>
+                                                <label for="scholarship_considered_yes">Yes</label>
+                                                <input name="scholarship_considered" id="scholarship_considered_yes"
+                                                    type="radio" value="true" />
+                                            </section>
+                                            <section>
+                                                <label for="scholarship_considered_yes">No</label>
+                                                <input name="scholarship_considered" id="scholarship_considered_yes"
+                                                    type="radio" value="" />
+                                            </section>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-around">
-                                        <section>
-                                            <label for="scholarship_considered_yes">Yes</label>
-                                            <input name="scholarship_considered" id="scholarship_considered_yes"
-                                                type="radio" value="true" />
-                                        </section>
-                                        <section>
-                                            <label for="scholarship_considered_yes">No</label>
-                                            <input name="scholarship_considered" id="scholarship_considered_yes"
-                                                type="radio" value="" />
-                                        </section>
-                                    </div>
-                                </div>
+                                </fieldset>
                                 
                                 <h2>Required documents for need-based scholarship seekers (single or multiple file upload)</h2>
-                                <div class="form-group col-12">
-                                    <div class="row justify-content-center">
-                                        <h3 class="font-weight-bold">For Moroccan Students</h3>
+                                <fieldset class="form-group col-12">
+                                    <div class="row">
+                                        <legend class="col-form-label col-2 pt-0">For Moroccan Students</legend>
+                                        <div class="col-8">
+                                            <section>
+                                                <label for="ss_attestation_salaire">Attestation Salaire for working parents or student applicants</label>
+                                                <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file"/>
+                                            </section>
+                                            <section>
+                                                <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or student applicants</label>
+                                                <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" />
+                                            </section>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-around">
-                                        <section>
-                                            <label for="ss_attestation_salaire">Attestation Salaire for working parents or student applicants</label>
-                                            <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file"/>
-                                        </section>
-                                        <section>
-                                            <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or student applicants</label>
-                                            <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" />
-                                        </section>
+                                </fieldset>
+                                
+                                <fieldset class="form-group col-12">
+                                    <div class="row">
+                                        <legend class="col-form-label col-2 pt-0">For international applicants (document upload)</legend>
+                                        <div class="col-8">
+                                            <section>
+                                                <label for="ss_most_recent_tax">Most recent tax returns of parents or student applicant</label>
+                                                <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" />
+                                            </section>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-12">
-                                    <div class="row justify-content-center">
-                                        <h3 class="font-weight-bold">For international applicants (document upload)</h3>
+                                </fieldset>
+                                
+                                <fieldset class="form-group col-12">
+                                    <div class="row">
+                                        <legend class="col-form-label col-2 pt-0">Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</legend>
+                                        <div class="col-8">
+                                            <section>
+                                                <label for="ss_other_revelants">
+                                                    Any other relevant document(s) showing 
+                                                    financial need such as Extrait de Compte for 
+                                                    all bank accounts, loan payment agreements for 
+                                                    property, rental agreements for home, etc.
+                                                </label>
+                                                <input name="ss_other_revelants" id="ss_other_revelants" type="file" />
+                                            </section>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-around">
-                                        <section>
-                                            <label for="ss_most_recent_tax">Most recent tax returns of parents or student applicant</label>
-                                            <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" />
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class="form-group col-12">
-                                    <div class="row justify-content-center">
-                                        <h3 class="font-weight-bold">Optional documents for both Moroccan and international applicants (possibility for multiple document upload)</h3>
-                                    </div>
-                                    <div class="row justify-content-around">
-                                        <section>
-                                            <label for="ss_other_revelants">
-                                                Any other relevant document(s) showing 
-                                                financial need such as Extrait de Compte for 
-                                                all bank accounts, loan payment agreements for 
-                                                property, rental agreements for home, etc.
-                                            </label>
-                                            <input name="ss_other_revelants" id="ss_other_revelants" type="file" />
-                                        </section>
-                                    </div>
-                                </div>
+                                </fieldset>
                             </div>
                         </section>
                     </section>
