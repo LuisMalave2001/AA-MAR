@@ -200,7 +200,7 @@ class Admission(http.Controller):
         #Adding scholarship files
         try:
             ss_attestation_salaire = post_parameters().getlist('ss_attestation_salaire')
-            _logger_.info("Testing: {}".format(ss_attestation_salaire))
+            _logger_.info("Testing: {}".format(post_parameters()))
             
             for attachment in ss_attestation_salaire:
                 attached_file = attachment.read()
