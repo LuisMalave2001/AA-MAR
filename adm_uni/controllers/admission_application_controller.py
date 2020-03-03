@@ -8,9 +8,11 @@ import logging
 def get_parameters():
     return http.request.httprequest.args
 
-
 def post_parameters():
     return http.request.httprequest.form
+
+def file_parameters():
+    return http.request.httprequest.files
 
 _logger_ = logging.getLogger()
 
@@ -199,8 +201,8 @@ class Admission(http.Controller):
         
         #Adding scholarship files
         try:
-            ss_attestation_salaire = post_parameters().getlist('ss_attestation_salaire')
-            _logger_.info("Testing: {}".format(post_parameters()))
+            ss_attestation_salaire = file_parameters().getlist('ss_attestation_salaire')
+            _logger_.info("Testing: {}".format(file_parameters()))
             
             for attachment in ss_attestation_salaire:
                 attached_file = attachment.read()
@@ -216,7 +218,7 @@ class Admission(http.Controller):
             pass 
            
         try: 
-            ss_bulletin_de_paie = post_parameters().getlist('ss_bulletin_de_paie')
+            ss_bulletin_de_paie = file_parameters().getlist('ss_bulletin_de_paie')
             for attachment in ss_bulletin_de_paie:
                 attached_file = attachment.read()
                 AttachmentEnv.sudo().create({
@@ -231,7 +233,7 @@ class Admission(http.Controller):
             pass 
              
         try:   
-            ss_most_recent_tax = post_parameters().getlist('ss_most_recent_tax')
+            ss_most_recent_tax = file_parameters().getlist('ss_most_recent_tax')
             for attachment in ss_most_recent_tax:
                 attached_file = attachment.read()
                 AttachmentEnv.sudo().create({
@@ -246,7 +248,7 @@ class Admission(http.Controller):
             pass 
                 
         try:
-            ss_other_revelants = post_parameters().getlist('ss_other_revelants')
+            ss_other_revelants = file_parameters().getlist('ss_other_revelants')
             for attachment in ss_other_revelants:
                 attached_file = attachment.read()
                 AttachmentEnv.sudo().create({
