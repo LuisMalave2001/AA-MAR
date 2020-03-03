@@ -2,6 +2,7 @@
 from odoo import http
 from datetime import datetime
 import base64
+import logging
 
 
 def get_parameters():
@@ -11,9 +12,10 @@ def get_parameters():
 def post_parameters():
     return http.request.httprequest.form
 
+_logger_ = logging.getLogger()
 
 class Admission(http.Controller):
-
+    
     def get_partner(self):
         return http.request.env["res.users"].browse([http.request.session.uid]).partner_id
     
@@ -198,6 +200,8 @@ class Admission(http.Controller):
         #Adding scholarship files
         try:
             ss_attestation_salaire = post_parameters().getlist('ss_attestation_salaire')
+            _logger_.info("Testing: {}".format(ss_attestation_salaire))
+            
             for attachment in ss_attestation_salaire:
                 attached_file = attachment.read()
                 AttachmentEnv.sudo().create({
