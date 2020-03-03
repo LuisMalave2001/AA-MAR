@@ -196,53 +196,65 @@ class Admission(http.Controller):
             }).id
         
         #Adding scholarship files
-        ss_attestation_salaire = post_parameters().getlist('ss_attestation_salaire')
-        for attachment in ss_attestation_salaire:
-            attached_file = attachment.read()
-            AttachmentEnv.sudo().create({
-                        'name': attachment.filename,
-                        'res_model': 'adm_uni.application',
-                        'res_id': application_id.id,
-                        'type': 'binary',
-                        'datas_fname': attachment.filename,
-                        'datas': base64.b64encode(attached_file),
-                    }) 
-            
-        ss_bulletin_de_paie = post_parameters().getlist('ss_bulletin_de_paie')
-        for attachment in ss_bulletin_de_paie:
-            attached_file = attachment.read()
-            AttachmentEnv.sudo().create({
-                        'name': attachment.filename,
-                        'res_model': 'adm_uni.application',
-                        'res_id': application_id.id,
-                        'type': 'binary',
-                        'datas_fname': attachment.filename,
-                        'datas': base64.b64encode(attached_file),
-                    }) 
-            
-        ss_most_recent_tax = post_parameters().getlist('ss_most_recent_tax')
-        for attachment in ss_most_recent_tax:
-            attached_file = attachment.read()
-            AttachmentEnv.sudo().create({
-                        'name': attachment.filename,
-                        'res_model': 'adm_uni.application',
-                        'res_id': application_id.id,
-                        'type': 'binary',
-                        'datas_fname': attachment.filename,
-                        'datas': base64.b64encode(attached_file),
-                    }) 
-            
-        ss_other_revelants = post_parameters().getlist('ss_other_revelants')
-        for attachment in ss_other_revelants:
-            attached_file = attachment.read()
-            AttachmentEnv.sudo().create({
-                        'name': attachment.filename,
-                        'res_model': 'adm_uni.application',
-                        'res_id': application_id.id,
-                        'type': 'binary',
-                        'datas_fname': attachment.filename,
-                        'datas': base64.b64encode(attached_file),
-                    }) 
+        try:
+            ss_attestation_salaire = post_parameters().getlist('ss_attestation_salaire')
+            for attachment in ss_attestation_salaire:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        })
+        except AttributeError:
+            pass 
+           
+        try: 
+            ss_bulletin_de_paie = post_parameters().getlist('ss_bulletin_de_paie')
+            for attachment in ss_bulletin_de_paie:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        }) 
+        except AttributeError:
+            pass 
+             
+        try:   
+            ss_most_recent_tax = post_parameters().getlist('ss_most_recent_tax')
+            for attachment in ss_most_recent_tax:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        }) 
+        except AttributeError:
+            pass 
+                
+        try:
+            ss_other_revelants = post_parameters().getlist('ss_other_revelants')
+            for attachment in ss_other_revelants:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        }) 
+        except AttributeError:
+            pass 
             
         
         contact_names = post_parameters().getlist("txtContactName")
