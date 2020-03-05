@@ -157,6 +157,13 @@
                                 </group>
                             </group>
                         </page>
+                        <page string="Scholarship">
+                            <group>
+                                <field name="merit_or_degree_ss"/>
+                                <field name="merit_or_degree_type"/>
+                                <field name="need_based_scholarship"/>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
 

@@ -130,8 +130,25 @@ function getStates(){
             console.error("Un error ha ocurrido al cargar los states");
         }
     });
-
 }
+
+function toggleTypes(){
+	
+	var is_yes = this.id === "scholarship_yes"
+	
+	var $scholarship_type = $('input[name=scholarship_type');
+	$scholarship_type.prop("disabled", !is_yes);
+//	$scholarship_type.parents("fieldset").toggle(is_yes);
+}
+
+function toggleSSFilesForm(){
+	var is_yes = this.id === "scholarship_considered_yes";
+	
+    var $files_for_ss = $('#files_for_ss');
+    $files_for_ss.find("input").prop("disabled", !is_yes);
+    $files_for_ss.toggle(is_yes);
+}
+
 
 $(function(){
     $('#add-tab').on('click', addStudent);
@@ -143,5 +160,11 @@ $(function(){
     });
     
     $(".add_contact").on("click", addContact);
-    $(".add_language").on("click", addLanguage)
+    $(".add_language").on("click", addLanguage);
+    
+    $("input[name=want_scholarship]").on("click", toggleTypes);
+    $('input[name=scholarship_considered').on("click", toggleSSFilesForm);
+   
+    var $files_for_ss = $('#files_for_ss');
+    $files_for_ss.find("input").prop("disabled", true);
 });
