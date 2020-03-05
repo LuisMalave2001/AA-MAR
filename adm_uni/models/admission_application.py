@@ -79,7 +79,7 @@ class Application(models.Model):
     cumulative_grades = fields.Float("Cumulative Grade")
     regional_exam_grade = fields.Char("Regional Grade")
     bac_grade = fields.Char("BAC Grade")
-    
+
     # Scholarship information´
     merit_or_degree_ss = fields.Boolean("Merit or Degree scholarship")
     merit_or_degree_type = fields.Selection(ss_types,string="Type of scholarship")
