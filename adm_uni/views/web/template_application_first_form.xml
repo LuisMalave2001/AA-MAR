@@ -75,7 +75,7 @@
                                     <input type="number" step="0.01" min="0" max="4" class="form-control"
                                         id="txtGPA" name="txtGPA" placeholder="GPA" required="required" />
                                     
-                                    <div class="row">
+                                    <div t-if="contact_id.country_id.code != 'MA'" class="row">
                                         <input type="checkbox" class="disable-element col-2" id="chkGPA" data-toggle="txtGPA"/>
                                         <label for="chkGPA" class="col-10">Mark if this section does not apply to your situation.</label>
                                     </div>
@@ -86,7 +86,7 @@
                                         id="txtCumulativeGrade" name="txtCumulativeGrade" placeholder="Cumulative Grade"
                                         required="required" />  
                                     
-                                    <div class="row">
+                                    <div t-if="contact_id.country_id.code == 'MA'" class="row">
                                         <input type="checkbox" class="disable-element col-2" id="chkCumulativeGrade" data-toggle="txtCumulativeGrade"/>
                                         <label for="chkCumulativeGrade" class="col-10">Mark if this section does not apply to your situation.</label>
                                     </div>
@@ -97,7 +97,7 @@
                                     <input type="text" class="form-control" id="txtRegionalExam"
                                         name="txtRegionalExam" placeholder="Regional Exam" required="required" />
                                           
-                                    <div class="row">
+                                    <div t-if="contact_id.country_id.code == 'MA'" class="row">
                                         <input type="checkbox" class="disable-element col-2" id="chkRegionalExam" data-toggle="txtRegionalExam"/>
                                         <label for="chkRegionalExam" class="col-10">Mark if this section does not apply to your situation.</label>
                                     </div>
@@ -105,12 +105,7 @@
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtBACGrade">BAC Grade (if available)</label>
                                     <input type="text" class="form-control" id="txtBACGrade" name="txtBACGrade"
-                                        placeholder="BAC Grade" required="required" />
-                                          
-                                    <div class="row">
-                                        <input type="checkbox" class="disable-element col-2" id="chkBACGrade" data-toggle="txtBACGrade"/>
-                                        <label for="chkBACGrade" class="col-10">Mark if this section does not apply to your situation.</label>
-                                    </div>
+                                        placeholder="BAC Grade"/>
                                 </div>
                             </div>
                         </section>
