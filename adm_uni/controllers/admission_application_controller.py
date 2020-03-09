@@ -111,12 +111,11 @@ class Admission(http.Controller):
         mother_name = params["txtMotherName"] if params["txtMotherName"] else False
         
         # School information
-        previous_school = params["txtPreviousSchool"] if params["txtPreviousSchool"] else False
-        gpa = params["txtGPA"] if params["txtGPA"] else False
-        cumulative_grades = params["txtCumulativeGrade"] if params["txtCumulativeGrade"] else False
-        regional_exam_grade = params["txtRegionalExam"] if params["txtRegionalExam"] else False
-        bac_grade = params["txtBACGrade"] if params["txtBACGrade"] else False
-         
+        previous_school = params["txtPreviousSchool"] if "txtPreviousSchool" in params and params["txtPreviousSchool"] else False
+        gpa = params["txtGPA"] if "txtGPA" in params and params["txtGPA"] else False
+        cumulative_grades = params["txtCumulativeGrade"] if "txtCumulativeGrade" in params and params["txtCumulativeGrade"] else False
+        regional_exam_grade = params["txtRegionalExam"] if "txtRegionalExam" in params and params["txtRegionalExam"] else False
+        bac_grade = params["txtBACGrade"] if "txtBACGrade" in params and params["txtBACGrade"] else False
         
         merit_or_degree_ss = params["want_scholarship"] if "want_scholarship" in params and params["want_scholarship"] else False
         merit_or_degree_type = params["scholarship_type"] if "scholarship_type" in params and params["scholarship_type"] else False
