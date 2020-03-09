@@ -45,9 +45,8 @@
         <field name="model">adm_uni.inquiry.status</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="id" />
-                <field name="name" />
                 <field name="sequence" widget='handle' />
+                <field name="name" />
             </tree>
         </field>
     </record>

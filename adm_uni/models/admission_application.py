@@ -12,6 +12,12 @@ status_types = [
     ("cancelled", "Cancelled"),
 ]
 
+ss_types = [
+    ("merit", "Merit"),
+    ("degree_program", "Degree Program"),
+    ("both", "Both"),
+]
+
 class ApplicationStatus(models.Model):
     _name = "adm_uni.application.status"
     _order = "sequence"
@@ -71,8 +77,14 @@ class Application(models.Model):
     
     gpa = fields.Float("GPA")
     cumulative_grades = fields.Float("Cumulative Grade")
-    regional_exam_grade = fields.Float("Regional Grade")
-    bac_grade = fields.Float("BAC Grade")
+    regional_exam_grade = fields.Char("Regional Grade")
+    bac_grade = fields.Char("BAC Grade")
+
+    # Scholarship information´
+    merit_or_degree_ss = fields.Boolean("Merit or Degree scholarship")
+    merit_or_degree_type = fields.Selection(ss_types,string="Type of scholarship")
+    
+    need_based_scholarship = fields.Boolean("Need-Based scholarship")
     
     # Skills
     language_ids = fields.One2many("adm_uni.application.languages", "application_id",

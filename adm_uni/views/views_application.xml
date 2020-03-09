@@ -45,9 +45,8 @@
         <field name="model">adm_uni.application.status</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="id" />
-                <field name="name" />
                 <field name="sequence" widget='handle' />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -156,6 +155,13 @@
                                     <field name="grade_transcript_id" />
                                     <field name="letters_of_recommendation_id" />
                                 </group>
+                            </group>
+                        </page>
+                        <page string="Scholarship">
+                            <group>
+                                <field name="merit_or_degree_ss"/>
+                                <field name="merit_or_degree_type"/>
+                                <field name="need_based_scholarship"/>
                             </group>
                         </page>
                     </notebook>

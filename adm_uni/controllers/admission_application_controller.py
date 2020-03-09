@@ -2,18 +2,22 @@
 from odoo import http
 from datetime import datetime
 import base64
+import logging
 
 
 def get_parameters():
     return http.request.httprequest.args
 
-
 def post_parameters():
     return http.request.httprequest.form
 
+def file_parameters():
+    return http.request.httprequest.files
+
+_logger_ = logging.getLogger()
 
 class Admission(http.Controller):
-
+    
     def get_partner(self):
         return http.request.env["res.users"].browse([http.request.session.uid]).partner_id
     
@@ -112,7 +116,12 @@ class Admission(http.Controller):
         cumulative_grades = params["txtCumulativeGrade"] if params["txtCumulativeGrade"] else False
         regional_exam_grade = params["txtRegionalExam"] if params["txtRegionalExam"] else False
         bac_grade = params["txtBACGrade"] if params["txtBACGrade"] else False
+         
         
+        merit_or_degree_ss = params["want_scholarship"] if "want_scholarship" in params and params["want_scholarship"] else False
+        merit_or_degree_type = params["scholarship_type"] if "scholarship_type" in params and params["scholarship_type"] else False
+        need_based_scholarship = params["scholarship_considered"] if "scholarship_considered" in params and params["scholarship_considered"] else False
+         
         # Documentation 
         letter_of_motivation_file = params["fileLetterOfMotivation"] if params["fileLetterOfMotivation"] else False
         cv_file = params["fileCV"] if params["fileCV"] else False
@@ -134,8 +143,9 @@ class Admission(http.Controller):
             'regional_exam_grade': regional_exam_grade,
             'bac_grade': bac_grade,
             
-            # 'contact_time_id': contact_time_id,
-            # 'preferred_degree_program': preferred_degree_program,
+            'merit_or_degree_ss': merit_or_degree_ss,
+            'merit_or_degree_type': merit_or_degree_type,
+            'need_based_scholarship': need_based_scholarship,
         }
         
         application_id.write(new_application_dict)
@@ -151,7 +161,7 @@ class Admission(http.Controller):
                 'res_model': 'adm_uni.application',
                 'res_id': application_id.id,
                 'datas': base64.b64encode(letter_of_motivation_file.read()),
-            })
+            }).id
             
         cv_id = False
         if cv_file:
@@ -163,7 +173,7 @@ class Admission(http.Controller):
                 'res_model': 'adm_uni.application',
                 'res_id': application_id.id,
                 'datas': base64.b64encode(cv_file.read()),
-            })
+            }).id
         
         grade_transcript_id = False
         if grade_transcript_file:
@@ -189,6 +199,70 @@ class Admission(http.Controller):
                 'datas': base64.b64encode(letters_of_recommendation_file.read()),
             }).id
         
+        #Adding scholarship files
+        try:
+            ss_attestation_salaire = file_parameters().getlist('ss_attestation_salaire')
+            _logger_.info("Testing: {}".format(file_parameters()))
+            
+            for attachment in ss_attestation_salaire:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        })
+        except AttributeError:
+            pass 
+           
+        try: 
+            ss_bulletin_de_paie = file_parameters().getlist('ss_bulletin_de_paie')
+            for attachment in ss_bulletin_de_paie:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        }) 
+        except AttributeError:
+            pass 
+             
+        try:   
+            ss_most_recent_tax = file_parameters().getlist('ss_most_recent_tax')
+            for attachment in ss_most_recent_tax:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        }) 
+        except AttributeError:
+            pass 
+                
+        try:
+            ss_other_revelants = file_parameters().getlist('ss_other_revelants')
+            for attachment in ss_other_revelants:
+                attached_file = attachment.read()
+                AttachmentEnv.sudo().create({
+                            'name': attachment.filename,
+                            'res_model': 'adm_uni.application',
+                            'res_id': application_id.id,
+                            'type': 'binary',
+                            'datas_fname': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                        }) 
+        except AttributeError:
+            pass 
+            
+        
         contact_names = post_parameters().getlist("txtContactName")
         contact_ids    = post_parameters().getlist("txtContactId")
         
@@ -203,7 +277,7 @@ class Admission(http.Controller):
                     "language_id": language,
                     "language_level_id": language_levels[i],
                     "application_id":   application_id.id,
-                }).id
+                })
         
         # Adding contact
         OtherContactsEnv = http.request.env["adm_uni.application.other_contacts"]
@@ -215,7 +289,7 @@ class Admission(http.Controller):
                     "contact_name": contact_name,
                     "contact_identification": contact_ids[i],
                     "application_id":   application_id.id,
-                }).id
+                })
         
         application_id.sudo().write({
             'letter_of_motivation_id': motivation_id,
