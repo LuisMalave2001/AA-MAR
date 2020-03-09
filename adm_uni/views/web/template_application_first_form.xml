@@ -78,6 +78,9 @@
                                         situation.</label>
                                     <input type="number" step="0.01" min="0" max="4" class="form-control"
                                         id="txtGPA" name="txtGPA" placeholder="GPA" required="required" />
+                                        
+                                    <input type="checkbox" class="form-control" id="txtGPA" name="txtGPA" required="required" 
+                                        data-toggle="txtGPA"/>
                                 </div>
                                 <div class="form-group col-12 col-md-6">
                                     <label for="txtCumulativeGrade">Moroccan students: current Cumulative Grade (out of 20)</label>
