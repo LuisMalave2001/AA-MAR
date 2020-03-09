@@ -149,6 +149,12 @@ function toggleSSFilesForm(){
     $files_for_ss.toggle(is_yes);
 }
 
+function disable_element(event) {
+    var element_id = this.dataset["toggle"];
+    document.getElementById(element_id).disabled = this.checked;
+}
+
+
 
 $(function(){
     $('#add-tab').on('click', addStudent);
@@ -165,6 +171,8 @@ $(function(){
     $("input[name=want_scholarship]").on("click", toggleTypes);
     $('input[name=scholarship_considered').on("click", toggleSSFilesForm);
    
+    $('.disable-element').on("change", disable_element);
+    
     var $files_for_ss = $('#files_for_ss');
     $files_for_ss.find("input").prop("disabled", true);
 });
