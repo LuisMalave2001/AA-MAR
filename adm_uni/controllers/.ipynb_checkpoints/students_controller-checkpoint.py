@@ -12,6 +12,6 @@ class StudentController(http.Controller):
         students = http.request.env['adm_uni.inquiry']
         search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         students_record = students.search(search_domain)
-        students_values = states_record.read(["first_name", "last_name","name","id"])
+        students_values = students_record.read(["first_name", "last_name","name","id"])
         # states.sudo().write();
         return json.dumps(students_values)
