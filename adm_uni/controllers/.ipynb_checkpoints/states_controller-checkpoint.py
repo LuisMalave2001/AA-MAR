@@ -14,7 +14,7 @@ class StateController(http.Controller):
         states_record = states.search(search_domain)
         states_values = states_record.read(["name", "country_id"])
         return json.dumps(states_values)
-
+    
     @http.route("/admission/adm_uni", auth="public", methods=["GET"])
     def get_adm_uni(self, **params):
         # print(http.request.httprequest.args.getlist("test"))
@@ -24,3 +24,5 @@ class StateController(http.Controller):
         students_values = states_record.read(["first_name", "last_name","name","id"])
         # states.sudo().write();
         return json.dumps(students_values)
+
+    
