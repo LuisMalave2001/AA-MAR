@@ -16,9 +16,9 @@ class StudentController(http.Controller):
         
         students_values = students_record.read(["id","birthdate","city","country_id","create_date","create_uid","current_school","current_school_address","email","first_name","gender","last_name","name","phone","state_id","street_address","write_date","write_uid","zip"])
         
-        students_values["birthdate"] = str(students_values["birthdate"])
-        students_values["create_date"] = str(students_values["create_date"])
-        students_values["write_date"] = str(students_values["write_date"])
+        students_values[1] = strftime(students_values[1])
+        students_values[5] = strftime(students_values[5])
+        students_values[17] = strftime(students_values[17])
         
         # states.sudo().write();
         return json.dumps(students_values)
