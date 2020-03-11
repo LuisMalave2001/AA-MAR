@@ -22,17 +22,17 @@ class StudentController(http.Controller):
         
         fecha_str = students_values[1]
         
-        date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
+        #date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
 
-        fecha_str = datetime.strftime(date_object, '%dd/%mm/%Y')
+        #fecha_str = datetime.strftime(fecha_str, '%dd/%mm/%Y')
 
-        students_values[1] = fecha_str
+        #students_values[1] = fecha_str
 
-
+        print("fecha_str:", fecha_str)
     
         # students_values[1] = students_values[1].strftime("%H:%M:%S")
         # students_values[5] = strftime(students_values[5])
         # students_values[17] = strftime(students_values[17])
         
         # states.sudo().write();
-        return json.dumps(students_values)
+        #return json.dumps(students_values)
