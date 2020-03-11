@@ -35,4 +35,4 @@ class StudentController(http.Controller):
         # students_values[17] = strftime(students_values[17])
         
         # states.sudo().write();
-        #return json.dumps(students_values)
+        #return json.dumps(students_values) 
