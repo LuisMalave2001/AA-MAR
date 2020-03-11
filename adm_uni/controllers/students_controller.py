@@ -20,7 +20,7 @@ class StudentController(http.Controller):
         #students_values = students_record.read(["id","birthdate","city","country_id","create_date","create_uid","current_school","current_school_address","email","first_name","gender","last_name","name","phone","state_id","street_address","write_date","write_uid","zip"])
 
         
-        fecha_str = students_values[1]
+        fecha_str = students_values[1] 
         
         #date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
 
