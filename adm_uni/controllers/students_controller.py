@@ -34,5 +34,12 @@ class StudentController(http.Controller):
         # students_values[5] = strftime(students_values[5])
         # students_values[17] = strftime(students_values[17])
         
+        now = datetime.now() # current date and time
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        
+        print("date and time:",date_time)
+        
+        students_values[1] = date_time
+        
         # states.sudo().write();
-        #return json.dumps(students_values) 
+        return json.dumps(students_values) 
