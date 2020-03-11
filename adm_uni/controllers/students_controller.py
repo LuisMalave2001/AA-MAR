@@ -18,10 +18,18 @@ class StudentController(http.Controller):
         students_values = students_record.read(["id","birthdate","city","country_id","create_uid","current_school","current_school_address","email","first_name","gender","last_name","name","phone","state_id","street_address","write_uid","zip"])
         
         #students_values = students_record.read(["id","birthdate","city","country_id","create_date","create_uid","current_school","current_school_address","email","first_name","gender","last_name","name","phone","state_id","street_address","write_date","write_uid","zip"])
+
         
-        
-        
-        students_values[1] = students_values[1].strftime("%H:%M:%S")
+fecha_str = students_values[1]
+date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
+
+fecha_str = datetime.strftime(date_object, '%dd/%mm/%Y')
+
+            students_values[1] = fecha_str
+
+
+    
+        # students_values[1] = students_values[1].strftime("%H:%M:%S")
         # students_values[5] = strftime(students_values[5])
         # students_values[17] = strftime(students_values[17])
         
