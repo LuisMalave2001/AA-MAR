@@ -28,7 +28,7 @@ class StudentController(http.Controller):
 
         #students_values[1] = fecha_str
 
-        print("fecha_str:", fecha_str)
+        print("Fecha:", fecha_str)
     
         # students_values[1] = students_values[1].strftime("%H:%M:%S")
         # students_values[5] = strftime(students_values[5])
