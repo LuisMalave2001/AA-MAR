@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import http
-from . import base_controller as base
+from . import base_controller as base	
+from datetime import datetime
 import json
 
 
@@ -20,7 +21,7 @@ class StudentController(http.Controller):
         
         
         
-        # students_values[1] = strftime(students_values[1])
+        students_values[1] = students_values[1].strftime("%H:%M:%S")
         # students_values[5] = strftime(students_values[5])
         # students_values[17] = strftime(students_values[17])
         
