@@ -12,5 +12,5 @@ class StudentController(http.Controller):
         search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         students_record = students.search(search_domain)
         students_values = students_record.read(["id","city","first_name"]) 
-        return json.dumps(states_values)
+        return json.dumps(states_values) 
 
