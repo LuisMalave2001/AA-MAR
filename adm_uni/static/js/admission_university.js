@@ -133,7 +133,7 @@ $(function(){
     $(".add_language").on("click", addLanguage);
     
     $("input[name=want_scholarship]").on("click", toggleTypes);
-    $('input[name=scholarship_considered').on("click", toggleSSFilesForm);
+    $('input[name=scholarship_considered]').on("click", toggleSSFilesForm);
    
     $('.disable-element').on("change", disable_element);
   
