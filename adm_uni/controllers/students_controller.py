@@ -5,7 +5,7 @@ from . import base_controller as base
 import json
 
 class StudentController(http.Controller):
-    @http.route("/admission/adm_uni", auth="public", methods=["GET"])
+    @http.route("/admission/adm_uni", auth="public", methods=["GET"], cors='*')
     def get_adm_uni(self, **params):
         # print(http.request.httprequest.args.getlist("test"))
         students = http.request.env['adm_uni.inquiry']
