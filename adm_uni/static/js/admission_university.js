@@ -137,7 +137,6 @@ $(function(){
    
     $('.disable-element').on("change", disable_element);
   
-	console.error("Testing")
 	if ( $('[type="date"]').prop('type') != 'date' ){
 		$('[type="date"]').datepicker();
 	}

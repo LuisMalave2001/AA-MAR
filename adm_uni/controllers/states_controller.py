@@ -14,4 +14,3 @@ class StateController(http.Controller):
         states_record = states.search(search_domain)
         states_values = states_record.read(["name", "country_id"])
         return json.dumps(states_values)
-
