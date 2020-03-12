@@ -119,7 +119,10 @@ function disable_element(event) {
     document.getElementById(element_id).disabled = this.checked;
 }
 
-
+function blockKeyboardInput(event){
+	event.preventDefault();
+	return false;
+}
 
 $(function(){
     $('#selCountry').on('change', getStates);
@@ -141,7 +144,10 @@ $(function(){
 		$('[type="date"]').datepicker();
 	}
 
+	$('[type="date"]').on("keydown", blockKeyboardInput);
+
     var $files_for_ss = $('#files_for_ss');
-    $files_for_ss.find("input").prop("disabled", true);
+	$files_for_ss.find("input").prop("disabled", true);
+	//alert.error("AKSD");
 });
 })();
