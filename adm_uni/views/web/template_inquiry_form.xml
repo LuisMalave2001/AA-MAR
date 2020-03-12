@@ -214,6 +214,10 @@
                     </form>
                 </main>
             </div>
+            <!-- Datepicker Boostrap, soon, tempusdominus in odoo13-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" />
+
             <script type="text/javascript" src="/adm_uni/static/js/admission_university.js"></script>
         </t>
     </template>

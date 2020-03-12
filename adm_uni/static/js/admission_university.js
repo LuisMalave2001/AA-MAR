@@ -1,45 +1,12 @@
+(function(){
+	
 "use strict"
 var studentCount = 1;
 
 function removeStudent(idStudent){
     studentCount--;
-    $(`#navStudent${idStudent}`).remove();
-    $(`#student${idStudent}`).remove();
-}
-
-function addStudent(){
-    studentCount++;
-    var htmlTab =
-`<li class="nav-item" style="position: relative" id="navStudent${studentCount}">
-    <a class="nav-link" id="student${studentCount}-tab" data-toggle="tab" href="#student${studentCount}"
-       role="tab" aria-controls="student${studentCount}" aria-selected="false">Student ${studentCount}</a>
-       <i class="fa fa-times" style="position: absolute; top: -0.5em; right: 0.1em; font-size: 1.4em; color: orangered; cursor: pointer;"
-          onclick="removeStudent(${studentCount})"></i>
-</li>`;
-
-
-    $(htmlTab).insertBefore($(this).parent());
-
-    $('#studentsCount').val(studentCount);
-
-    var studentClonnable  = document.getElementById("student1").cloneNode(true);
-    var studentTabContent = document.getElementById("studentsTabContent");
-    
-    studentTabContent.appendChild(studentClonnable);
-    
-    // Reassign ids
-    $(studentClonnable).attr("id", "student"+studentCount);
-    $(studentClonnable).attr("aria-labelledby", "student"+studentCount+"-tab");
-    $(studentClonnable).removeClass("active");
-    $(studentClonnable).removeClass("show");
-    
-    // Year List
-    var optionsSchoolYear = $('select#selStudent1SchoolYear option').clone();
-    $('#selStudent'+studentCount+'SchoolYear').append(optionsSchoolYear);
-
-    // Grade Level List
-    var optionsGradeLevel = $('select#selStudent1GradeLevel option').clone();
-    $('#selStudent'+studentCount+'GradeLevel').append(optionsGradeLevel);
+    $("#navStudent"+ idStudent).remove();
+    $("#student" + idStudent).remove();
 }
 
 function addContact(){
@@ -121,9 +88,7 @@ function getStates(){
         data: { 'country_id': $('#selCountry').val()},
         success: function(data){
             $.each(JSON.parse(data), function(i, state){
-                // console.log(`<option
-				// value='${state.id}'>${state.name}</option>`);
-                $('#selState').append(`<option value='${state.id}'>${state.name}</option>`)
+                $('#selState').append('<option value="' + state.id + '">' + state.name + '</option>')
             })
         },
         error: function(){
@@ -157,7 +122,6 @@ function disable_element(event) {
 
 
 $(function(){
-    $('#add-tab').on('click', addStudent);
     $('#selCountry').on('change', getStates);
     
     $('.custom-file-input').on("change", function(){
@@ -172,7 +136,13 @@ $(function(){
     $('input[name=scholarship_considered').on("click", toggleSSFilesForm);
    
     $('.disable-element').on("change", disable_element);
-    
+  
+	console.error("Testing")
+	if ( $('[type="date"]').prop('type') != 'date' ){
+		$('[type="date"]').datepicker();
+	}
+
     var $files_for_ss = $('#files_for_ss');
     $files_for_ss.find("input").prop("disabled", true);
 });
+})();
