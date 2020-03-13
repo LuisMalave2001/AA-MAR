@@ -9,9 +9,9 @@ class StudentController(http.Controller):
     def get_adm_uni(self, **params):
         # print(http.request.httprequest.args.getlist("test"))
         students = http.request.env['adm_uni.inquiry']
-        search_domain = [(int(params['country_id']))] if "country_id" in params else []
-        # search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+        # search_domain = [(int(params['country_id']))] if "country_id" in params else []
+        search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         students_record = students.search(search_domain)
-        students_values = students_record.read(["id"/"city"/"first_name"/"country_id"]) 
+        students_values = students_record.read(["id","city","first_name","country_id"]) 
         return json.dumps(students_values)
 
