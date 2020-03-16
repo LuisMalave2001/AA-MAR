@@ -17,7 +17,7 @@ class StudentController(http.Controller):
         
         fecha = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
-        students_values[0]= fecha
+        # students_values[0]= fecha
 
 #fecha_str = students_values[9]
 
