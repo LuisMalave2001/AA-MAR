@@ -3,6 +3,8 @@
 from odoo import http
 from . import base_controller as base
 import json
+from datetime import datetime
+from datetime import date
 
 class StudentController(http.Controller):
     @http.route("/admission/adm_uni", auth="public", methods=["GET"], cors='*')
@@ -12,6 +14,18 @@ class StudentController(http.Controller):
         search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []  
         students_record = students.search(search_domain)
         students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","last_name","name","email"])
-      
+        
+        datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+#fecha_str = students_values[9]
+
+#date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
+
+#fecha_str = datetime.strftime(date_object, '%dd/%mm/%Y')
+
+#students_values[9]= fecha_str     
+        
+
+        
         return json.dumps(students_values)
 
