@@ -13,13 +13,13 @@ class StudentController(http.Controller):
         students = http.request.env['adm_uni.inquiry']        
         search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []  
         students_record = students.search(search_domain)
-        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","last_name","name","email","birthdate"])
+        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","last_name","name","email"])
         
         # datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # students_values_birthdate = "2020-03-03"
 
-fecha_str = students_values[10]
+#fecha_str = students_re[10]
 
 #date_object = datetime.strptime(fecha_str, '%dd/%mm/%Y')
 
