@@ -15,9 +15,10 @@ class StudentController(http.Controller):
         students_record = students.search(search_domain)        
         students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","last_name","name","email","birthdate"])
         
-        date_of_birth = students_values["birthdate"]
-        date_of_birth = date_of_birth.strftime('%dd/%mm/%YYYY')
-        students_values["birthdate"] = date_of_birth
+        for record in student_values:
+            date_of_birth = record["birthdate"]
+            date_of_birth = date_of_birth.strftime('%dd/%mm/%YYYY')
+            record["birthdate"] = date_of_birth
         
         # datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
