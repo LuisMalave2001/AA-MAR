@@ -15,7 +15,7 @@ class StudentController(http.Controller):
         students_record = students.search(search_domain)
         students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","last_name","name","email"])
         
-        fecha = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # students_values[0]= fecha
 
