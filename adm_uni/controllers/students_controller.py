@@ -19,11 +19,13 @@ class StudentController(http.Controller):
         # Se recorre por cada estudiante
         for record in students_values:
             
-            # Convertir fecha a string
-            date_of_birth = record["birthdate"]
-            date_of_birth = date_of_birth.strftime('%d/%m/%Y')
-            record["birthdate"] = date_of_birth
+            # Convertir fecha de nacimiento a string
+            #date_of_birth = record["birthdate"]
+            #date_of_birth = date_of_birth.strftime('%m/%d/%Y')
+            #record["birthdate"] = date_of_birth
 
+
+            record["birthdate"] = record["birthdate"].strftime('%m/%d/%Y')
         
         return json.dumps(students_values)
 
