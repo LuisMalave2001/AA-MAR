@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+from ..utils import commons
+
 from odoo import http
 from datetime import datetime
 import base64
@@ -19,11 +22,13 @@ _logger_ = logging.getLogger()
 class Admission(http.Controller):
     
     def get_partner(self):
-        return http.request.env["res.users"].browse([http.request.session.uid]).partner_id
+        return http.request.env.user.partner_id
     
-    @http.route("/admission-university/application", auth="public", methods=["GET"], website=True)
-    def admission_web(self, **params):
+    @http.route("/admission-university/application-form", auth="public", methods=["GET"], website=True)
+    def admission_web_form(self, **params):
         contact_id = self.get_partner()       
+        countries = http.request.env['res.country']
+        states = http.request.env['res.country.state']
         application_id = contact_id.uni_application_id
         
         if not application_id:
@@ -36,13 +41,48 @@ class Admission(http.Controller):
         language_ids = http.request.env['adm_uni.languages'].browse(http.request.env['adm_uni.languages'].search([]))
         language_level_ids = http.request.env['adm_uni.languages.level'].browse(http.request.env['adm_uni.languages.level'].search([]))
         
-        response = http.request.render('adm_uni.template_admission_application', {
+        response = http.request.render('adm_uni.template_admission_application_form', {
             'contact_id': contact_id,
             'application_status_ids': application_status_ids,
             'language_ids': language_ids.ids,
             'language_level_ids': language_level_ids.ids,
             'contact_time_ids': contact_time_ids,
             'degree_program_ids': degree_program_ids,
+            'countries': countries.search([]),
+            'states': states.search([]),
+            'application_id': application_id,
+        })
+        return response
+        
+    @http.route("/admission-university/application", auth="public", methods=["GET"], website=True)
+    def admission_web(self, **params):
+        contact_id = self.get_partner()       
+        countries = http.request.env['res.country']
+        states = http.request.env['res.country.state']
+        application_id = contact_id.uni_application_id
+        
+        if not application_id:
+            return http.request.render('adm_uni.template_no_application_error')
+        
+        application_status_ids = http.request.env["adm_uni.application.status"].browse(http.request.env["adm_uni.application.status"].search([])).ids
+        contact_time_ids = http.request.env["adm_uni.contact_time"].browse(http.request.env["adm_uni.contact_time"].search([])).ids
+        degree_program_ids = http.request.env["adm_uni.degree_program"].browse(http.request.env["adm_uni.degree_program"].search([])).ids
+        
+        language_ids = http.request.env['adm_uni.languages'].browse(http.request.env['adm_uni.languages'].search([]))
+        language_level_ids = http.request.env['adm_uni.languages.level'].browse(http.request.env['adm_uni.languages.level'].search([]))
+
+        render_template = 'adm_uni.template_admission_application_form' if not contact_id.is_in_application else 'adm_uni.template_admission_application'
+
+        response = http.request.render(render_template, {
+            'contact_id': contact_id,
+            'application_status_ids': application_status_ids,
+            'language_ids': language_ids.ids,
+            'language_level_ids': language_level_ids.ids,
+            'contact_time_ids': contact_time_ids,
+            'degree_program_ids': degree_program_ids,
+            'countries': countries.search([]),
+            'states': states.search([]),
+            'application_id': application_id,
         })
         return response
     
@@ -121,6 +161,17 @@ class Admission(http.Controller):
         merit_or_degree_type = params["scholarship_type"] if "scholarship_type" in params and params["scholarship_type"] else False
         need_based_scholarship = params["scholarship_considered"] if "scholarship_considered" in params and params["scholarship_considered"] else False
          
+        # School information
+        current_school = commons.extractValueFromDict("txtCurrentSchool", params)
+        current_school_address = commons.extractValueFromDict("txtCurrentSchoolAddress", params)
+        
+        # Location
+        country = commons.extractValueFromDict("selCountry", params)
+        state = params["selState"] if params["selState"] != "-1" else False
+        city = commons.extractValueFromDict("txtCity", params)
+        street_address = commons.extractValueFromDict("txtStreetAddress", params)
+        zipCode = commons.extractValueFromDict("txtZip", params)
+
         # Documentation 
         letter_of_motivation_file = params["fileLetterOfMotivation"] if params["fileLetterOfMotivation"] else False
         cv_file = params["fileCV"] if params["fileCV"] else False
@@ -145,6 +196,15 @@ class Admission(http.Controller):
             'merit_or_degree_ss': merit_or_degree_ss,
             'merit_or_degree_type': merit_or_degree_type,
             'need_based_scholarship': need_based_scholarship,
+
+            'country': country,
+            'state': state,
+            'city': city,
+            'street_address': street_address,
+            'zipCode': zipCode,
+
+            'current_school': current_school,
+            'current_school_address': current_school_address,
         }
         
         application_id.write(new_application_dict)

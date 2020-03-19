@@ -1,382 +1,421 @@
 <!-- <?xml version="1.0" encoding="UTF-8"?> -->
 <odoo>
     <template id="adm_uni.template_admission_application_form">
-        <style>
-            .pointer{
-            cursor: pointer;
-            }
-        </style>
-        <div class="oe_structure" />
-        <div class="oe_struture">
-            <main class="container p-4">
-                <div class="d-none" id="selLanguage">
-                    <option value="-1">- Select a language -</option>
-                    <t t-foreach="language_ids" t-as="language">
-                        <option t-att-value="language.id">
-                            <t t-esc="language.name" />
-                        </option>
-                    </t>
-                </div>
-                <div class="d-none" id="selLanguageLevel">
-                    <option value="-1">- Select a level -</option>
-                    <t t-foreach="language_level_ids" t-as="language_level">
-                        <option t-att-value="language_level.id">
-                            <t t-esc="language_level.name" />
-                        </option>
-                    </t>
-                </div>
-                <form action="/admission-university/application" method="post"
-                    class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
-                    <input type="hidden" name="studentsCount" id="studentsCount" value="1" />
-                    <!-- Student -->
-                    <section class="card mt-2">
-                        <section class="card-header">
-                            <h1 class="text-info">Additional Student information</h1>
-                        </section>
-                        <section class="card-body">
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label for="selGender">Gender</label>
-                                    <select type="text" class="form-control" id="selGender" name="selGender"
-                                        placeholder="Gender">
-                                        <option value="m">Male</option>
-                                        <option value="f">Female</option>
-                                        <option value="no_disclose">Prefer not to disclose</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="txtFatherName">Father's Name</label>
-                                    <input type="text" class="form-control" id="txtFatherName"
-                                        name="txtFatherName" placeholder="Father Name" />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="txtMotherName">Mother's Name</label>
-                                    <input type="text" class="form-control" id="txtMotherName"
-                                        name="txtMotherName" placeholder="Mother Name" />
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                    <!-- School Information -->
-                    <section class="card mt-2">
-                        <section class="card-header">
-                            <h1 class="text-info">Additional School Information</h1>
-                        </section>
-                        <section class="card-body">
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label for="txtPreviousSchool">Previous School (if applicable)</label>
-                                    <input type="text" class="form-control" id="txtPreviousSchool"
-                                        name="txtPreviousSchool" placeholder="Previous School" />
-                                </div>
-                                <hr class="w-100" />
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="txtGPA">
-                                        International students:&amp;nbsp; current GPA (e.g. out of 4.0).
-                                        <br/>
-                                        <strong>Leave blank if this does not apply to you</strong>
-                                    </label>
-                                    <input type="number" step="0.01" min="0" max="4" class="form-control"
-                                        id="txtGPA" name="txtGPA" placeholder="GPA"/>
-                                    
-<!--                                     <div t-if="contact_id.country_id.code == 'MA'" class="row"> -->
-<!--                                         <input type="checkbox" class="disable-element col-2" id="chkGPA" data-toggle="txtGPA"/> -->
-<!--                                         <label for="chkGPA" class="col-10">Mark if this section does not apply to your situation.</label> -->
-<!--                                     </div> -->
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="txtCumulativeGrade">
-                                        Moroccan students: current Cumulative Grade (out of 20)
-                                        <br/>
-                                        <strong>Leave blank if this does not apply to you</strong>
-                                    </label>
-                                    <input type="number" step="0.01" min="0" max="20" class="form-control"
-                                        id="txtCumulativeGrade" name="txtCumulativeGrade" placeholder="Cumulative Grade"/>  
-                                    
-<!--                                     <div t-if="contact_id.country_id.code != 'MA'" class="row"> -->
-<!--                                         <input type="checkbox" class="disable-element col-2" id="chkCumulativeGrade" data-toggle="txtCumulativeGrade"/> -->
-<!--                                         <label for="chkCumulativeGrade" class="col-10">Mark if this section does not apply to your situation.</label> -->
-<!--                                     </div> -->
-                                </div>
-                                <small class="col-12 text-danger mb-3">for Moroccan students only</small>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="txtRegionalExam">Regional Exam</label>
-                                    <input type="text" class="form-control" id="txtRegionalExam"
-                                        name="txtRegionalExam" placeholder="Regional Exam" />
-<!--                                     <div t-if="contact_id.country_id.code == 'MA'" class="row"> -->
-<!--                                         <input type="checkbox" class="disable-element col-2" id="chkRegionalExam" data-toggle="txtRegionalExam"/> -->
-<!--                                         <label for="chkRegionalExam" class="col-10">Mark if this section does not apply to your situation.</label> -->
-<!--                                     </div> -->
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="txtBACGrade">BAC Grade (if available)</label>
-                                    <input type="text" class="form-control" id="txtBACGrade" name="txtBACGrade"
-                                        placeholder="BAC Grade"/>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                    
-                    <section class="card mt-2">
-                        <section class="card-header">
-                            <h1 class="text-info">Documentation</h1>
-                        </section>
-                        <section class="card-body">
-                            <div class="row w-100 m-0">
-                                <div class="form-group col-12 col-md-6">
-                                    <div class="custom-file">
-                                        <input type="file" name="fileLetterOfMotivation"
-                                            class="pointer file custom-file-input" data-show-upload="true"
-                                            data-show-caption="true" lass="file" data-show-preview="true"
-                                            id="fileLetterOfMotivation" />
-                                        <label class="custom-file-label" for="fileLetterOfMotivation">Letter of motivation</label>
+        <t t-call="website.layout">
+            <t t-set="title">Application form</t>
+            <link rel="stylesheet" href="/adm_uni/static/css/form_application.css" />
+            <div class="oe_struture" />
+            <div class="oe_struture">
+                <style>
+                    .pointer{
+                    cursor: pointer;
+                    }
+                </style>
+                <div class="oe_structure" />
+                <div class="oe_struture">
+                    <main class="container p-4">
+                        <div class="d-none" id="selLanguage">
+                            <option value="-1">- Select a language -</option>
+                            <t t-foreach="language_ids" t-as="language">
+                                <option t-att-value="language.id">
+                                    <t t-esc="language.name" />
+                                </option>
+                            </t>
+                        </div>
+                        <div class="d-none" id="selLanguageLevel">
+                            <option value="-1">- Select a level -</option>
+                            <t t-foreach="language_level_ids" t-as="language_level">
+                                <option t-att-value="language_level.id">
+                                    <t t-esc="language_level.name" />
+                                </option>
+                            </t>
+                        </div>
+                        <form action="/admission-university/application" method="post" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
+                            <input type="hidden" name="studentsCount" id="studentsCount" value="1" />
+                            <!-- Student -->
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">Additional Student information</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <label for="selGender">Gender</label>
+                                            <select type="text" class="form-control" id="selGender" name="selGender" placeholder="Gender" t-att-value="application_id.gender">
+                                                <option value="m">Male</option>
+                                                <option value="f">Female</option>
+                                                <option value="no_disclose">Prefer not to disclose</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtFatherName">Father's Name</label>
+                                            <input type="text" class="form-control" id="txtFatherName" name="txtFatherName" placeholder="Father Name" t-att-value="application_id.father_name" />
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtMotherName">Mother's Name</label>
+                                            <input type="text" class="form-control" id="txtMotherName" name="txtMotherName" placeholder="Mother Name" t-att-value="application_id.mother_name" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <div class="custom-file">
-                                        <input type="file" name="fileCV" class="pointer file custom-file-input"
-                                            data-show-upload="true" data-show-caption="true" lass="file"
-                                            data-show-preview="true" id="fileCV" />
-                                        <label class="custom-file-label" for="fileCV">C.V</label>
+                                </section>
+                            </section>
+
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">Address Information</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="selCountry">
+                                                Country
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select type="text" class="custom-select" id="selCountry" name="selCountry" placeholder="Country" required="required">
+                                                <option value="-1">-Select a country-</option>
+                                                <t t-foreach="countries" t-as="country">
+                                                    <option t-att-value="country.id">
+                                                        <t t-esc="country.name" />
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="selState">
+                                                State
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select type="text" class="custom-select" id="selState" name="selState" placeholder="State" required="required">
+                                                <option value="-1" selected="selected" disabled="disabled">Select a state</option>
+                                                <t t-foreach="states" t-as="state">
+                                                    <option t-att-value="state.id" t-field="state.name" t-att-data-country="state.country_id.id" />
+                                                </t>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <div class="custom-file">
-                                        <input type="file" name="fileGradeTranscript"
-                                            class="pointer file custom-file-input" data-show-upload="true"
-                                            data-show-caption="true" lass="file" data-show-preview="true"
-                                            id="fileGradeTranscript" />
-                                        <label class="custom-file-label" for="fileGradeTranscript">Grade transcript</label>
+
+                                    <div class="row">
+                                        <div class="form-group col-12 col-md">
+                                            <label for="txtCity">
+                                                City
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" id="txtCity" name="txtCity" placeholder="City" required="required" />
+                                        </div>
+                                        <div class="form-group col-12 col-md">
+                                            <label for="txtStreetAddress">
+                                                Street Address
+                                                <span class="text-danger">
+                                            *
+                                        </span>
+                                            </label>
+                                            <input type="text" class="form-control" id="txtStreetAddress" name="txtStreetAddress" placeholder="Street Address" required="required" />
+                                        </div>
+                                        <div class="form-group col-12 col-md">
+                                            <label for="txtZip">
+                                                Zip
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" id="txtZip" name="txtZip" maxlength="10" placeholder="Zip" required="required" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <div class="custom-file">
-                                        <input type="file" name="fileLettersOfRecommendation"
-                                            class="pointer file custom-file-input" data-show-upload="true"
-                                            data-show-caption="true" lass="file" data-show-preview="true"
-                                            id="fileLettersOfRecommendation" />
-                                        <label class="custom-file-label" for="fileLettersOfRecommendation">Letters of recommendation</label>
+                                </section>
+                            </section>
+
+                            <!-- School Information -->
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">School Information</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtCurrentSchool">Current School</label>
+                                            <input type="text" class="form-control" id="txtCurrentSchool" name="txtCurrentSchool" placeholder="Current School" required="required" />
+                                        </div>
+
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtCurrentSchoolAddress">Current School Address</label>
+                                            <input type="text" class="form-control" id="txtCurrentSchoolAddress" name="txtCurrentSchoolAddress" placeholder="Current School Address" required="required" />
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                    
-                    <section class="card mt-2">
-                        <section class="card-header">
-                            <h1 class="text-info">Additional Contact information</h1>
-                        </section>
-                        <section class="card-body">
-                            <div class="form-group" id="contacts">
-                                <div class="row" id="contact_row">
-                                    <div class="col-5">
-                                        <input class="form-control" name="txtContactName"
-                                            placeholder="Skype, Whatsapp..." />
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <label for="txtPreviousSchool">Previous School (if applicable)</label>
+                                            <input type="text" class="form-control" id="txtPreviousSchool" name="txtPreviousSchool" placeholder="Previous School" />
+                                        </div>
+                                        <hr class="w-100" />
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtGPA">
+                                                International students:&amp;nbsp; current GPA (e.g. out of 4.0).
+                                                <br />
+                                                <strong>Leave blank if this does not apply to you</strong>
+                                            </label>
+                                            <input type="number" step="0.01" min="0" max="4" class="form-control" id="txtGPA" name="txtGPA" placeholder="GPA" />
+
+                                            <!--                                     <div t-if="contact_id.country_id.code == 'MA'" class="row"> -->
+                                            <!--                                         <input type="checkbox" class="disable-element col-2" id="chkGPA" data-toggle="txtGPA"/> -->
+                                            <!--                                         <label for="chkGPA" class="col-10">Mark if this section does not apply to your situation.</label> -->
+                                            <!--                                     </div> -->
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtCumulativeGrade">
+                                                Moroccan students: current Cumulative Grade (out of 20)
+                                                <br />
+                                                <strong>Leave blank if this does not apply to you</strong>
+                                            </label>
+                                            <input type="number" step="0.01" min="0" max="20" class="form-control" id="txtCumulativeGrade" name="txtCumulativeGrade" placeholder="Cumulative Grade" />
+
+                                            <!--                                     <div t-if="contact_id.country_id.code != 'MA'" class="row"> -->
+                                            <!--                                         <input type="checkbox" class="disable-element col-2" id="chkCumulativeGrade" data-toggle="txtCumulativeGrade"/> -->
+                                            <!--                                         <label for="chkCumulativeGrade" class="col-10">Mark if this section does not apply to your situation.</label> -->
+                                            <!--                                     </div> -->
+                                        </div>
+                                        <small class="col-12 text-danger mb-3">for Moroccan students only</small>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtRegionalExam">Regional Exam</label>
+                                            <input type="text" class="form-control" id="txtRegionalExam" name="txtRegionalExam" placeholder="Regional Exam" />
+                                            <!--                                     <div t-if="contact_id.country_id.code == 'MA'" class="row"> -->
+                                            <!--                                         <input type="checkbox" class="disable-element col-2" id="chkRegionalExam" data-toggle="txtRegionalExam"/> -->
+                                            <!--                                         <label for="chkRegionalExam" class="col-10">Mark if this section does not apply to your situation.</label> -->
+                                            <!--                                     </div> -->
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <label for="txtBACGrade">BAC Grade (if available)</label>
+                                            <input type="text" class="form-control" id="txtBACGrade" name="txtBACGrade" placeholder="BAC Grade" />
+                                        </div>
                                     </div>
-                                    <div class="col-5">
-                                        <input class="form-control" name="txtContactId"
-                                            placeholder="phone, email, username..." />
+                                </section>
+                            </section>
+
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">Documentation</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="row w-100 m-0">
+                                        <div class="form-group col-12 col-md-6">
+                                            <div class="custom-file">
+                                                <input type="file" name="fileLetterOfMotivation" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileLetterOfMotivation" />
+                                                <label class="custom-file-label" for="fileLetterOfMotivation">Letter of motivation</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <div class="custom-file">
+                                                <input type="file" name="fileCV" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileCV" />
+                                                <label class="custom-file-label" for="fileCV">C.V</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <div class="custom-file">
+                                                <input type="file" name="fileGradeTranscript" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileGradeTranscript" />
+                                                <label class="custom-file-label" for="fileGradeTranscript">Grade transcript</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12 col-md-6">
+                                            <div class="custom-file">
+                                                <input type="file" name="fileLettersOfRecommendation" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileLettersOfRecommendation" />
+                                                <label class="custom-file-label" for="fileLettersOfRecommendation">Letters of recommendation</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-2">
-                                        <button type="button" class="w-100 btn btn-primary add_contact"
-                                            style="position: relative; overflow: hidden;">
-                                            <i class="fa fa-plus" />
-                                        </button>
+                                </section>
+                            </section>
+
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">Additional Contact information</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="form-group" id="contacts">
+                                        <div class="row" id="contact_row">
+                                            <div class="col-5">
+                                                <input class="form-control" name="txtContactName" placeholder="Skype, Whatsapp..." />
+                                            </div>
+                                            <div class="col-5">
+                                                <input class="form-control" name="txtContactId" placeholder="phone, email, username..." />
+                                            </div>
+                                            <div class="col-2">
+                                                <button type="button" class="w-100 btn btn-primary add_contact" style="position: relative; overflow: hidden;">
+                                                    <i class="fa fa-plus" />
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                    <section class="card mt-2">
-                        <section class="card-header">
-                            <h1 class="text-info">Language Skills</h1>
-                        </section>
-                        <section class="card-body">
-                            <div class="form-group" id="languages">
-                                <div class="row" id="language_row">
-                                    <div class="col-5">
-                                        <select class="form-control" name="selLanguage">
-                                            <option value="-1">- Select a language -</option>
-                                            <t t-foreach="language_ids" t-as="language">
-                                                <option t-att-value="language.id">
-                                                    <t t-esc="language.name" />
-                                                </option>
-                                            </t>
-                                        </select>
+                                </section>
+                            </section>
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">Language Skills</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="form-group" id="languages">
+                                        <div class="row" id="language_row">
+                                            <div class="col-5">
+                                                <select class="form-control" name="selLanguage">
+                                                    <option value="-1">- Select a language -</option>
+                                                    <t t-foreach="language_ids" t-as="language">
+                                                        <option t-att-value="language.id">
+                                                            <t t-esc="language.name" />
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-5">
+                                                <select class="form-control" name="selLanguageLevel">
+                                                    <option value="-1">- Select a level -</option>
+                                                    <t t-foreach="language_level_ids" t-as="language_level">
+                                                        <option t-att-value="language_level.id">
+                                                            <t t-esc="language_level.name" />
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-2">
+                                                <button type="button" class="w-100 btn btn-primary add_language">
+                                                    <i class="fa fa-plus" />
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-5">
-                                        <select class="form-control" name="selLanguageLevel">
-                                            <option value="-1">- Select a level -</option>
-                                            <t t-foreach="language_level_ids" t-as="language_level">
-                                                <option t-att-value="language_level.id">
-                                                    <t t-esc="language_level.name" />
-                                                </option>
-                                            </t>
-                                        </select>
-                                    </div>
-                                    <div class="col-2">
-                                        <button type="button" class="w-100 btn btn-primary add_language">
-                                            <i class="fa fa-plus" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </section>
-                    <section class="card mt-2">
-                        <section class="card-header">
-                            <h1 class="text-info">Scholarship</h1>
-                        </section>
-                        <section class="card-body">
-                            <div class="row w-100 m-0">
-                                <div class="row">
-                                    <p>
-                                        <b>ACC offers three types of scholarships for merit, degree program, and need.
+                                </section>
+                            </section>
+                            <section class="card mt-2">
+                                <section class="card-header">
+                                    <h1 class="text-info">Scholarship</h1>
+                                </section>
+                                <section class="card-body">
+                                    <div class="row w-100 m-0">
+                                        <div class="row">
+                                            <p>
+                                                <b>ACC offers three types of scholarships for merit, degree program, and need.
                                             Merit scholarships are for students with demonstrated excellence in
                                             academics.
                                             Degree program scholarships are for demonstrated excellence in one of ACC's
                                             degree programs. Need scholarships are for students with demonstrated financial
                                             need.
                                         </b>
-                                    </p>
-                                </div>
-                                <fieldset class="form-group col-12">
-                                    <div class="row">
-                                        <legend class="col-form-label col-2 pt-0">
-                                            <b>Do you want to be considered for a merit or degree program scholarship?
+                                            </p>
+                                        </div>
+                                        <fieldset class="form-group col-12">
+                                            <div class="row">
+                                                <legend class="col-form-label col-2 pt-0">
+                                                    <b>Do you want to be considered for a merit or degree program scholarship?
                                             </b>
-                                        </legend>
-                                        <div class="col-8">
-                                            <section class="form-check">
-                                                <input name="want_scholarship" required="required"
-                                                    id="scholarship_yes" class="form-check-input" type="radio"
-                                                    value="true" />
-                                                <label for="scholarship_yes" class="form-check-label">Yes</label>
-                                            </section>
-                                            <section class="form-check">
-                                                <input name="want_scholarship" id="scholarship_no"
-                                                    class="form-check-input" type="radio" value="" />
-                                                <label for="scholarship_no" class="form-check-label">No</label>
-                                            </section>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="form-group col-12">
-                                    <div class="row">
-                                        <legend class="col-form-label col-2 pt-0">
-                                            <b>Which one?</b>
-                                        </legend>
-                                        <div class="col-8">
-                                            <section class="form-check">
-                                                <input name="scholarship_type" id="scholarship_type_merit"
-                                                    type="radio" class="form-check-input" disabled="disabled"
-                                                    value="merit" />
-                                                <label for="scholarship_type_merit" class="form-check-label">Merit</label>
-                                            </section>
-                                            <section class="form-check">
-                                                <input name="scholarship_type"
-                                                    id="scholarship_type_degree_program" class="form-check-input"
-                                                    disabled="disabled" type="radio" value="degree_program" />
-                                                <label for="scholarship_type_degree_program"
-                                                    class="form-check-label">Degree program</label>
-                                            </section>
-                                            <section class="form-check">
-                                                <input name="scholarship_type" id="scholarship_type_both"
-                                                    type="radio" class="form-check-input" disabled="disabled"
-                                                    value="both" />
-                                                <label for="scholarship_type_both" class="form-check-label">Both</label>
-                                            </section>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <hr class="w-100" />
-                                <fieldset class="form-group col-12">
-                                    <div class="row">
-                                        <legend class="col-form-label col-2 pt-0">
-                                            <b>Do you want to be considered for a need-based scholarship?</b>
-                                        </legend>
-                                        <div class="col-8">
-                                            <section class="form-check">
-                                                <input name="scholarship_considered"
-                                                    id="scholarship_considered_yes" class="form-check-input"
-                                                    type="radio" value="true" />
-                                                <label for="scholarship_considered_yes" class="form-check-label">Yes</label>
-                                            </section>
-                                            <section class="form-check">
-                                                <input name="scholarship_considered"
-                                                    id="scholarship_considered_no" class="form-check-input" type="radio"
-                                                    value="" />
-                                                <label for="scholarship_considered_no" class="form-check-label">No</label>
-                                            </section>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <section id="files_for_ss" style="display: none;">
-                                    <h2>Required documents for need-based scholarship seekers (single or multiple file
+                                                </legend>
+                                                <div class="col-8">
+                                                    <section class="form-check">
+                                                        <input name="want_scholarship" required="required" id="scholarship_yes" class="form-check-input" type="radio" value="true" />
+                                                        <label for="scholarship_yes" class="form-check-label">Yes</label>
+                                                    </section>
+                                                    <section class="form-check">
+                                                        <input name="want_scholarship" id="scholarship_no" class="form-check-input" type="radio" value="" />
+                                                        <label for="scholarship_no" class="form-check-label">No</label>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="form-group col-12">
+                                            <div class="row">
+                                                <legend class="col-form-label col-2 pt-0">
+                                                    <b>Which one?</b>
+                                                </legend>
+                                                <div class="col-8">
+                                                    <section class="form-check">
+                                                        <input name="scholarship_type" id="scholarship_type_merit" type="radio" class="form-check-input" disabled="disabled" value="merit" />
+                                                        <label for="scholarship_type_merit" class="form-check-label">Merit</label>
+                                                    </section>
+                                                    <section class="form-check">
+                                                        <input name="scholarship_type" id="scholarship_type_degree_program" class="form-check-input" disabled="disabled" type="radio" value="degree_program" />
+                                                        <label for="scholarship_type_degree_program" class="form-check-label">Degree program</label>
+                                                    </section>
+                                                    <section class="form-check">
+                                                        <input name="scholarship_type" id="scholarship_type_both" type="radio" class="form-check-input" disabled="disabled" value="both" />
+                                                        <label for="scholarship_type_both" class="form-check-label">Both</label>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <hr class="w-100" />
+                                        <fieldset class="form-group col-12">
+                                            <div class="row">
+                                                <legend class="col-form-label col-2 pt-0">
+                                                    <b>Do you want to be considered for a need-based scholarship?</b>
+                                                </legend>
+                                                <div class="col-8">
+                                                    <section class="form-check">
+                                                        <input name="scholarship_considered" id="scholarship_considered_yes" class="form-check-input" type="radio" value="true" />
+                                                        <label for="scholarship_considered_yes" class="form-check-label">Yes</label>
+                                                    </section>
+                                                    <section class="form-check">
+                                                        <input name="scholarship_considered" id="scholarship_considered_no" class="form-check-input" type="radio" value="" />
+                                                        <label for="scholarship_considered_no" class="form-check-label">No</label>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <section id="files_for_ss" style="display: none;">
+                                            <h2>Required documents for need-based scholarship seekers (single or multiple file
                                         upload)</h2>
-                                    <fieldset class="form-group col-12">
-                                        <div class="row">
-                                            <legend class="col-form-label col-2 pt-0">For Moroccan Students</legend>
-                                            <div class="col-8">
-                                                <section>
-                                                    <label for="ss_attestation_salaire">Attestation Salaire for working parents or student
+                                            <fieldset class="form-group col-12">
+                                                <div class="row">
+                                                    <legend class="col-form-label col-2 pt-0">For Moroccan Students</legend>
+                                                    <div class="col-8">
+                                                        <section>
+                                                            <label for="ss_attestation_salaire">Attestation Salaire for working parents or student
                                                         applicants</label>
-                                                    <input name="ss_attestation_salaire"
-                                                        id="ss_attestation_salaire" type="file" multiple="true"
-                                                        disabled="" />
-                                                </section>
-                                                <section>
-                                                    <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or
+                                                            <input name="ss_attestation_salaire" id="ss_attestation_salaire" type="file" multiple="true" disabled="" />
+                                                        </section>
+                                                        <section>
+                                                            <label for="ss_bulletin_de_paie">Most recent Bulletin de Paie for working parents or
                                                         student applicants</label>
-                                                    <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie"
-                                                        type="file" multiple="true" disabled="" />
-                                                </section>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <hr class="w-100" />
-                                    <fieldset class="form-group col-12">
-                                        <div class="row">
-                                            <legend class="col-form-label col-2 pt-0">For international applicants (document upload)</legend>
-                                            <div class="col-8">
-                                                <section>
-                                                    <label for="ss_most_recent_tax">Most recent tax returns of parents or student
+                                                            <input name="ss_bulletin_de_paie" id="ss_bulletin_de_paie" type="file" multiple="true" disabled="" />
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <hr class="w-100" />
+                                            <fieldset class="form-group col-12">
+                                                <div class="row">
+                                                    <legend class="col-form-label col-2 pt-0">For international applicants (document upload)</legend>
+                                                    <div class="col-8">
+                                                        <section>
+                                                            <label for="ss_most_recent_tax">Most recent tax returns of parents or student
                                                         applicant</label>
-                                                    <input name="ss_most_recent_tax" id="ss_most_recent_tax"
-                                                        type="file" multiple="true" disabled="" />
-                                                </section>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <hr class="w-100" />
-                                    <fieldset class="form-group col-12">
-                                        <div class="row">
-                                            <legend class="col-form-label col-2 pt-0">Optional documents for both Moroccan and international
+                                                            <input name="ss_most_recent_tax" id="ss_most_recent_tax" type="file" multiple="true" disabled="" />
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <hr class="w-100" />
+                                            <fieldset class="form-group col-12">
+                                                <div class="row">
+                                                    <legend class="col-form-label col-2 pt-0">Optional documents for both Moroccan and international
                                                 applicants (possibility for multiple document upload)</legend>
-                                            <div class="col-8">
-                                                <section>
-                                                    <label for="ss_other_revelants">
+                                                    <div class="col-8">
+                                                        <section>
+                                                            <label for="ss_other_revelants">
                                                         Any other relevant document(s) showing
                                                         financial need such as Extrait de Compte for
                                                         all bank accounts, loan payment agreements for
                                                         property, rental agreements for home, etc.
                                                     </label>
-                                                    <input name="ss_other_revelants" id="ss_other_revelants"
-                                                        type="file" multiple="true" disabled="" />
-                                                </section>
-                                            </div>
-                                        </div>
-                                    </fieldset>
+                                                            <input name="ss_other_revelants" id="ss_other_revelants" type="file" multiple="true" disabled="" />
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </section>
+                                    </div>
                                 </section>
+                            </section>
+                            <div class="row justify-content-center m-3">
+                                <button type="submit" class="btn btn-primary">Request</button>
                             </div>
-                        </section>
-                    </section>
-                    <div class="row justify-content-center m-3">
-                        <button type="submit" class="btn btn-primary">Request</button>
-                    </div>
-                </form>
-            </main>
-        </div>
-        <script type="text/javascript" src="/adm_uni/static/js/admission_university.js" />
+                        </form>
+                    </main>
+                </div>
+                <script type="text/javascript" src="/adm_uni/static/js/admission_university.js" />
+            </div>
+        </t>
     </template>
 </odoo>

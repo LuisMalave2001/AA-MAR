@@ -44,6 +44,16 @@ function removeContact(){
 	$(this).parent().parent().remove();
 }
 
+function changeState() {
+	var select_state = $('#selState');
+	select_state.children("option:gt(0)").hide();
+	select_state.children("option[data-country='" + $(this).val() + "']").show();
+
+	if (select_state.children("option:selected").is(":hidden")){
+		select_state.children("option:nth(0)").prop("selected", true);
+	}
+}
+
 function addLanguage(){
 	
 	$(this).find("i").removeClass("fa-plus").addClass("fa-minus");
@@ -125,7 +135,7 @@ function blockKeyboardInput(event){
 }
 
 $(function(){
-    $('#selCountry').on('change', getStates);
+    $('#selCountry').on('change', changeState);
     
     $('.custom-file-input').on("change", function(){
     	var fileName = $(this)[0].files[0].name;

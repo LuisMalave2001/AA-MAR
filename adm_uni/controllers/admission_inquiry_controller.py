@@ -14,10 +14,28 @@ def post_parameters():
 
 class Admission(http.Controller):
 
-    #===================================================================================================================
-    # @http.route("/")
-    # def
-    #===================================================================================================================
+    @http.route("/admission-university/inquiry", auth="public", methods=["POST"], website=True, csrf=False)
+    def add_inquiry(self, **params):
+
+        field_ids = http.request.env.ref("adm_uni.model_adm_uni_inquiry").sudo().field_id
+        fields = [field_id.name for field_id in field_ids]
+        keys = params.keys() & fields
+        result = {k:params[k] for k in keys}
+        field_types = {field_id.name:field_id.ttype for field_id in field_ids}
+
+        many2one_fields = [name for name, value in field_types.items() if value == "many2one"]
+        for key in result.keys():
+            if key in many2one_fields:
+                result[key] = int(result[key])
+                if result[key] == -1:
+                    result[key] = False
+                    pass    
+        
+        if result:
+            new_inquiry = http.request.env["adm_uni.inquiry"].sudo().create(result)
+
+        response = http.request.render('adm_uni.template_inquiry_sent')
+        return response
 
     @http.route("/admission-university/inquiry", auth="public", methods=["GET"], website=True)
     def admission_web(self, **params):
@@ -31,61 +49,84 @@ class Admission(http.Controller):
             'degree_program_ids': degree_programs.browse(degree_programs.search([])),
         })
         return response
-
-    @http.route("/admission-university/inquiry", auth="public", methods=["POST"], website=True, csrf=False)
-    def add_inquiry(self, **params):
-        if "txtMiddleName" not in params:
-            params["txtMiddleName"] = ""
+    
+     #===================================================================================================================
+     # @http.route("/")
+     # def
+     #===================================================================================================================
+#    @http.route("/admission-university/inquiry", auth="public", methods=["POST"], website=True, csrf=True)
+#    def write_application(self, inquiry_id, **params):
+#        field_ids = http.request.env.ref("adm_.model_adm_uni_inquiry").sudo().field_id
+#        fields = [field_id.name for field_id in field_ids]
+#        keys = params.keys() & fields
+#        result = {k:params[k] for k in keys}
+#        field_types = {field_id.name:field_id.ttype for field_id in field_ids}
+#        
+#        # if field_id.ttype != 'one2many' and field_id.ttype != 'many2many'
+#            
+#        many2one_fields = [name for name, value in field_types.items() if value == "many2one"]
+#        for key in result.keys():
+#            if key in many2one_fields:
+#                result[key] = int(result[key])
+#                if result[key] == -1:
+#                    result[key] = False
+#                    pass    
+        
+        #===============================================================================================================
+        # one2many_fields = [name for name, value in field_types.items() if value == "one2many"]
+        # many2many_fields = [name for name, value in field_types.items() if value == "many2many"]
+        #  
+        # for key in post_params.keys():
+        #     if key in many2many_fields:
+        #         pass
+        #===============================================================================================================
+        
+#        if result:
+#            http.request.env["adm_uni.inquiry"].browse([application_id]).sudo().write(result)
             
+#        return http.request.redirect(http.request.httprequest.referrer)
+
+
+
+
         # Personal Info
-        first_name = params["txtFirstName"]
-        last_name = params["txtLastName"]
-        middle_name = params["txtMiddleName"]
-        birthdate = params["txtBirthdate"]
+        #first_name = params["txtFirstName"]
+        #last_name = params["txtLastName"]
+        #middle_name = params["txtMiddleName"]
+        #birthdate = params["txtBirthdate"]
         
         # Contact
-        phone = params["txtPhone"]
-        email = params["txtEmail"]
-        
-        # School information
-        current_school = params["txtCurrentSchool"]
-        current_school_address = params["txtCurrentSchoolAddress"]
-        
-        # Location
-        country = params["selCountry"]
-        state = params["selState"] if params["selState"] != "-1" else False
-        city = params["txtCity"]
-        street_address = params["txtStreetAddress"]
-        zipCode = params["txtZip"]
+        #phone = params["txtPhone"]
+        #email = params["txtEmail"]
         
         
-        contact_time_id = int(params["selPreferredContactTime"]) if params["selPreferredContactTime"] else False
-        degree_program_id = int(params["selPreferredDegreeProgram"]) if params["selPreferredDegreeProgram"] else False
+        #contact_time_id = int(params["selPreferredContactTime"]) if params["selPreferredContactTime"] else False
+        #degree_program_id = int(params["selPreferredDegreeProgram"]) if params["selPreferredDegreeProgram"] else False
         
-        new_student_dict = {
-            'first_name': first_name,
-            'middle_name': middle_name,
-            'last_name': last_name,
-            'birthdate': birthdate,
-            
-            'email': email,
-            'phone': phone,
-            
-            'current_school': current_school,
-            'current_school_address': current_school_address,
+        #new_student_dict = {
+        #    'first_name': first_name,
+        #    'middle_name': middle_name,
+        #    'last_name': last_name,
+        #    'birthdate': birthdate,
+        #    
+        #    'email': email,
+        #    'phone': phone,
+        #    
+        #    'current_school': current_school,
+        #    'current_school_address': current_school_address,
 
-            'country_id': country,
-            'state_id': state,
-            'city': city,
-            'street_address': street_address,
-            'zip': zipCode,
-            
-            'preferred_degree_program': degree_program_id,
-            'contact_time_id': contact_time_id,
-        }
+        #    'country_id': country,
+        #    'state_id': state,
+        #    'city': city,
+        #    'street_address': street_address,
+        #    'zip': zipCode,
+        #    
+        #    'preferred_degree_program': degree_program_id,
+        #    'contact_time_id': contact_time_id,
+        #}
         
-        InquiryEnv = http.request.env["adm_uni.inquiry"]
-        student = InquiryEnv.sudo().create(new_student_dict)
+        #InquiryEnv = http.request.env["adm_uni.inquiry"]
+        #student = InquiryEnv.sudo().create(new_student_dict)
         
-        response = http.request.render('adm_uni.template_inquiry_sent')
-        return response
+        #response = http.request.render('adm_uni.template_inquiry_sent')
+        #return response
