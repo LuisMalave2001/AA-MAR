@@ -40,13 +40,13 @@ class StudentController(http.Controller):
             attachments = http.request.env['ir.attachment']        
         
             #filtro del modelo basados en parametros de la url
-            search_domain_attach = [("res_model", "=", "adm_uni.inquiry")]
+            search_domain_attach = [("res_model", "=", "adm_uni.inquiry"),("res_id","=",record["id"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
             attachments_record = attachments.search(search_domain_attach)      
         
             #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-            attachments_values = attachments_record.read(["id","url"])    
+            attachments_values = attachments_record.read(["id"])    
             record["phone"] = json.dumps(attachments_values)
             
         #students_values.append("test")
