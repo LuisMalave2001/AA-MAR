@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, exceptions, _
 from ..utils import formatting
+from ..utils import commons
 
 from . import selection_options as sel_opt
+from odoo import models, fields, api, exceptions, _
 
 status_types = [
     ("stage", "Stage"),
@@ -59,22 +60,11 @@ class Inquiry(models.Model):
     email = fields.Char(string="Email", related="partner_id.email", index=True, required=True, readonly=False)
     phone = fields.Char(string="Phone", related="partner_id.phone", required=True, readonly=False)
     
-    # School
-    current_school = fields.Char(string="Current School")
-    current_school_address = fields.Char(string="Current School Address")
-    
     # Skills
     language_ids = fields.One2many("adm_uni.inquiry.languages", "inquiry_id",
                                     string="Languages")
     
     # Location
-    country_id = fields.Many2one("res.country", related="partner_id.country_id", string="Country", required=True, readonly=False)
-    state_id = fields.Many2one("res.country.state", related="partner_id.state_id", string="State", readonly=False)
-    city = fields.Char(string="City", related="partner_id.city", required=True, readonly=False)
-    street_address = fields.Char(string="Street Address", related="partner_id.street", required=True, readonly=False)
-    zip = fields.Char("zip", related="partner_id.zip", required=True, readonly=False)
-    
-    
     partner_id= fields.Many2one("res.partner", string="Contact")
     status_id = fields.Many2one("adm_uni.inquiry.status",
                                 string="Status", group_expand="_read_group_status_ids")
@@ -169,7 +159,7 @@ class Inquiry(models.Model):
         values['name'] = formatting.format_name(values['first_name'], values['middle_name'], values['last_name']) 
         
         if not "partner_id" in values or not values["partner_id"]:
-            partner = self.create_new_partner(values)
+            partner = self.get_partner(values)
             values["partner_id"] = partner.id
         else:
             partner = self.env["res.partner"].browse(values["partner_id"])
@@ -179,31 +169,35 @@ class Inquiry(models.Model):
         
         return inquiry
 
-    def create_new_partner(self, values):
-        PartnerEnv = self.env["res.partner"]
-          
-        partner = PartnerEnv.create({
-            "name": values["name"], 
-            "email": values["email"],
-            "phone": values["phone"],
-            "country_id": values["country_id"],
-            "state_id": values["state_id"],
-            "city": values["city"],
-            "street": values["street_address"],
-            "zip": values["zip"],
-        })
-         
-        
-        #===============================================================================================================
-        # user = UsersEnv.create({
-        #     "name": values["name"],
-        #     "partner_id": partner.id,
-        #     "login": values["email"],
-        #     "sel_groups_1_9_10": 9,
-        # })
-        #===============================================================================================================
-         
-        return partner
+    def get_partner(self, values):
+        """Get a partner associated with the email in values
+        Args:
+            values (dict): The values where we extract the... values...
+        Return
+            email-associated partner
+        """
+        email = commons.extractValueFromDict("email", values)
+        if email:
+            PartnerEnv = self.env["res.partner"]
+            
+            partner = PartnerEnv.search([ ('email', '=', email) ])
+
+            if not partner:
+                partner = PartnerEnv.create({
+                    "name": commons.extractValueFromDict("name", values),
+                    "email": email, 
+                    "phone": commons.extractValueFromDict("phone", values),
+                    "name": commons.extractValueFromDict("name", values),
+                    "country_id": commons.extractValueFromDict("country_id", values),
+                    "state_id": commons.extractValueFromDict("state_id", values),
+                    "city": commons.extractValueFromDict("city", values),
+                    "street": commons.extractValueFromDict("street", values),
+                    "zip": commons.extractValueFromDict("zip", values),
+                })
+
+            return partner
+        else:
+            return False
     
     
     def create_new_application(self):
@@ -233,9 +227,6 @@ class Inquiry(models.Model):
             
             'preferred_degree_program': self.preferred_degree_program.id,
             'contact_time_id': self.contact_time_id.id,
-            
-            "current_school": self.current_school,
-            "current_school_address": self.current_school_address,
             
             "partner_id": self.partner_id.id,
         })

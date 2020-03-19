@@ -221,7 +221,28 @@ class Application(models.Model):
 
         status_ids = self.env['adm_uni.application.status'].search([])
 
-        print(status_ids)
+        partner_related_fields = dict()
+        # "related" in self.fields_get()["email"]
+        # Se puede hacer totalmente dinamico, no lo hago ahora por falta de tiempo
+        # Pero sin embargo, es totalmente posible. 
+        # Los no related directamente no tiene related, y los que si son
+        # tiene el campo related de la siguiente manera: (model, field)
+        # fields = self.fields_get()
+        
+        if "country_id" in values:
+            partner_related_fields["country_id"] = values["country_id"]
+        if "state_id" in values:
+            partner_related_fields["state_id"] = values["state_id"]
+        if "city" in values:
+            partner_related_fields["city"] = values["city"]
+        if "street" in values:
+            partner_related_fields["street"] = values["street"]
+        if "zip" in values:
+            partner_related_fields["zip"] = values["zip"]
+            
+        self.partner_id.write(partner_related_fields)
+
+        # print(status_ids)
         
         if "status_id" in values and not self.forcing:
             if not self.state_tasks & self.task_ids == self.state_tasks and self:
