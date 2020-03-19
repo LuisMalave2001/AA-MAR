@@ -35,8 +35,21 @@ class StudentController(http.Controller):
             record["__last_update"] = record["__last_update"].strftime('%m/%d/%Y')
             record["create_date"] = record["create_date"].strftime('%m/%d/%Y')
             record["write_date"] = record["write_date"].strftime('%m/%d/%Y')   
-                
-        students_values.append("test")
+            
+            #crea una variable con el modelo desde donde se va a tomar la información
+            attachments = http.request.env['ir.attachment']        
+        
+            #filtro del modelo basados en parametros de la url
+            search_domain_attach = [("res_model", "=", "adm_uni.inquiry"),("res_id","=",record["id"])]
+        
+            #Tomar informacion basado en el modelo y en el domain IDS
+            attachments_record = attachments.search(search_domain_attach)      
+        
+            #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
+            attachments_values = attachments_record.read(["id","url"])    
+            record.append(json.dumps(attachments_values))
+            
+        #students_values.append("test")
         #pintar la información obtenida, esto lo utilizamos para parsearlo en el ajax.         
         return json.dumps(students_values)
 
