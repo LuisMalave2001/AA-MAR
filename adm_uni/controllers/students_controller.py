@@ -47,7 +47,7 @@ class StudentController(http.Controller):
         
             #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
             attachments_values = attachments_record.read(["id","url"])    
-            #record.append(json.dumps(attachments_values))
+            record.append("json.dumps(attachments_values)")
             
         #students_values.append("test")
         #pintar la información obtenida, esto lo utilizamos para parsearlo en el ajax.         
