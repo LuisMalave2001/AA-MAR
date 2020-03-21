@@ -7,33 +7,10 @@
             <div class="oe_struture" />
             <div class="oe_struture">
                 <main class="container">
-                    <section class="row">
-                        <b>Current Status:</b>
-                        <ul class="progressbar col">
-                            <t t-set="current" t-value="False" />
-                            <t t-foreach="application_status_ids" t-as="application_status_id">
-                                <t t-if="contact_id.uni_application_id.status_id.id == application_status_id.id">
-                                    <t t-set="current" t-value="True" />
-                                    <li class="current">
-                                        <t t-esc="application_status_id.name" />
-                                    </li>
-                                </t>
-                                <t t-else="">
-                                    <t t-if="current">
-                                        <li>
-                                            <t t-esc="application_status_id.name" />
-                                        </li>
-                                    </t>
-                                    <t t-else="">
-                                        <li class="active">
-                                            <t t-esc="application_status_id.name" />
-                                        </li>
-                                    </t>
-                                </t>
-                            </t>
-                        </ul>
+                    <section class="text-center h3">
+                        <b>Current Status:</b> <t t-esc="application_id.status_id.name" />
                     </section>
-                    <section class="row justify-content-center p-2">
+                    <section t-if="application_id.status_type == 'return_for_update'" class="row justify-content-center p-2">
                         <a class="btn btn-primary text-white text-center" role="button" href="/admission-university/application-form">
                             Go to application form
                             <i class="fa fa-arrow-right" />

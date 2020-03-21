@@ -7,9 +7,10 @@ from . import selection_options as sel_opt
 
 status_types = [
     ("stage", "Stage"),
-    ("completed_form", "Completed Form"),
+    ("submitted_form", "Submitted Form"),
     ("fact_integration", "Facts Integration"),
     ("cancelled", "Cancelled"),
+    ("return_for_update", "Return for Update"),
 ]
 
 ss_types = [
@@ -58,7 +59,7 @@ class Application(models.Model):
     first_name = fields.Char(string="First Name", default="")
     middle_name = fields.Char(string="Middle Name", default="")
     last_name = fields.Char(string="Last Name", default="")
-    birthdate = fields.Date(string="Birthdate")
+    date_of_birth = fields.Date(string="Date of birth")
     gender = fields.Selection(sel_opt.genders, string="Gender")
     father_name = fields.Char("Father name")
     mother_name = fields.Char("Mother name")
@@ -119,15 +120,21 @@ class Application(models.Model):
     status_type = fields.Selection(string="Status Type", related="status_id.type")
     forcing = False
 
+    @api.multi
     def _move_to_status(self, status_name):
+        status_id = False
         status_ids_ordered = self.env['adm_uni.application.status'].search([], order="sequence")
         for status in status_ids_ordered:
             if status.type == status_name:
-                self.status_id = status
+                status_id = status
                 break
+        return self.write({
+            'status_id': status_id.id,
+        })
+       
 
-    def move_completed_form(self):
-        self._move_to_status("completed_form")
+    def move_submitted_form(self):
+        self._move_to_status("submitted_form")
 
     @api.multi
     def message_get_suggested_recipients(self):
@@ -229,16 +236,16 @@ class Application(models.Model):
         # tiene el campo related de la siguiente manera: (model, field)
         # fields = self.fields_get()
         
-        if "country_id" in values:
-            partner_related_fields["country_id"] = values["country_id"]
-        if "state_id" in values:
-            partner_related_fields["state_id"] = values["state_id"]
+        if "country" in values:
+            partner_related_fields["country_id"] = values["country"]
+        if "state" in values:
+            partner_related_fields["state_id"] = values["state"]
         if "city" in values:
             partner_related_fields["city"] = values["city"]
-        if "street" in values:
-            partner_related_fields["street"] = values["street"]
-        if "zip" in values:
-            partner_related_fields["zip"] = values["zip"]
+        if "street_address" in values:
+            partner_related_fields["street"] = values["street_address"]
+        if "zipCode" in values:
+            partner_related_fields["zip"] = values["zipCode"]
             
         self.partner_id.write(partner_related_fields)
 

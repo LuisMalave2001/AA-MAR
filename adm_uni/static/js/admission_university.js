@@ -21,6 +21,7 @@ function addContact(){
 	// Create new contact
 	var contactHtml =
 	'<div class="row mt-3">'+
+	'    <input type="hidden" name="other_contact_id" value="-1"/>'+
 	'    <div class="col-5">'+
 	'        <input class="form-control" name="txtContactName"'+
 	'            placeholder="Skype, Whatsapp..." />'+
@@ -49,7 +50,7 @@ function changeState() {
 	select_state.children("option:gt(0)").hide();
 	select_state.children("option[data-country='" + $(this).val() + "']").show();
 
-	if (select_state.children("option:selected").is(":hidden")){
+	if (select_state.children("option:selected").css("display") == "none"){
 		select_state.children("option:nth(0)").prop("selected", true);
 	}
 }
@@ -66,6 +67,7 @@ function addLanguage(){
 	
 	var langaugeRow = 
 	'<div class="col-5">'+
+	'    <input type="hidden" name="other_contact_id" value="-1"/>'+
 	'    <select class="form-control selectLanguage" name="selLanguage">'+
 	'    </select>'+
 	'</div>'+
@@ -136,14 +138,18 @@ function blockKeyboardInput(event){
 
 $(function(){
     $('#selCountry').on('change', changeState);
-    
+	$('#selCountry').trigger('change');
+	
     $('.custom-file-input').on("change", function(){
-    	var fileName = $(this)[0].files[0].name;
+		var fileName = $(this)[0].files[0].name;
     	$(this).next("label").text(fileName);
     });
     
     $(".add_contact").on("click", addContact);
-    $(".add_language").on("click", addLanguage);
+	$(".add_language").on("click", addLanguage);
+
+	$('.remove_contact').on('click', removeContact);
+	$('.remove_language').on('click', removeContact);
     
     $("input[name=want_scholarship]").on("click", toggleTypes);
     $('input[name=scholarship_considered]').on("click", toggleSSFilesForm);
@@ -158,6 +164,5 @@ $(function(){
 
     var $files_for_ss = $('#files_for_ss');
 	$files_for_ss.find("input").prop("disabled", true);
-	//alert.error("AKSD");
 });
 })();
