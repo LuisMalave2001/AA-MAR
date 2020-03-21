@@ -39,20 +39,22 @@
                                 </section>
                                 <section class="card-body">
                                     <div class="row">
-                                        <div class="form-group col">
+                                        <div class="form-group col-12 col-md-6">
                                             <label for="txtDOB">Date of birth</label>
                                             <input type="date" class="form-control" id="txtDOB"
                                                 name="date_of_birth" required="required" t-att-value="application_id.date_of_birth" />
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group col-12">
+                                        <div class="form-group col-12 col-md-6">
                                             <label for="selGender">Gender</label>
                                             <select type="text" class="form-control" id="selGender" name="selGender" placeholder="Gender" t-att-value="application_id.gender">
-                                                <option value="m">Male</option>
-                                                <option value="f">Female</option>
-                                                <option value="no_disclose">Prefer not to disclose</option>
+                                                <option t-if="application_id.gender == 'm'" selected="selected" value="m">Male</option>
+                                                <option t-else="" value="m">Male</option>
+
+                                                <option t-if="application_id.gender == 'f'" selected="selected" value="f">Female</option>
+                                                <option t-else="" value="f">Female</option>
+
+                                                <option t-if="application_id.gender == 'no_disclose'" selected="selected" value="no_disclose">Prefer not to disclose</option>
+                                                <option t-else="" value="no_disclose">Prefer not to disclose</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-12 col-md-6">
