@@ -53,7 +53,6 @@ class Inquiry(models.Model):
     first_name = fields.Char(string="First Name", default="")
     middle_name = fields.Char(string="Middle Name", default="")
     last_name = fields.Char(string="Last Name", default="")
-    birthdate = fields.Date(string="Birthdate")
     gender = fields.Selection(sel_opt.genders, string="Gender")
 
     # Contact
@@ -156,7 +155,10 @@ class Inquiry(models.Model):
     def create(self, values):
         first_status = self.env['adm_uni.inquiry.status'].search([], order="sequence")[0]
         values['status_id'] = first_status.id
-        values['name'] = formatting.format_name(values['first_name'], values['middle_name'], values['last_name']) 
+
+        
+
+        values['name'] = formatting.format_name(values['first_name'], values['middle_name'] if "middle_name" in values else "", values['last_name']) 
         
         if not "partner_id" in values or not values["partner_id"]:
             partner = self.get_partner(values)
@@ -166,7 +168,10 @@ class Inquiry(models.Model):
         inquiry = super().create(values)
         
         partner.uni_inquiry_id = inquiry.id
-        
+
+        if (first_status.type == "done" and not inquiry.application_id):
+            inquiry.create_new_application()
+
         return inquiry
 
     def get_partner(self, values):
@@ -214,7 +219,9 @@ class Inquiry(models.Model):
         #         user.partner_id.with_context(create_user=True).signup_cancel()
         # return user
         #===============================================================================================================
-        
+        if self.partner_id.uni_application_id:
+            self.application_id = self.partner_id.uni_application_id
+            return
         ApplicationEnv = self.env["adm_uni.application"]
         
         application_record = ApplicationEnv.create({
@@ -222,7 +229,6 @@ class Inquiry(models.Model):
             "first_name": self.first_name,
             "middle_name": self.middle_name,
             "last_name": self.last_name,
-            "birthdate": self.birthdate,
             "gender": self.gender,
             
             'preferred_degree_program': self.preferred_degree_program.id,
@@ -256,12 +262,6 @@ class Inquiry(models.Model):
 
     @api.multi
     def write(self, values):
-
-        # print(self.task_ids)
-        # print(self.state_tasks)
-        #
-        # self.condition = ()
-        # print(self.condition)
 
         StatusEnv = self.env['adm_uni.inquiry.status'] 
         status_ids = StatusEnv.search([])

@@ -60,10 +60,14 @@
                 <header>
                     <field name="status_type" attrs="{'invisible': 1}" />
                     <button name="move_to_next_status" string="NEXT STATUS" type="object"
-                        class="btn-primary oe_read_only" attrs="{'invisible': [('status_type', '!=', 'stage')]}" />
+                        class="btn-success oe_read_only oe_highlight" attrs="{'invisible': [('status_type', 'not in', ['stage', 'submitted_form'])]}" />
+
+                    <button name="%(adm_uni.return_for_update_wizard)d" string="RETURN FOR UPDATE" type="action" class="btn-primary"
+                        attrs="{'invisible': [('status_type', '=', 'return_for_update')]}" />
+
                     <button name="cancel" string="CANCEL" type="object" class="btn-danger oe_read_only"
                         attrs="{'invisible': [('status_type', '=', 'cancelled')]}" />
-                        
+
                     <button name="force_back" string="FORCE BACK STATUS" type="object" class="btn-warning oe_read_only"/>
                     <button name="force_next" string="FORCE NEXT STATUS" type="object" class="btn-warning oe_read_only"/>
                         
