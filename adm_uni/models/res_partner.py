@@ -3,7 +3,7 @@ Created on Feb 1, 2020
 
 @author: LuisMora
 '''
-from odoo import models, fields
+from odoo import models, fields, api
 
 class ResPartnerExtended(models.Model):
     _inherit = ["res.partner"]

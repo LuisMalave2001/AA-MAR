@@ -33,15 +33,31 @@ class Admission(http.Controller):
         states = http.request.env['res.country.state']
         application_id = contact_id.uni_application_id
         
+
         if not application_id:
             return http.request.render('adm_uni.template_no_application_error')
-        
+
         application_status_ids = http.request.env["adm_uni.application.status"].browse(http.request.env["adm_uni.application.status"].search([])).ids
         contact_time_ids = http.request.env["adm_uni.contact_time"].browse(http.request.env["adm_uni.contact_time"].search([])).ids
         degree_program_ids = http.request.env["adm_uni.degree_program"].browse(http.request.env["adm_uni.degree_program"].search([])).ids
         
         language_ids = http.request.env['adm_uni.languages'].browse(http.request.env['adm_uni.languages'].search([]))
         language_level_ids = http.request.env['adm_uni.languages.level'].browse(http.request.env['adm_uni.languages.level'].search([]))
+        
+        if application_id.status_type != 'return_for_update':
+            render_template = 'adm_uni.template_admission_application'
+            response = http.request.render(render_template, {
+                'contact_id': contact_id,
+                'application_status_ids': application_status_ids,
+                'language_ids': language_ids.ids,
+                'language_level_ids': language_level_ids.ids,
+                'contact_time_ids': contact_time_ids,
+                'degree_program_ids': degree_program_ids,
+                'countries': countries.search([]),
+                'states': states.search([]),
+                'application_id': application_id,
+            })
+            return response
         
         response = http.request.render('adm_uni.template_admission_application_form', {
             'contact_id': contact_id,
