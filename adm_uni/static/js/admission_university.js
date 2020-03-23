@@ -160,6 +160,10 @@ $(function(){
 		$('[type="date"]').datepicker();
 	}
 
+	$('#dob_datepicker').datetimepicker({ 
+		"format": "YYYY-MM-DD"
+	});
+
 	$('[type="date"]').on("keydown", blockKeyboardInput);
 
     var $files_for_ss = $('#files_for_ss');
