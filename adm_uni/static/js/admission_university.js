@@ -1,13 +1,7 @@
 (function(){
 	
 "use strict"
-var studentCount = 1;
-
-function removeStudent(idStudent){
-    studentCount--;
-    $("#navStudent"+ idStudent).remove();
-    $("#student" + idStudent).remove();
-}
+var isFormValid = true;
 
 function addContact(){
 	$(this).find("i").removeClass("fa-plus").addClass("fa-minus");
@@ -92,23 +86,6 @@ function addLanguage(){
 	$languageRow.on("click", ".add_language", addLanguage);
 }
 
-function getStates(){
-    $('#selState').html("<option value='-1'>-Select a state-</option>");
-    $.ajax({
-        url: '/admission/states',
-        type: 'GET',
-        data: { 'country_id': $('#selCountry').val()},
-        success: function(data){
-            $.each(JSON.parse(data), function(i, state){
-                $('#selState').append('<option value="' + state.id + '">' + state.name + '</option>')
-            })
-        },
-        error: function(){
-            console.error("Un error ha ocurrido al cargar los states");
-        }
-    });
-}
-
 function toggleTypes(){
 	
 	var is_yes = this.id === "scholarship_yes"
@@ -136,6 +113,16 @@ function blockKeyboardInput(event){
 	return false;
 }
 
+function verifyDate(event){
+	if( !moment(this.value).isValid() ){
+		$('#dob_datepicker').addClass("was-validated")
+ 	   	this.setCustomValidity("Invalid date");
+	}else{
+		$('#dob_datepicker').removeClass("was-validated")
+ 	   	this.setCustomValidity("");
+	}
+}
+
 $(function(){
     $('#selCountry').on('change', changeState);
 	$('#selCountry').trigger('change');
@@ -160,12 +147,23 @@ $(function(){
 		$('[type="date"]').datepicker();
 	}
 
+	var $date_of_birth = $('input[name=date_of_birth]');
+	var moment_dob = moment($date_of_birth.val(), 'YYYY-MM-DD');
+
+	console.log(moment_dob.isValid());
+
+	
+	$date_of_birth.on("blur", verifyDate);
+	
 	$('#dob_datepicker').datetimepicker({ 
-		"format": "YYYY-MM-DD"
+		"format": "YYYY-MM-DD",
 	});
-
+	$('#dob_datepicker').datetimepicker("viewDate", moment_dob);
+	$('#dob_datepicker').datetimepicker("date", moment_dob);
+	
 	$('[type="date"]').on("keydown", blockKeyboardInput);
-
+	$date_of_birth.mask('9999-99-99');
+	
     var $files_for_ss = $('#files_for_ss');
 	$files_for_ss.find("input").prop("disabled", true);
 });

@@ -4,6 +4,7 @@
         <t t-call="website.layout">
             <t t-set="title">Application form</t>
             <link rel="stylesheet" href="/adm_uni/static/css/form_application.css" />
+<!--             <link rel="stylesheet" href="/adm_uni/static/css/jquery.datetextentry.css" /> -->
             <div class="oe_struture" />
             <div class="oe_struture">
                 <style>
@@ -30,7 +31,7 @@
                                 </option>
                             </t>
                         </div>
-                        <form action="/admission-university/application" method="post" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
+                        <form action="/admission-university/application" id="admissionForm" method="post" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
                             <input type="hidden" name="studentsCount" id="studentsCount" value="1" />
                             <!-- Student -->
                             <section class="card mt-2">
@@ -41,12 +42,15 @@
                                     <div class="row">
                                         <div class="form-group col-12 col-md-6">
                                             <label for="txtDOB">Date of birth</label>
-                                            <div class="input-group date" id="dob_datepicker" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" name="date_of_birth"
-                                                       required="required" t-att-value="application_id.date_of_birth"
-                                                       data-target="#dob_datepicker" data-toggle="datetimepicker"/>
+                                            <div class="input-group date" id="dob_datepicker" data-date-format="YYYY-MM-DD" data-target-input="nearest">
                                                 <div class="input-group-append" data-target="#dob_datepicker" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control datetimepicker-input w-100" name="date_of_birth"
+                                                       required="required" aria-describedby="inputGroupPrepend" t-att-value="application_id.date_of_birth"
+                                                       data-target="#dob_datepicker" data-date-format="YYYY-MM-DD" />
+                                                <div class="invalid-feedback">
+                                                    Date format must be YYYY-MM-DD
                                                 </div>
                                             </div>
                                         </div>
@@ -487,6 +491,7 @@
                     </main>
                 </div>
                 <script type="text/javascript" src="/adm_uni/static/js/admission_university.js" />
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" />
                 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
             </div>
         </t>
