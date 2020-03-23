@@ -46,7 +46,7 @@ class StudentController(http.Controller):
             attachments_record = attachments.search(search_domain_attach)      
         
             #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-            attachments_values = attachments_record.read(["id"])    
+            attachments_values = attachments_record.read(["id","name"])    
             record["attachIds"] = json.dumps(attachments_values)
             
         #students_values.append("test")
