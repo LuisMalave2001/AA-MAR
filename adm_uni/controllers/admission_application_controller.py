@@ -450,13 +450,20 @@ class Admission(http.Controller):
         #            "contact_identification": contact_ids[i],
         #            "application_id":   application_id.id,
         #        })
-        
-        application_id.sudo().write({
-            'letter_of_motivation_id': motivation_id,
-            'cv_id': cv_id,
-            'grade_transcript_id': grade_transcript_id,
-            'letters_of_recommendation_id': letters_of_recommendation_id,
-        })
+
+        attatchments_ids = dict()
+
+        if motivation_id:
+            attatchments_ids['letter_of_motivation'] = motivation_id
+        if cv_id:
+            attatchments_ids['cv_id'] = cv_id
+        if grade_transcript_id:
+            attatchments_ids['grade_transcript_id'] = grade_transcript_id
+        if letters_of_recommendation_id:
+            attatchments_ids['letters_of_recommendation_id'] = letters_of_recommendation_id
+
+        if attatchments_ids:
+            application_id.sudo().write(attatchments_ids)
         
         application_id.move_submitted_form()
         
