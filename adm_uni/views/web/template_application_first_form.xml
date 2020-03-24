@@ -484,8 +484,7 @@
                                 </section>
                             </section>
                             <div class="row justify-content-center m-3">
-                                <button t-if="application_id.date_of_birth" type="submit" class="btn btn-primary">Save and complete later</button>
-                                <button t-else="" type="submit" class="btn btn-primary">Request</button>
+                                <button t-else="" type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </main>
