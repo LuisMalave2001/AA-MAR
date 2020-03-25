@@ -91,7 +91,7 @@
                                                 <span class="text-danger">*</span>
                                             </label>
                                             <select type="text" class="custom-select" id="selCountry" name="selCountry" placeholder="Country" required="required">
-                                                <option value="-1">-Select a country-</option>
+                                                <option value="-1" disabled="disabled">-Select a country-</option>
                                                 <t t-foreach="countries" t-as="country">
                                                     <option t-if="country.id == contact_id.country_id.id" selected="selected" t-att-value="country.id">
                                                         <t t-esc="country.name" />
