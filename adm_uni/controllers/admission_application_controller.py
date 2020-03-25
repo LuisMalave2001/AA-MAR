@@ -454,7 +454,7 @@ class Admission(http.Controller):
         attatchments_ids = dict()
 
         if motivation_id:
-            attatchments_ids['letter_of_motivation'] = motivation_id
+            attatchments_ids['letter_of_motivation_id'] = motivation_id
         if cv_id:
             attatchments_ids['cv_id'] = cv_id
         if grade_transcript_id:

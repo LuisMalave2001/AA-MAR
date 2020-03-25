@@ -19,4 +19,27 @@
             </div>
         </t>
     </template>
+
+    <template id="adm_uni.template_repeated_email">
+        <t t-call="website.layout">
+            <t t-set="title">Inquiry Sent</t>
+            <div class="oe_structure" />
+            <div class="oe_struture">
+                <main class="container p-4 text-center">
+                    <section class="card card-body">
+                        <p>
+                            <em class="h2">
+                                You are attempting to use an email already in the system, 
+                                please verify this email, choose a different email, 
+                                or advance to the full application. 
+                                If you need to recover your account, 
+                                follow this link: <a href="/web/reset_password">recover email</a>
+                            </em>
+                        </p>
+                    </section>
+                </main>
+            </div>
+        </t>
+    </template>
+
 </odoo>

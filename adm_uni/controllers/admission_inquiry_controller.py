@@ -17,6 +17,16 @@ class Admission(http.Controller):
     @http.route("/admission-university/inquiry", auth="public", methods=["POST"], website=True, csrf=False)
     def add_inquiry(self, **params):
 
+        InquiryEnv = http.request.env["adm_uni.inquiry"]
+
+        if "email" in params:
+            params["email"] = params["email"].lower()
+            email_count = InquiryEnv.sudo().search_count( [("email", "=", params["email"])] )
+            if email_count > 0:
+                response = http.request.render('adm_uni.template_repeated_email')
+                return response
+
+
         field_ids = http.request.env.ref("adm_uni.model_adm_uni_inquiry").sudo().field_id
         fields = [field_id.name for field_id in field_ids]
         keys = params.keys() & fields
@@ -32,7 +42,7 @@ class Admission(http.Controller):
                     pass    
         
         if result:
-            new_inquiry = http.request.env["adm_uni.inquiry"].sudo().create(result)
+            new_inquiry = InquiryEnv.sudo().create(result)
 
         response = http.request.render('adm_uni.template_inquiry_sent')
         return response
