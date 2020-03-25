@@ -226,6 +226,7 @@
                                         </div>
                                         <div class="form-group col-12 col-md-6">
                                             <div class="custom-file">
+                                              
                                                 <input t-if="application_id.cv_id" type="file" name="fileCV" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileCV" />
                                                 <input t-else="" type="file" required="required" name="fileCV" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileCV" />
                                                 <label class="custom-file-label" for="fileCV">C.V</label>
