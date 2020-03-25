@@ -219,21 +219,22 @@
                                     <div class="row w-100 m-0">
                                         <div class="form-group col-12 col-md-6">
                                             <div class="custom-file">
-                                                <input t-if="application_id.letter_of_motivation_id != False" type="file" name="fileLetterOfMotivation" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileLetterOfMotivation" />
+                                                <input t-if="application_id.letter_of_motivation_id" type="file" name="fileLetterOfMotivation" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileLetterOfMotivation" />
                                                 <input t-else="" type="file" required="required" name="fileLetterOfMotivation" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileLetterOfMotivation" />
                                                 <label class="custom-file-label" for="fileLetterOfMotivation">Letter of motivation</label>
                                             </div>
                                         </div>
                                         <div class="form-group col-12 col-md-6">
                                             <div class="custom-file">
-                                                <input t-if="application_id.cv_id != False" type="file" name="fileCV" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileCV" />
+                                              
+                                                <input t-if="application_id.cv_id" type="file" name="fileCV" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileCV" />
                                                 <input t-else="" type="file" required="required" name="fileCV" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileCV" />
                                                 <label class="custom-file-label" for="fileCV">C.V</label>
                                             </div>
                                         </div>
                                         <div class="form-group col-12 col-md-6">
                                             <div class="custom-file">
-                                                <input t-if="application_id.grade_transcript_id != False" type="file" name="fileGradeTranscript" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileGradeTranscript" />
+                                                <input t-if="application_id.grade_transcript_id" type="file" name="fileGradeTranscript" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileGradeTranscript" />
                                                 <input t-else="" type="file" required="required" name="fileGradeTranscript" class="pointer file custom-file-input" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true" id="fileGradeTranscript" />
                                                 <label class="custom-file-label" for="fileGradeTranscript">Grade transcript</label>
                                             </div>
