@@ -15,22 +15,22 @@ class StudentController(http.Controller):
         #crea una variable con el modelo desde donde se va a tomar la información
         # adm_uni.application
         # status_type
-        students = http.request.env['adm_uni.inquiry']        
+        students = http.request.env['adm_uni.application']        
         
         #filtro del modelo basados en parametros de la url
-        search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
-        #search_domain = [("country_id", "=", int(params['country_id']))] 
+        #search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+        search_domain = [("country_id", "=", int(params['country_id'])),("status_type","=","fact_integration")] 
         
         #Tomar informacion basado en el modelo y en el domain IDS
         students_record = students.search(search_domain)      
         
         #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","middle_name","last_name","name","email","birthdate","gender","phone", "status_id","status_type","current_school","current_school_address","__last_update","create_date","create_uid","write_date","write_uid"])
+        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","middle_name","last_name","name","email","date_of_birth", "gender",             "phone", "status_id","status_type","current_school","current_school_address","__last_update","create_date","create_uid","write_date","write_uid"])
 
         # Se recorre por cada estudiante
         for record in students_values: 
             # Convertir fechas a string
-            record["birthdate"] = record["birthdate"].strftime('%m/%d/%Y')
+            record["date_of_birth"] = record["date_of_birth"].strftime('%m/%d/%Y')
             # Es lo mismo que:
             # date_of_birth = record["birthdate"]
             # date_of_birth = date_of_birth.strftime('%m/%d/%Y')
@@ -43,7 +43,7 @@ class StudentController(http.Controller):
             attachments = http.request.env['ir.attachment']        
         
             #filtro del modelo basados en parametros de la url
-            search_domain_attach = [("res_model", "=", "adm_uni.inquiry"),("res_id","=",record["id"])]
+            search_domain_attach = [("res_model", "=", "adm_uni.application"),("res_id","=",record["id"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
             attachments_record = attachments.search(search_domain_attach)      
