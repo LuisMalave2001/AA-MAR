@@ -18,8 +18,8 @@ class StudentController(http.Controller):
         students = http.request.env['adm_uni.application']        
         
         #filtro del modelo basados en parametros de la url
-        #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))] if "country_id" in params else []
-        search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))] 
+        search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+        #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))] 
         
         #Tomar informacion basado en el modelo y en el domain IDS
         students_record = students.search(search_domain)      
@@ -43,7 +43,7 @@ class StudentController(http.Controller):
             attachments = http.request.env['ir.attachment']        
         
             #filtro del modelo basados en parametros de la url
-            search_domain_attach = [("res_model", "=", "adm_uni.inquiry"),("res_id","=",record["id"])]
+            search_domain_attach = [("res_model", "=", "adm_uni.application"),("res_id","=",record["id"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
             attachments_record = attachments.search(search_domain_attach)      
