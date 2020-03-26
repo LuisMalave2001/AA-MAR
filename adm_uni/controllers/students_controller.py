@@ -15,7 +15,7 @@ class StudentController(http.Controller):
         #crea una variable con el modelo desde donde se va a tomar la información
         # adm_uni.application
         # status_type
-        students = http.request.env['adm_uni.application']        
+        students = http.request.env['adm_uni.inquiry']        
         
         #filtro del modelo basados en parametros de la url
         #search_domain = [("country_id", "=", int(params['country_id']))] if "country_id" in params else []
@@ -43,7 +43,7 @@ class StudentController(http.Controller):
             attachments = http.request.env['ir.attachment']        
         
             #filtro del modelo basados en parametros de la url
-            search_domain_attach = [("res_model", "=", "adm_uni.application"),("res_id","=",record["id"])]
+            search_domain_attach = [("res_model", "=", "adm_uni.inquiry"),("res_id","=",record["id"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
             attachments_record = attachments.search(search_domain_attach)      
