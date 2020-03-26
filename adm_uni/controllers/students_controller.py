@@ -12,7 +12,7 @@ class StudentController(http.Controller):
     @http.route("/admission/adm_uni", auth="public", methods=["GET"], cors='*')
     # define una funcion principal
     def get_adm_uni(self, **params): 
-        #crea una variable con el modelo desde donde se va a tomar la información
+        #crea una variable con el modelo desde donde se va a tomar la información 
         # adm_uni.application
         # status_type
         students = http.request.env['adm_uni.application']        
