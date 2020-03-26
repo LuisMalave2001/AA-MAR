@@ -25,7 +25,7 @@ class StudentController(http.Controller):
         students_record = students.search(search_domain)      
         
         #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","middle_name","last_name","name","email", "date_of_birth","gender","phone", "status_id","current_school","current_school_address","__last_update","create_date","create_uid","write_date","write_uid"])
+        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","middle_name","last_name","name","email", "date_of_birth","gender","phone", "status_id","status_type","current_school","current_school_address","__last_update","create_date","create_uid","write_date","write_uid"])
 
         # Se recorre por cada estudiante
         for record in students_values: 
