@@ -30,14 +30,28 @@ class StudentController(http.Controller):
         # Se recorre por cada estudiante
         for record in students_values: 
             # Convertir fechas a string
-            record["birthdate"] = record["birthdate"].strftime('%m/%d/%Y')
+            if record["birthdate"]:
+                record["birthdate"] = record["birthdate"].strftime('%m/%d/%Y')
+            else:
+                record["birthdate"] = '' 
             # Es lo mismo que:
             # date_of_birth = record["birthdate"]
             # date_of_birth = date_of_birth.strftime('%m/%d/%Y')
             # record["birthdate"] = date_of_birth 
+            
+            if record["create_date"]:
+                record["create_date"] = record["create_date"].strftime('%m/%d/%Y')
+            else:
+                record["create_date"] = ''                
+            
+            if record["write_date"]:
+                record["write_date"] = record["write_date"].strftime('%m/%d/%Y')
+            else:
+                record["write_date"] = ''
+                
             record["__last_update"] = record["__last_update"].strftime('%m/%d/%Y')
-            record["create_date"] = record["create_date"].strftime('%m/%d/%Y')
-            record["write_date"] = record["write_date"].strftime('%m/%d/%Y')   
+            # record["create_date"] = record["create_date"].strftime('%m/%d/%Y')
+            # record["write_date"] = record["write_date"].strftime('%m/%d/%Y')   
             
             #crea una variable con el modelo desde donde se va a tomar la información
             attachments = http.request.env['ir.attachment']        
