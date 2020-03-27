@@ -18,7 +18,8 @@ class StudentController(http.Controller):
         students = http.request.env['adm_uni.application']        
         
         #filtro del modelo basados en parametros de la url 
-        search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+        search_domain = [("status_type","=","stage")]
+        #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))] 
         
         #Tomar informacion basado en el modelo y en el domain IDS
