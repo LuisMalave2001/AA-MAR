@@ -17,15 +17,15 @@ class StudentController(http.Controller):
         # status_type
         students = http.request.env['adm_uni.application']        
         
-        #filtro del modelo basados en parametros de la url fact_integration
-        search_domain = [("status_type","=","stage"),("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+        #filtro del modelo basados en parametros de la url 
+        search_domain = [("status_type","=","3"),("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))] 
         
         #Tomar informacion basado en el modelo y en el domain IDS
         students_record = students.search(search_domain)      
         
         #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","middle_name","last_name","name","email", "birthdate","gender","phone", "status_id","status_type","current_school","current_school_address","__last_update","create_date","create_uid","write_date","write_uid"])
+        students_values = students_record.read(["id","city","country_id","state_id", "street_address","zip","first_name","middle_name","last_name","name","email", "birthdate","gender","phone", "status_id","status_type","current_school","current_school_address","create_date","create_uid","write_date","write_uid"])
 
         # Se recorre por cada estudiante
         for record in students_values: 
@@ -49,7 +49,7 @@ class StudentController(http.Controller):
             else:
                 record["write_date"] = ''
                 
-            record["__last_update"] = record["__last_update"].strftime('%m/%d/%Y')
+            # record["__last_update"] = record["__last_update"].strftime('%m/%d/%Y')
             # record["create_date"] = record["create_date"].strftime('%m/%d/%Y')
             # record["write_date"] = record["write_date"].strftime('%m/%d/%Y')   
             
