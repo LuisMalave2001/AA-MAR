@@ -79,4 +79,3 @@ class StudentController(http.Controller):
         data = json.loads(self.data_string.decode())
         
         return json.dumps(data)
-        
