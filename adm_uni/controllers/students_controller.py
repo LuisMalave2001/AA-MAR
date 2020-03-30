@@ -75,7 +75,7 @@ class StudentController(http.Controller):
     @http.route("/admission/adm_insertId", auth="public", methods=["POST"], cors='*')
     # define una funcion principal
     def get_adm_uni(self): 
-        self.data_string = self.rfile.read(int(self.headers['Content-Length']))
-        data = json.loads(self.data_string.decode())
+        #self.data_string = self.rfile.read(int(self.headers['Content-Length']))
+        #data = json.loads(self.data_string.decode())
         
-        return json.dumps(data)
+        #return json.dumps(data)
