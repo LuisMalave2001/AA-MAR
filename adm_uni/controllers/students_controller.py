@@ -78,8 +78,4 @@ class StudentController(http.Controller):
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
         data = json.loads(self.data_string.decode())
         
-        self.send_response(200)
-        self.send_header("Content-type", "text/plain")
-        self.end_headers()
-        textRecord = str(12)
-        self.wfile.write(textRecord.encode("utf8"))
+        return "correcto"
