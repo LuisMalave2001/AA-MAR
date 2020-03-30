@@ -4,6 +4,7 @@ from ..utils import formatting
 import base64
 
 
+
 def get_parameters():
     return http.request.httprequest.args
 
@@ -18,13 +19,15 @@ class Admission(http.Controller):
     def add_inquiry(self, **params):
 
         InquiryEnv = http.request.env["adm_uni.inquiry"]
+        PartnerEnv = http.request.env["res.partner"]
 
         if "email" in params:
             params["email"] = params["email"].lower()
-            email_count = InquiryEnv.sudo().search_count( [("email", "=", params["email"])] )
+            email_count = PartnerEnv.sudo().search_count( [("email", "=", params["email"])] )
             if email_count > 0:
                 response = http.request.render('adm_uni.template_repeated_email')
                 return response
+
 
         field_ids = http.request.env.ref("adm_uni.model_adm_uni_inquiry").sudo().field_id
         fields = [field_id.name for field_id in field_ids]

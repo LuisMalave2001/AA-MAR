@@ -15,6 +15,11 @@
                     </group>
                 </page>
             </xpath>
+            <field name="vat" position="after">
+                <field name="first_name"/>
+                <field name="middle_name"/>
+                <field name="last_name"/>
+            </field>
         </field>
     </record>
 </odoo>
