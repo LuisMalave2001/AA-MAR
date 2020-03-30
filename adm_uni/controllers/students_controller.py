@@ -75,6 +75,6 @@ class StudentController(http.Controller):
     @http.route("/admission/adm_insertId", auth="public", methods=["POST"], cors='*', csrf=False)
     # define una funcion principal 
     def insertId(self, **kw): 
-       
+        data = request.httprequest.data
         
-        return "correcto"
+        return data
