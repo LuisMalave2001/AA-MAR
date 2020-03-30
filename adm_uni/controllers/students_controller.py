@@ -2,6 +2,7 @@
 
 from odoo import http
 from . import base_controller as base
+
 import json
 from datetime import datetime
 from datetime import date
@@ -74,7 +75,6 @@ class StudentController(http.Controller):
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
     @http.route("/admission/adm_insertId", auth="public", methods=["POST"], cors='*', csrf=False)
     # define una funcion principal 
-    def insertId(self, **kw): 
-        data = request.httprequest.data
+    def insertId(self, **kw):  
         
-        return data
+        return kw
