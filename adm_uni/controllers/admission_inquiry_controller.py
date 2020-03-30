@@ -4,6 +4,7 @@ from ..utils import formatting
 import base64
 
 
+
 def get_parameters():
     return http.request.httprequest.args
 
