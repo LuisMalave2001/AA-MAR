@@ -26,6 +26,7 @@ class Admission(http.Controller):
                 response = http.request.render('adm_uni.template_repeated_email')
                 return response
 
+
         field_ids = http.request.env.ref("adm_uni.model_adm_uni_inquiry").sudo().field_id
         fields = [field_id.name for field_id in field_ids]
         keys = params.keys() & fields

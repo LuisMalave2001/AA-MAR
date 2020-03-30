@@ -12,3 +12,4 @@ adm_uni_application_task_access,adm_uni.adm_application_task_access,adm_uni.mode
 adm_uni_application_status_access,adm_uni.adm_application_status_access,adm_uni.model_adm_uni_application_status,,1,1,1,1
 adm_uni_application_languages_access,adm_uni.adm_application_languages_access,adm_uni.model_adm_uni_application_languages,,1,1,1,1
 adm_uni_application_other_contacts_access,adm_uni.adm_application_other_contacts_access,adm_uni.model_adm_uni_application_other_contacts,,1,1,1,1
+adm_uni_referral_access,adm_uni.adm_uni_referral_access,adm_uni.model_adm_uni_referral,,1,1,1,1

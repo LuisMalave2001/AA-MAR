@@ -20,6 +20,13 @@
         <field name="res_model">adm_uni.degree_program</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record model="ir.actions.act_window" id="action_referral">
+        <field name="name">Referral</field>
+        <field name="res_model">adm_uni.referral</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     
     <record model="ir.actions.act_window" id="action_contact_time">
         <field name="name">Contact time</field>
@@ -88,10 +95,15 @@
     <menuitem id="adm_uni_menu_contact_time"
         parent="adm_uni_menu_configurations" name="Contact times"
         action="action_contact_time" />
+
     <menuitem id="adm_uni_menu_degree_program"
         parent="adm_uni_menu_configurations" name="Degree programs"
         action="action_degree_program" />
     
+    <menuitem id="adm_uni_menu_referral"
+        parent="adm_uni_menu_configurations" name="Referral"
+        action="action_referral" />
+
     <!-- Website Tab -->
     <record id="website_menu_adm_uni_inquiry" model="website.menu">
         <field name="name">University Inquiry</field>

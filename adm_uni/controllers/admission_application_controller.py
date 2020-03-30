@@ -229,11 +229,13 @@ class Admission(http.Controller):
                     })
 
 
+
     @http.route("/admission-university/application", auth="public", methods=["POST"], website=True, csrf=False)
     def add_admission(self, **params):
         
         contact_id = self.get_partner()
         application_id = contact_id.uni_application_id
+        post_params = post_parameters()
         
         if not application_id:
             return http.request.render('adm_uni.template_no_application_error')
@@ -279,6 +281,8 @@ class Admission(http.Controller):
         # contact_time_id = params["selPreferredContactTime"]
         # preferred_degree_program = params["selPreferredDegreeProgram"]
         
+        post_params.getlist
+
         new_application_dict = {
             'gender': gender,
             'father_name': father_name,

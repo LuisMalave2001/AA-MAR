@@ -11,6 +11,17 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_referral_tree">
+        <field name="name">Referral tree</field>
+        <field name="model">adm_uni.referral</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="translatable_name" />
+            </tree>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="view_language_levels_tree">
         <field name="name">Language levels tree</field>
         <field name="model">adm_uni.languages.level</field>

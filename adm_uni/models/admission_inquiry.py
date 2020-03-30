@@ -190,6 +190,11 @@ class Inquiry(models.Model):
             if not partner:
                 partner = PartnerEnv.create({
                     "name": commons.extractValueFromDict("name", values),
+                    
+                    "first_name": commons.extractValueFromDict("first_name", values),
+                    "middle_name": commons.extractValueFromDict("middle_name", values),
+                    "last_name": commons.extractValueFromDict("last_name", values),
+
                     "email": email, 
                     "phone": commons.extractValueFromDict("phone", values),
                     "name": commons.extractValueFromDict("name", values),
