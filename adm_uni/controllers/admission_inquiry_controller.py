@@ -18,10 +18,11 @@ class Admission(http.Controller):
     def add_inquiry(self, **params):
 
         InquiryEnv = http.request.env["adm_uni.inquiry"]
+        PartnerEnv = http.request.env["res.partner"]
 
         if "email" in params:
             params["email"] = params["email"].lower()
-            email_count = InquiryEnv.sudo().search_count( [("email", "=", params["email"])] )
+            email_count = PartnerEnv.sudo().search_count( [("email", "=", params["email"])] )
             if email_count > 0:
                 response = http.request.render('adm_uni.template_repeated_email')
                 return response
