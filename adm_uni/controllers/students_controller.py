@@ -91,7 +91,7 @@ class StudentController(http.Controller):
         #Tomar informacion basado en el modelo y en el domain IDS
         contactId = contact.search(search_domain)      
         
-        obj = contact.sudo().browse(contactId)
+        obj = contact.sudo().browse(40)
         
         obj.sudo().write({'website': 'exampleWeb'}) 
         
