@@ -99,4 +99,4 @@ class StudentController(http.Controller):
             #actualizamos campo
             obj.sudo().write({'x_facts_id': itemData["factsId"]}) 
         
-        return json.dumps('correcto')
+        return json.dumps(data)
