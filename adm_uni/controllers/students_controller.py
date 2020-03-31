@@ -86,7 +86,7 @@ class StudentController(http.Controller):
         contact = http.request.env['res.partner']        
         
         #filtro del modelo basados en parametros de la url 
-        search_domain = [("id","=","40")] 
+        search_domain = [("id","=",40)] 
         
         #Tomar informacion basado en el modelo y en el domain IDS
         contactId = contact.search(search_domain)      
