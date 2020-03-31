@@ -95,4 +95,4 @@ class StudentController(http.Controller):
         
         obj.sudo().write({'website': 'exampleWeb'}) 
         
-        return json.dumps(data[0]["odooId"])
+        return json.dumps(obj)
