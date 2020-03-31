@@ -74,7 +74,7 @@ class StudentController(http.Controller):
         return json.dumps(students_values)
 
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
-    @http.route("/admission/adm_insertId", auth="public", methods=["POST"], cors='*', csrf=False, type='http')
+    @http.route("/admission/adm_insertId", auth="public", methods=["POST"], cors='*', csrf=False)
     # define una funcion principal 
     def insertId(self, **kw):  
         data = json.loads(json.dumps(kw))
