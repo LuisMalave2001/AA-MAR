@@ -7,12 +7,6 @@ import json
 from datetime import datetime
 from datetime import date
 
-from openerp.http import Controller, route, request
-import json
-import ast
-import yaml
-import time
-
 
 #controlador encargado de devolver data de estudiantes, para insertarlo en FACTS
 class StudentController(http.Controller):
@@ -84,6 +78,4 @@ class StudentController(http.Controller):
     # define una funcion principal 
     def insertId(self, **kw):  
         data = json.loads(json.dumps(kw))
-        data = request.httprequest.data
-        data_in_json = yaml.load(data)	
-        return json.dumps(data_in_json)
+        return json.dumps(data)
