@@ -89,14 +89,15 @@ class StudentController(http.Controller):
             application_record = application.search(search_domain)      
         
             #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-            application_values = application_record.read(["partner_id"])
+            application_values = application_record.partner_id
         
+            application_values.sudo().write({'x_facts_id': itemData["factsId"]})
             #tomamos el modelo de application
             #application = http.request.env['adm_uni.application']        
             #obtenemos el contacto de odoo
-            contact = http.request.env['res.partner'] 
-            obj = contact.sudo().browse(application_values[0]["id"])
+            #contact = http.request.env['res.partner'] 
+            #obj = contact.sudo().browse(application_values[0]["id"])
             #actualizamos campo
-            obj.sudo().write({'x_facts_id': itemData["factsId"]}) 
+            #obj.sudo().write({'x_facts_id': itemData["factsId"]}) 
         
         return json.dumps(data)
