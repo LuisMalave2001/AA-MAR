@@ -78,4 +78,4 @@ class StudentController(http.Controller):
     # define una funcion principal 
     def insertId(self, **kw):  
         data = json.loads(kw["data"])
-        return json.dumps(data[0])
+        return json.dumps(data[0]["odooId"])
