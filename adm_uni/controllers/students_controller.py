@@ -78,12 +78,11 @@ class StudentController(http.Controller):
     # define una funcion principal 
     def insertId(self, **kw):  
         data = json.loads(kw["data"])
-        application = http.request.env['adm_uni.application']
-        contact = http.request.env['res.partner'] 
-        
         for itemData in data: 
             #itemData["odooId"]
             #itemData["factsId"]
+            application = http.request.env['adm_uni.application']
+          
             search_domain = [("id","=",itemData["odooId"])]
             
             #Tomar informacion basado en el modelo y en el domain IDS
@@ -95,6 +94,7 @@ class StudentController(http.Controller):
             #tomamos el modelo de application
             #application = http.request.env['adm_uni.application']        
             #obtenemos el contacto de odoo
+            contact = http.request.env['res.partner'] 
             obj = contact.sudo().browse(application_values[0]["id"])
             #actualizamos campo
             obj.sudo().write({'x_facts_id': itemData["factsId"]}) 
