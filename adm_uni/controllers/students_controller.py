@@ -78,4 +78,17 @@ class StudentController(http.Controller):
     # define una funcion principal 
     def insertId(self, **kw):  
         data = json.loads(kw["data"])
+        
+        contact = http.request.env['res.partner']        
+        
+        #filtro del modelo basados en parametros de la url 
+        search_domain = [("id","=","40")] 
+        
+        #Tomar informacion basado en el modelo y en el domain IDS
+        contactId = contact.search(search_domain)      
+        
+        obj = contact.browse(contactId)
+        
+        obj.write({'website': 'exampleWeb'}) 
+        
         return json.dumps(data[0]["odooId"])
