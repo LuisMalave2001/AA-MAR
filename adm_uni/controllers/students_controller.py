@@ -104,7 +104,7 @@ class StudentController(http.Controller):
 
     
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
-    @http.route("/account/getDataOdooFromFamilyID", auth="public", methods=["POST"], cors='*', csrf=False)
+    @http.route("/account/getDataOdooFromFamilyID", auth="public", methods=["GET"], cors='*')
     # define una funcion principal
     def insertId(self, **kw):  
         data = json.loads(kw["data"])
@@ -123,6 +123,6 @@ class StudentController(http.Controller):
         students_values = students_record.read(["access_token","amount_total","invoice_date"])
        
        
-        return json.dumps(students_values)
+        return json.dumps(students_values) 
 
     
