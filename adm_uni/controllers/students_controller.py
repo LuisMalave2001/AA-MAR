@@ -106,28 +106,30 @@ class StudentController(http.Controller):
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
     @http.route("/account/getDataOdooFromFamilyID", auth="public", methods=["GET"], cors='*', csrf=False)
     # define una funcion principal
-    def insertId(self, **kw):                         
+    def leerFact(self, **param):                         
         #{"id": 17, "first_name": "Luis"}
         #data = '[{"id": 16}]'
                 
         #data = json.loads(data)
         #data = json.loads(kw["data"])
         
-        students = http.request.env['account.invoice']        
-        #students = http.request.env['account.invoice']
-       
-        #filtro del modelo basados en parametros de la url
-        search_domain = [("partner_id","=",int(kw['id']))] if "id" in kw else "id=''"
-        #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
-        #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
-       
-        #Tomar informacion basado en el modelo y en el domain IDS
-        students_record = students.search(search_domain)      
-       
-        #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-        students_values = students_record.read(["access_token","amount_total","invoice_date"])
-       
-       
-        return json.dumps(students_values)
+        if param['id'] != ''        
+        
+            students = http.request.env['account.invoice']        
+            #students = http.request.env['account.invoice']
+
+            #filtro del modelo basados en parametros de la url
+            search_domain = [("partner_id","=",int(param['id']))] 
+            #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+            #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
+
+            #Tomar informacion basado en el modelo y en el domain IDS
+            students_record = students.search(search_domain)      
+
+            #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
+            students_values = students_record.read(["access_token","amount_total","invoice_date"])
+
+
+            return json.dumps(students_values)
 
     
