@@ -110,12 +110,12 @@ class StudentController(http.Controller):
         
         
         data = [{"id": 16, "first_name": "Zayneb"}] #,{"id": 17, "first_name": "Luis"}]
-        
+                
         
         
         data = json.loads(kw["data"])
        
-        students = http.request.env['account.move']        
+        students = http.request.env['account.invoice_form']        
        
         #filtro del modelo basados en parametros de la url
         search_domain = [("partner_id","=",data["id"])]
