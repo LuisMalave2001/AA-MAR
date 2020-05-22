@@ -123,7 +123,7 @@ class StudentController(http.Controller):
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
         
         
-        if search_domain != ""  
+        if search_domain["partner_id"] != ""  
 
             #Tomar informacion basado en el modelo y en el domain IDS
             students_record = students.search(search_domain)      
