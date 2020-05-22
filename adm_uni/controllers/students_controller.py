@@ -115,7 +115,8 @@ class StudentController(http.Controller):
         
         data = json.loads(kw["data"])
        
-        students = http.request.env['account.invoice_form']        
+        #students = http.request.env['account.move']        
+        students = http.request.env['account.invoice']
        
         #filtro del modelo basados en parametros de la url
         search_domain = [("partner_id","=",data["id"])]
