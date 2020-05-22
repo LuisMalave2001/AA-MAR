@@ -117,7 +117,7 @@ class StudentController(http.Controller):
         #students = http.request.env['account.invoice']
        
         #filtro del modelo basados en parametros de la url
-        search_domain = [("partner_id","=",int(kw['id']))]
+        search_domain = [("partner_id","=",int(kw['id']))] #if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
        
