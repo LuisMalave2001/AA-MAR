@@ -113,7 +113,7 @@ class StudentController(http.Controller):
         #data = json.loads(data)
         #data = json.loads(kw["data"])
         
-        students = http.request.env['account.move']        
+        moves = http.request.env['account.invoice']        
         #students = http.request.env['account.invoice']
        
         #filtro del modelo basados en parametros de la url
@@ -122,10 +122,10 @@ class StudentController(http.Controller):
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
        
         #Tomar informacion basado en el modelo y en el domain IDS
-        students_record = students.search(search_domain)      
+        moves_record = moves.search(search_domain)      
        
         #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-        students_values = students_record.read(["access_token","amount_total","invoice_date"])
+        moves_values = moves_record.read(["access_token","amount_total","invoice_date"])
        
        
         return json.dumps(students_values)
