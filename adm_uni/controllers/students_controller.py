@@ -118,19 +118,26 @@ class StudentController(http.Controller):
         #students = http.request.env['account.invoice']
 
         #filtro del modelo basados en parametros de la url
-        search_domain = [("partner_id","=",int(kw['id']))] if "id" in kw else []
+        search_domain = [("partner_id","=",int(kw['id']))] #if "id" in kw else []
         #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]        
         
-        if kw['id'] != None: #search_domain["partner_id"] != ""  
+        #if kw['id'] != None: #search_domain["partner_id"] != ""  
 
-            #Tomar informacion basado en el modelo y en el domain IDS
-            students_record = students.search(search_domain)      
+        #Tomar informacion basado en el modelo y en el domain IDS
+        students_record = students.search(search_domain)      
 
-            #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-            students_values = students_record.read(["access_token","amount_total","invoice_date"])
+        #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
+        students_values = students_record.read(["access_token","amount_total","invoice_date"])
+        
+        for record in students_values: 
+            if record["invoice_date"]:
+                record["invoice_date"] = record["invoice_date"].strftime('%m/%d/%Y')
+            else:
+                record["invoice_date"] = ''
+                
 
-            return json.dumps(students_values)
+        return json.dumps(students_values)
 
 
 #if(row[1] != None and row[2] != None):
