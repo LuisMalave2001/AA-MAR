@@ -7,7 +7,7 @@ import json
 from datetime import datetime
 from datetime import date
 
-
+##
 #controlador encargado de devolver data de estudiantes, para insertarlo en FACTS
 class StudentController(http.Controller):
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
