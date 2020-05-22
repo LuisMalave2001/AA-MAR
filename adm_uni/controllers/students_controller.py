@@ -113,7 +113,7 @@ class StudentController(http.Controller):
         #data = json.loads(data)
         #data = json.loads(kw["data"])
         
-        if param['id'] != ''      
+        if kw['id'] != ''      
         
             students = http.request.env['account.invoice']        
             #students = http.request.env['account.invoice']
