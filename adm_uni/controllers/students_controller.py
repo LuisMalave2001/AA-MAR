@@ -7,7 +7,7 @@ import json
 from datetime import datetime
 from datetime import date
 
-##
+
 #controlador encargado de devolver data de estudiantes, para insertarlo en FACTS
 class StudentController(http.Controller):
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
@@ -107,16 +107,17 @@ class StudentController(http.Controller):
     @http.route("/account/getDataOdooFromFamilyID", auth="public", methods=["GET"], cors='*', csrf=False)
     # define una funcion principal
     def insertId(self, **kw):                         
-        
-        data = [{"id": 16, "first_name": "Zayneb"}] #,{"id": 17, "first_name": "Luis"}]
+        #{"id": 17, "first_name": "Luis"}
+        #data = '[{"id": 16}]'
                 
-        data = json.loads(kw["data"])
-       
+        #data = json.loads(data)
+        #data = json.loads(kw["data"])
+        
         students = http.request.env['account.move']        
         #students = http.request.env['account.invoice']
        
         #filtro del modelo basados en parametros de la url
-        search_domain = [("partner_id","=",data["id"])]
+        search_domain = [("partner_id","=",int(kw['id']))]
         #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
        
