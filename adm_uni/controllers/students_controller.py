@@ -106,20 +106,20 @@ class StudentController(http.Controller):
     #definiendo la url desde donde va ser posible acceder, tipo de metodo, cors para habiltiar accesos a ip externas.
     @http.route("/account/getDataOdooFromFamilyID", auth="public", methods=["GET"], cors='*', csrf=False)
     # define una funcion principal
-    def leerFact(self, **param):                         
+    def insertId(self, **kw):                         
         #{"id": 17, "first_name": "Luis"}
         #data = '[{"id": 16}]'
                 
         #data = json.loads(data)
         #data = json.loads(kw["data"])
         
-        if param['id'] != ''        
+        if param['id'] != ''      
         
             students = http.request.env['account.invoice']        
             #students = http.request.env['account.invoice']
 
             #filtro del modelo basados en parametros de la url
-            search_domain = [("partner_id","=",int(param['id']))] 
+            search_domain = [("partner_id","=",int(kw['id']))] #if "id" in kw else []
             #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
             #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
 
