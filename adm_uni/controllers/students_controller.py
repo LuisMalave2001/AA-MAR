@@ -111,17 +111,19 @@ class StudentController(http.Controller):
         #data = '[{"id": 16}]'
                 
         #data = json.loads(data)
-        #data = json.loads(kw["data"])
+        #data = json.loads(kw["data"])        
+       
         
-        if kw['id'] != ""      
-        
-            students = http.request.env['account.invoice']        
-            #students = http.request.env['account.invoice']
+        students = http.request.env['account.invoice']        
+        #students = http.request.env['account.invoice']
 
-            #filtro del modelo basados en parametros de la url
-            search_domain = [("partner_id","=",int(kw['id']))] if "id" in kw else []
-            #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
-            #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
+        #filtro del modelo basados en parametros de la url
+        search_domain = [("partner_id","=",int(kw['id']))] if "id" in kw else []
+        #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
+        #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]
+        
+        
+        if search_domain != ""  
 
             #Tomar informacion basado en el modelo y en el domain IDS
             students_record = students.search(search_domain)      
