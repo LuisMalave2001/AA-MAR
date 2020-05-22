@@ -122,22 +122,22 @@ class StudentController(http.Controller):
         #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]        
         
-        #if kw['id'] != None: #search_domain["partner_id"] != ""  
-
-        #Tomar informacion basado en el modelo y en el domain IDS
-        students_record = students.search(search_domain)      
-
-        #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-        students_values = students_record.read(["access_token","amount_total","date_invoice"])
+        if kw['id'] != None: 
         
-        for record in students_values: 
-            if record["date_invoice"]:
-                record["date_invoice"] = record["date_invoice"].strftime('%m/%d/%Y')
-            else:
-                record["date_invoice"] = ''
-                
+            #Tomar informacion basado en el modelo y en el domain IDS
+            students_record = students.search(search_domain)      
 
-        return json.dumps(students_values)
+            #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
+            students_values = students_record.read(["access_token","amount_total","date_invoice"])
+
+            for record in students_values: 
+                if record["date_invoice"]:
+                    record["date_invoice"] = record["date_invoice"].strftime('%m/%d/%Y')
+                else:
+                    record["date_invoice"] = ''
+
+
+            return json.dumps(students_values)
 
 
 #if(row[1] != None and row[2] != None):
