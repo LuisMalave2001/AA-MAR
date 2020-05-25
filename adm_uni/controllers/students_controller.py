@@ -128,7 +128,7 @@ class StudentController(http.Controller):
         students_record = students.search(search_domain)      
 
         #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior        
-        students_values = students_record.read(["access_token","amount_total","date_invoice","date_due"])
+        students_values = students_record.read(["access_token","amount_total","date_invoice","invoice_line_ids"])
         
 #,"date_due","payment_term_id","user_id","invoice_line_ids"])
 
@@ -137,6 +137,8 @@ class StudentController(http.Controller):
                 record["date_invoice"] = record["date_invoice"].strftime('%m/%d/%Y')
             else:
                 record["date_invoice"] = ''
+                
+        
 
         return json.dumps(students_values)
 
