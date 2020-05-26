@@ -153,7 +153,7 @@ class StudentController(http.Controller):
             search_domain_attach = [("res_model", "=", "account.invoice"),("line_id","=",record["invoice_line_ids"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
-            #attachments_record = attachments.search(search_domain_attach)      
+            attachments_record = attachments.search(search_domain_attach)      
         
             #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
             #attachments_values = attachments_record.read(["product_id","quantity"])    
