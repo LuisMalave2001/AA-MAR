@@ -114,11 +114,19 @@ class StudentController(http.Controller):
         #data = json.loads(kw["data"])        
        
         
+
+        
+       
         students = http.request.env['account.invoice']        
         #students = http.request.env['account.invoice']
 
+        
         #filtro del modelo basados en parametros de la url
         search_domain = [("partner_id","=",int(kw['id']))] #if "id" in kw else []
+        
+#        id = kw["fact_id"] if "fact_id" in kw else kw["id"]
+#        search_domain = [("facts_id","=",int(id))]         
+        
         #search_domain = [("status_type","=","fact_integration")] #,("country_id", "=", int(params['country_id']))] if "country_id" in params else []
         #search_domain = [("status_type","=","fact_integration"),("country_id", "=", int(params['country_id']))]        
         
@@ -130,8 +138,6 @@ class StudentController(http.Controller):
         #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior        
         students_values = students_record.read(["access_token","amount_total","date_invoice","date_due","payment_term_id","user_id","invoice_line_ids"])
         
-#,"date_due","payment_term_id","user_id","invoice_line_ids"])
-
         for record in students_values: 
             if record["date_invoice"]:
                 record["date_invoice"] = record["date_invoice"].strftime('%m/%d/%Y')
@@ -159,9 +165,9 @@ class StudentController(http.Controller):
                 #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
             datosLinea_values = datosLinea_record.read(["product_id","quantity"]) 
                 
-            record["datosLinea"] = json.dumps(datosLinea_values)         
+ #           record["datosLinea"] = json.dumps(datosLinea_values)         
 
-                
+            record["datosLinea"] = datosLinea_values
                 
 
         return json.dumps(students_values)
