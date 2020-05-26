@@ -142,8 +142,7 @@ class StudentController(http.Controller):
             if record["date_due"]:
                 record["date_due"] = record["date_due"].strftime('%m/%d/%Y')
             else:
-                record["date_due"] = ''
-                
+                record["date_due"] = ''                
                 
             
             
@@ -151,14 +150,14 @@ class StudentController(http.Controller):
             attachments = http.request.env['account.invoice.line']        
         
             #filtro del modelo basados en parametros de la url
-            search_domain_attach = [("res_model", "=", "account.invoice"),("line_id","=",record["invoice_line_ids"])]
+            #search_domain_attach = [("res_model", "=", "account.invoice"),("line_id","=",record["invoice_line_ids"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
-            attachments_record = attachments.search(search_domain_attach)      
+            #attachments_record = attachments.search(search_domain_attach)      
         
             #Obtienes la información basada en los ids anteriores y tomando en cuenta los campos definifos en la funcion posterior
-            attachments_values = attachments_record.read(["product_id","quantity"])    
-            record["attachIds"] = json.dumps(attachments_values)           
+            #attachments_values = attachments_record.read(["product_id","quantity"])    
+            #record["attachIds"] = json.dumps(attachments_values)           
             
                       
                 
