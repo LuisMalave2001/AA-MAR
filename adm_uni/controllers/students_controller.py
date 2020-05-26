@@ -150,7 +150,7 @@ class StudentController(http.Controller):
             attachments = http.request.env['account.invoice.line']        
         
             #filtro del modelo basados en parametros de la url
-            search_domain_attach = [("res_model", "=", "account.invoice")]#,("line_id","=",record["invoice_line_ids"])]
+            search_domain_attach = [("line_ids","=",record["invoice_line_ids"])]#("res_model", "=", "account.invoice")]#,("line_id","=",record["invoice_line_ids"])]
         
             #Tomar informacion basado en el modelo y en el domain IDS
             attachments_record = attachments.search(search_domain_attach)      
